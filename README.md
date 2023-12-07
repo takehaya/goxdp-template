@@ -14,7 +14,7 @@ There is no problem with the first execution.
 ./gen_bpf_helper.sh
 ```
 
-or dev packages install
+dev packages install
 
 ```shell
 sudo apt install clang llvm libelf-dev build-essential linux-headers-$(uname -r) linux-libc-dev libbpf-dev gcc-multilib
