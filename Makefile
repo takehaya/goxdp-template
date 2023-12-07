@@ -27,3 +27,8 @@ clean:
 .PHONY: test
 test:
 	go test -v -exec sudo -race ./pkg/...
+
+.PHONY: fmt
+fmt:
+	go fmt ./...
+	find . -iname *.h -o -iname *.c | xargs clang-format -i -style=Google 
