@@ -17,7 +17,7 @@ There is no problem with the first execution.
 dev packages install
 
 ```shell
-sudo apt install clang llvm libelf-dev build-essential linux-headers-$(uname -r) linux-libc-dev libbpf-dev gcc-multilib
+sudo apt install clang llvm libelf-dev build-essential linux-headers-$(uname -r) linux-libc-dev libbpf-dev gcc-multilib clang-format
 ```
 
 Let's build go & ebpf
@@ -33,3 +33,7 @@ make
 ./bin/goxdp --device eth2 --device eth3
 ```
 
+## Test
+```shell
+make test
+```
