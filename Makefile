@@ -19,3 +19,11 @@ run:
 .PHONY: gen
 gen:
 	go generate pkg/coreelf/elf.go
+
+.PHONY: clean
+clean:
+	rm -rf ./bin/$(NAME)
+
+.PHONY: test
+test:
+	go test -v -exec sudo -race ./pkg/...

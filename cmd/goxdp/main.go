@@ -61,7 +61,7 @@ func run(ctx *cli.Context) error {
 
 	//attach xdp
 	for _, dev := range devices {
-		err = xdptool.Attach(obj.ProgramProg, dev)
+		err = xdptool.Attach(obj.XdpProg, dev)
 		if err != nil {
 			return errors.WithStack(err)
 		}

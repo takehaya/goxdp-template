@@ -10,17 +10,23 @@ If you hit this script accordingly, it will fetch the kernel code and build it.
 Please use according to your kernel version.
 There is no problem with the first execution.
 
-```
+```shell
 ./gen_bpf_helper.sh
 ```
 
-Let's build go & ebpf
+or dev packages install
+
+```shell
+sudo apt install clang llvm libelf-dev build-essential linux-headers-$(uname -r) linux-libc-dev libbpf-dev gcc-multilib
 ```
+
+Let's build go & ebpf
+```shell
 make
 ```
 
 ## Run
-```
+```shell
 ./bin/goxdp
 
 # use option
