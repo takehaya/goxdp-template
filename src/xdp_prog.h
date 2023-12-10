@@ -1,5 +1,6 @@
 #ifndef XDP_PROG_H
 #define XDP_PROG_H
+#include <linux/types.h>
 
 // vlan header
 struct vlan_hdr {
