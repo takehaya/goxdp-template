@@ -1,8 +1,9 @@
-package coreelf_test
+package coreelf
 
 import (
 	"errors"
 	"net"
+	"net/netip"
 	"testing"
 
 	"github.com/cilium/ebpf"
@@ -10,7 +11,7 @@ import (
 	"github.com/google/go-cmp/cmp"
 	"github.com/google/gopacket"
 	"github.com/google/gopacket/layers"
-	"github.com/takehaya/goxdp-template/pkg/coreelf"
+	"github.com/takehaya/goxdp-template/pkg/xdptool"
 )
 
 var payload = []byte{
@@ -49,7 +50,7 @@ func generateOutput(t *testing.T) []byte {
 	opts := gopacket.SerializeOptions{FixLengths: true, ComputeChecksums: true}
 	buf := gopacket.NewSerializeBuffer()
 	err := gopacket.SerializeLayers(buf, opts,
-		&layers.Ethernet{DstMAC: []byte{0x00, 0x00, 0x5e, 0x00, 0x11, 0x01}, SrcMAC: []byte{0x00, 0x00, 0x5e, 0x00, 0x11, 0x02}, EthernetType: layers.EthernetTypeIPv4},
+		&layers.Ethernet{DstMAC: []byte{0x00, 0x00, 0x5e, 0x00, 0x11, 0x11}, SrcMAC: []byte{0x00, 0x00, 0x5e, 0x00, 0x11, 0x12}, EthernetType: layers.EthernetTypeIPv4},
 		&layers.IPv4{
 			Version: 4, Protocol: layers.IPProtocolICMPv4, Flags: layers.IPv4DontFragment, TTL: 64, IHL: 5, Id: 1160,
 			SrcIP: net.IP{192, 168, 100, 200}, DstIP: net.IP{192, 168, 30, 1},
@@ -62,11 +63,17 @@ func generateOutput(t *testing.T) []byte {
 	return buf.Bytes()
 }
 
+func byteArrayToUint8Array(arr [6]byte) [6]uint8 {
+	var uArr [6]uint8
+	copy(uArr[:], arr[:])
+	return uArr
+}
+
 func TestXDPProg(t *testing.T) {
 	if err := rlimit.RemoveMemlock(); err != nil {
 		t.Fatal(err)
 	}
-	objs, err := coreelf.ReadCollection()
+	objs, err := ReadCollection()
 	if err != nil {
 		var verr *ebpf.VerifierError
 		if errors.As(err, &verr) {
@@ -76,6 +83,24 @@ func TestXDPProg(t *testing.T) {
 		}
 	}
 	defer objs.Close()
+
+	if err := UpdateIPv4FibLookUpMockMap(
+		objs,
+		IPv4FibLookUpMockKey{
+			IPv4Src: netip.AddrFrom4([4]byte{192, 168, 100, 200}),
+			IPv4Dst: netip.AddrFrom4([4]byte{192, 168, 30, 1}),
+			Ifindex: 1,
+		},
+		&xdpFibLookupMockResult{
+			Status: xdptool.BPF_FIB_LKUP_RET_SUCCESS,
+			Params: xdpBpfFibLookupMock{
+				Dmac: byteArrayToUint8Array([6]byte{0x00, 0x00, 0x5e, 0x00, 0x11, 0x11}),
+				Smac: byteArrayToUint8Array([6]byte{0x00, 0x00, 0x5e, 0x00, 0x11, 0x12}),
+			},
+		},
+	); err != nil {
+		t.Fatal(err)
+	}
 
 	ret, got, err := objs.XdpProg.Test(generateInput(t))
 	if err != nil {

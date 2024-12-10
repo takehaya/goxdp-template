@@ -35,5 +35,9 @@ make
 
 ## Test
 ```shell
+# mock enable build
+CEXTRA_FLAGS="-DXDP_DEBUG -DXDP_TEST" make
+
+# unit test
 make test
 ```
