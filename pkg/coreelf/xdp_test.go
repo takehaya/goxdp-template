@@ -73,7 +73,7 @@ func TestXDPProg(t *testing.T) {
 	if err := rlimit.RemoveMemlock(); err != nil {
 		t.Fatal(err)
 	}
-	objs, err := ReadCollection()
+	objs, err := ReadCollection(ebpf.MustPossibleCPU())
 	if err != nil {
 		var verr *ebpf.VerifierError
 		if errors.As(err, &verr) {
@@ -108,8 +108,8 @@ func TestXDPProg(t *testing.T) {
 	}
 
 	// retern code should be XDP_TX
-	if ret != 3 {
-		t.Errorf("got %d want %d", ret, 3)
+	if ret != xdptool.XDP_TX {
+		t.Errorf("got %d want %d", ret, xdptool.XDP_TX)
 	}
 
 	// check output
