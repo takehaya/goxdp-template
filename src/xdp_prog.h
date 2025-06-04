@@ -78,6 +78,7 @@ struct vxlanhdr {
 /* VXLAN header flags. */
 #define VXLAN_HF_VNI cpu_to_be32(BIT(27))
 
+#define VXLAN_VNI_EXTRACT(vx_vni_be) (bpf_ntohl((vx_vni_be)) >> 8)
 #define VXLAN_N_VID (1u << 24)
 #define VXLAN_VID_MASK (VXLAN_N_VID - 1)
 #define VXLAN_VNI_MASK cpu_to_be32(VXLAN_VID_MASK << 8)
@@ -87,5 +88,10 @@ struct vxlanhdr {
 #define VNI_HASH_SIZE (1 << VNI_HASH_BITS)
 #define FDB_HASH_BITS 8
 #define FDB_HASH_SIZE (1 << FDB_HASH_BITS)
+
+struct stats_map_value {
+  __u64 rx_packets;
+  __u64 rx_bytes;
+};
 
 #endif // XDP_PROG_H

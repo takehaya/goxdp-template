@@ -60,6 +60,7 @@ int xdp_prog(struct xdp_md *ctx) {
     return xdpcap_exit(ctx, &xdpcap_hook, XDP_PASS);
   }
 
+  __u32 vni = 0;
   // check vxlan packet
   if (l4proto == IPPROTO_UDP) {
     struct udphdr *udph = data + nh_off;
@@ -69,15 +70,24 @@ int xdp_prog(struct xdp_md *ctx) {
 
     // decap case
     if (udph->dest == bpf_htons(IANA_VXLAN_UDP_PORT)) {
-      // struct vxlanhdr *vxlanh = data + nh_off;
+      struct vxlanhdr *vxlanh = data + nh_off;
       nh_off += sizeof(struct vxlanhdr);
       if (data + nh_off > data_end)
         return xdpcap_exit(ctx, &xdpcap_hook, XDP_DROP);
+
+      vni = VXLAN_VNI_EXTRACT(vxlanh->vx_vni);
 
       // decap vxlan packet
       int remove_offset = nh_off;
       bpf_xdp_adjust_head(ctx, remove_offset);
     }
+  }
+
+  // add stats map
+  struct stats_map_value *stats = bpf_map_lookup_elem(&stats_map, &vni);
+  if (stats) {
+    stats->rx_packets++;
+    stats->rx_bytes += ctx->data_end - ctx->data;
   }
 
   // new headers
@@ -212,7 +222,7 @@ int cpu_dispatch(struct xdp_md *ctx) {
       if (data + nh_off > data_end)
         return xdpcap_exit(ctx, &xdpcap_hook, XDP_PASS);
 
-      key_hash = vxlanh->vx_vni;
+      key_hash = VXLAN_VNI_EXTRACT(vxlanh->vx_vni);
     }
   }
 

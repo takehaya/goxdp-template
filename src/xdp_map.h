@@ -37,4 +37,11 @@ struct {
   __type(value, struct bpf_cpumap_val);
 } cpus_map SEC(".maps");
 
+struct {
+  __uint(type, BPF_MAP_TYPE_PERCPU_HASH);
+  __type(key, __u32);
+  __type(value, struct stats_map_value);
+  __uint(max_entries, 1024);
+} stats_map SEC(".maps");
+
 #endif // XDP_MAP_H
