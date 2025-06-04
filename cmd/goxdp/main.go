@@ -1,11 +1,13 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"os"
 	"os/signal"
 	"syscall"
 
+	"github.com/cilium/ebpf"
 	"github.com/pkg/errors"
 	"github.com/takehaya/goxdp-template/pkg/coreelf"
 	"github.com/takehaya/goxdp-template/pkg/version"
@@ -54,8 +56,13 @@ func run(ctx *cli.Context) error {
 	devices := ctx.StringSlice("device")
 	log.Println(devices)
 	// get ebpf binary
-	obj, err := coreelf.ReadCollection()
+	obj, err := coreelf.ReadCollection(ebpf.MustPossibleCPU())
 	if err != nil {
+		var verr *ebpf.VerifierError
+		if !errors.As(err, &verr) {
+			fmt.Println("fail to load xdp objects for verifier log...")
+			fmt.Printf("%+v\n", verr)
+		}
 		return errors.WithStack(err)
 	}
 
@@ -83,5 +90,4 @@ func run(ctx *cli.Context) error {
 			return nil
 		}
 	}
-
 }
