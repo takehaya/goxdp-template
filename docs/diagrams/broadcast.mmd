@@ -1,0 +1,11 @@
+flowchart LR
+    accTitle: XDP frame replication through a devmap
+    accDescr: An Ethernet frame enters eth0. Native XDP redirects through a devmap with broadcast and ingress exclusion, sending an unchanged copy to eth1 and eth2.
+    ingress["eth0<br/>receive frame F"] --> xdp["Native XDP"]
+    xdp --> group["DEVMAP<br/>BPF_F_BROADCAST<br/>exclude ingress"]
+    group --> first["eth1<br/>frame F"]
+    group --> second["eth2<br/>frame F"]
+    classDef processing fill:#eff6ff,stroke:#2563eb,color:#172554;
+    classDef output fill:#ecfdf5,stroke:#059669,color:#064e3b;
+    class ingress,xdp,group processing;
+    class first,second output;

@@ -2,7 +2,9 @@
 #define XDP_PROG_H
 #include <linux/types.h>
 
+#ifndef NO_CPUMAP
 volatile const __u32 cpu_count; // replace by Go program
+#endif
 
 #ifdef XDP_DEBUG
 #define DEBUG_PRINT(fmt, ...) bpf_printk(fmt, ##__VA_ARGS__)

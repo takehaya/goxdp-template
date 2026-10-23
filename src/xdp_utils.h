@@ -3,9 +3,9 @@
 #include <linux/types.h>
 #include <linux/bpf.h>
 #include <linux/if_ether.h>
-#include <linux/if_vlan.h>
-#include <netinet/ip.h>
-#include <netinet/ip6.h>
+#include <linux/ip.h>
+#include <linux/in.h>
+#include <linux/ipv6.h>
 #include <stdbool.h>
 
 #include <bpf/bpf_endian.h>
@@ -48,14 +48,14 @@ static __always_inline bool ipv4_fib_lookup(struct xdp_md *xdp, struct bpf_fib_l
 }
 
 static __always_inline bool ipv6_fib_lookup(struct xdp_md *xdp, struct bpf_fib_lookup *params,
-                                            struct ip6_hdr *ip6h, __u32 ifindex, __u32 flags)
+                                            struct ipv6hdr *ip6h, __u32 ifindex, __u32 flags)
 {
     struct bpf_fib_lookup_mock map_key = {};
 
     // ignore tos, tot_len, sport, dport, l4 proto, ifindex
     map_key.family = AF_INET6;
-    __builtin_memcpy(map_key.ipv4_src_or_ipv6_src, ip6h->ip6_src.s6_addr, sizeof(ip6h->ip6_src.s6_addr));
-    __builtin_memcpy(map_key.ipv4_dst_or_ipv6_dst, ip6h->ip6_dst.s6_addr, sizeof(ip6h->ip6_dst.s6_addr));
+    __builtin_memcpy(map_key.ipv4_src_or_ipv6_src, ip6h->saddr.s6_addr, sizeof(ip6h->saddr.s6_addr));
+    __builtin_memcpy(map_key.ipv4_dst_or_ipv6_dst, ip6h->daddr.s6_addr, sizeof(ip6h->daddr.s6_addr));
     map_key.ifindex = ifindex;
 
     DEBUG_PRINT("ipv6_fib_lookup (mock) called ifindex %d", ifindex);
@@ -98,7 +98,7 @@ static __always_inline bool ipv4_fib_lookup(struct xdp_md *xdp, struct bpf_fib_l
 }
 
 static __always_inline bool ipv6_fib_lookup(struct xdp_md *xdp, struct bpf_fib_lookup *params,
-                                            struct ip6_hdr *ip6h, __u32 ifindex, __u32 flags)
+                                            struct ipv6hdr *ip6h, __u32 ifindex, __u32 flags)
 {
     params->family = AF_INET6;
     params->tos = 0;
@@ -106,8 +106,8 @@ static __always_inline bool ipv6_fib_lookup(struct xdp_md *xdp, struct bpf_fib_l
     params->sport = 0;
     params->dport = 0;
     params->tot_len = 0;
-    __builtin_memcpy(params->ipv6_src, ip6h->ip6_src.s6_addr, sizeof(ip6h->ip6_src.s6_addr));
-    __builtin_memcpy(params->ipv6_dst, ip6h->ip6_dst.s6_addr, sizeof(ip6h->ip6_dst.s6_addr));
+    __builtin_memcpy(params->ipv6_src, ip6h->saddr.s6_addr, sizeof(ip6h->saddr.s6_addr));
+    __builtin_memcpy(params->ipv6_dst, ip6h->daddr.s6_addr, sizeof(ip6h->daddr.s6_addr));
     params->ifindex = ifindex;
     int rc = bpf_fib_lookup(xdp, params, sizeof(struct bpf_fib_lookup), flags);
     if (rc != BPF_FIB_LKUP_RET_SUCCESS)

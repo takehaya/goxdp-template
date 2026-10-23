@@ -1,0 +1,18 @@
+flowchart LR
+    accTitle: Three-VTEP VXLAN network namespace topology
+    accDescr: VTEP A connects to VTEPs B and C through two direct veth underlay links. Each VTEP has separate VNI 100 and VNI 200 access endpoints, and A has one extra VNI 100 access endpoint. Every endpoint and VTEP has its own namespace.
+    a100["a-100 namespace<br/>VNI 100"] ---|"eth0 / p0"| A["VTEP A namespace<br/>goxdp / XDP VXLAN"]
+    a200["a-200 namespace<br/>VNI 200"] ---|"eth0 / p1"| A
+    alocal["a-local namespace<br/>VNI 100"] ---|"eth0 / p4"| A
+    A ---|"p2 / p2<br/>192.0.2.1 / 192.0.2.2<br/>VXLAN over veth<br/>MTU 1600"| B["VTEP B namespace<br/>goxdp / XDP VXLAN"]
+    A ---|"p3 / p2<br/>192.0.3.1 / 192.0.3.2<br/>VXLAN over veth<br/>MTU 1600"| C["VTEP C namespace<br/>goxdp / XDP VXLAN"]
+    B ---|"p0 / eth0"| b100["b-100 namespace<br/>VNI 100"]
+    B ---|"p1 / eth0"| b200["b-200 namespace<br/>VNI 200"]
+    C ---|"p0 / eth0"| c100["c-100 namespace<br/>VNI 100"]
+    C ---|"p1 / eth0"| c200["c-200 namespace<br/>VNI 200"]
+    classDef vtep fill:#172554,stroke:#1e40af,color:#ffffff;
+    classDef vni100 fill:#eff6ff,stroke:#2563eb,color:#172554;
+    classDef vni200 fill:#ecfdf5,stroke:#059669,color:#064e3b;
+    class A,B,C vtep;
+    class a100,b100,c100,alocal vni100;
+    class a200,b200,c200 vni200;

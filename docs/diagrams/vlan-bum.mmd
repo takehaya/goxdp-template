@@ -1,0 +1,19 @@
+flowchart LR
+    accTitle: VLAN classification before BUM replication
+    accDescr: A frame is classified by its receiving port and VLAN. Exactly one VNI is selected, then only that VNI's devmap is used for broadcast. The output tunnel device may be shared across VNIs without merging their replication groups.
+    input["One 802.1Q frame on trunk0<br/>VID 10 or VID 20"] --> classify["vlan_bindings lookup<br/>(ifindex, VID)<br/>select exactly one VNI"]
+    classify -->|"VID 10 → VNI 100"| group10["vni_groups[100]<br/>one devmap"]
+    classify -->|"VID 20 → VNI 200"| group20["vni_groups[200]<br/>one devmap"]
+    classify -->|"No allowed binding"| drop["XDP_DROP"]
+    group10 --> local10["trunkA<br/>VID 10"]
+    group10 --> tunnel10["tunnel0<br/>VNI 100 peer"]
+    group20 --> local20["trunkB<br/>VID 20"]
+    group20 --> tunnel20["tunnel0<br/>VNI 200 peer"]
+    classDef classifier fill:#eff6ff,stroke:#2563eb,color:#172554;
+    classDef ten fill:#ecfdf5,stroke:#059669,color:#064e3b;
+    classDef twenty fill:#fff7ed,stroke:#ea580c,color:#7c2d12;
+    classDef rejected fill:#fef2f2,stroke:#dc2626,color:#7f1d1d;
+    class input,classify classifier;
+    class group10,local10,tunnel10 ten;
+    class group20,local20,tunnel20 twenty;
+    class drop rejected;

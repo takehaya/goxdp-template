@@ -1,0 +1,13 @@
+flowchart LR
+    accTitle: Ethernet BUM network namespace topology
+    accDescr: A DUT namespace running goxdp connects through four veth pairs to leaf-a, leaf-b, leaf-c, and outside namespaces. Ports p0, p1, and p2 are ingress devices and devmap members; p3 is outside the replication group. Each endpoint uses eth0.
+    a["leaf-a namespace<br/>eth0"] ---|"eth0 / p0"| dut["DUT namespace<br/>goxdp / native XDP<br/>DEVMAP: p0, p1, p2"]
+    dut ---|"p1 / eth0"| b["leaf-b namespace<br/>eth0"]
+    dut ---|"p2 / eth0"| c["leaf-c namespace<br/>eth0"]
+    dut ---|"p3 / eth0"| outside["outside namespace<br/>not a group member"]
+    classDef forwarding fill:#172554,stroke:#1e40af,color:#ffffff;
+    classDef member fill:#eff6ff,stroke:#2563eb,color:#172554;
+    classDef excluded fill:#f8fafc,stroke:#64748b,color:#475569,stroke-dasharray:5 4;
+    class dut forwarding;
+    class a,b,c member;
+    class outside excluded;

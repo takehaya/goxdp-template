@@ -1,14 +1,20 @@
+//go:build integration
+
 package coreelf
 
 import (
+	"bytes"
+	"encoding/binary"
 	"errors"
 	"fmt"
 	"net"
 	"net/netip"
+	"os"
 	"testing"
 	"time"
 
 	"github.com/cilium/ebpf"
+	"github.com/cilium/ebpf/asm"
 	"github.com/cilium/ebpf/rlimit"
 	"github.com/google/go-cmp/cmp"
 	"github.com/google/gopacket"
@@ -100,6 +106,9 @@ func TestXDPProg(t *testing.T) {
 }
 
 func TestCPUDispatch(t *testing.T) {
+	if !CPUMAPEnabled {
+		t.Skip("CPUMAP disabled at build time")
+	}
 	t.Parallel()
 
 	objs, err := loadbpfProg(t)
@@ -119,6 +128,119 @@ func TestCPUDispatch(t *testing.T) {
 	runAndExpect(t, objs, vni2, 1)
 	runAndExpect(t, objs, vni2, 2)
 	runAndExpect(t, objs, vni1, 3)
+}
+
+func TestCPUDispatchSelected(t *testing.T) {
+	if !CPUMAPEnabled {
+		t.Skip("CPUMAP disabled at build time")
+	}
+	cpus, err := SelectCPUs(nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+	// Keep the actual CPU ID distinct from slot zero whenever possible.
+	selected := cpus[len(cpus)-1]
+	objs, err := ReadCollection(ebpf.MustPossibleCPU(), selected)
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer objs.Close()
+	setIPv4FibLookupMock(t, objs)
+	const vni = uint32(0x123456)
+	addStatsKey(t, objs, vni)
+	runAndExpect(t, objs, vni, 1)
+	_, _, cores := gotPktStats(t, vni, objs)
+	if len(cores) != 1 || cores[0] != selected {
+		t.Fatalf("CPU redirect ran on %v, want CPU %d", cores, selected)
+	}
+}
+
+func TestFIBForwarding(t *testing.T) {
+	if err := rlimit.RemoveMemlock(); err != nil {
+		t.Fatal(err)
+	}
+	name, peer := fmt.Sprintf("ff%da", os.Getpid()), fmt.Sprintf("ff%db", os.Getpid())
+	ipCommand(t, "link", "add", name, "type", "veth", "peer", "name", peer)
+	t.Cleanup(func() { ipCommand(t, "link", "del", name) })
+	for _, dev := range []string{name, peer} {
+		if err := os.WriteFile("/proc/sys/net/ipv6/conf/"+dev+"/disable_ipv6", []byte("1"), 0644); err != nil {
+			t.Fatal(err)
+		}
+		ipCommand(t, "link", "set", dev, "up")
+	}
+	pass, err := ebpf.NewProgram(&ebpf.ProgramSpec{Name: "fib_peer_pass", Type: ebpf.XDP, License: "MIT",
+		Instructions: asm.Instructions{asm.Mov.Imm(asm.R0, 2), asm.Return()}})
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Cleanup(func() { pass.Close() })
+	attached, err := xdptool.Attach(pass, peer)
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Cleanup(func() { attached.Close() })
+	iface, err := net.InterfaceByName(peer)
+	if err != nil {
+		t.Fatal(err)
+	}
+	protocol := binary.NativeEndian.Uint16([]byte{8, 0})
+	fd, err := unix.Socket(unix.AF_PACKET, unix.SOCK_RAW|unix.SOCK_NONBLOCK|unix.SOCK_CLOEXEC, int(protocol))
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Cleanup(func() { unix.Close(fd) })
+	if err := unix.Bind(fd, &unix.SockaddrLinklayer{Ifindex: iface.Index, Protocol: protocol}); err != nil {
+		t.Fatal(err)
+	}
+	if err := unix.SetsockoptPacketMreq(fd, unix.SOL_PACKET, unix.PACKET_ADD_MEMBERSHIP,
+		&unix.PacketMreq{Ifindex: int32(iface.Index), Type: unix.PACKET_MR_PROMISC}); err != nil {
+		t.Fatal(err)
+	}
+	cpus, err := SelectCPUs(nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+	var targets []uint32
+	if CPUMAPEnabled {
+		targets = cpus[len(cpus)-1:]
+	}
+	objs, err := ReadCollection(ebpf.MustPossibleCPU(), targets...)
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Cleanup(func() { objs.Close() })
+	setIPv4FibLookupMock(t, objs)
+	for _, tt := range []struct {
+		name string
+		prog *ebpf.Program
+	}{{"direct", objs.XdpProg}, {"cpumap", objs.CPUProgram()}} {
+		t.Run(tt.name, func(t *testing.T) {
+			if tt.prog == nil {
+				t.Skip("CPUMAP disabled at build time")
+			}
+			link, err := xdptool.Attach(tt.prog, name)
+			if err != nil {
+				t.Fatal(err)
+			}
+			defer link.Close()
+			frame := generateInput(t, 100)
+			if err := unix.Sendto(fd, frame, 0, &unix.SockaddrLinklayer{Ifindex: iface.Index, Protocol: protocol}); err != nil {
+				t.Fatal(err)
+			}
+			poll := []unix.PollFd{{Fd: int32(fd), Events: unix.POLLIN}}
+			if n, err := pollPackets(poll, 1000); err != nil || n != 1 {
+				t.Fatalf("FIB handler did not transmit a frame: %v", err)
+			}
+			buf := make([]byte, 2048)
+			n, _, err := unix.Recvfrom(fd, buf, 0)
+			if err != nil {
+				t.Fatal(err)
+			}
+			if !bytes.Equal(buf[:n], generateOutput(t)) {
+				t.Fatalf("FIB output differs from expected decapped/rewritten frame: %x", buf[:n])
+			}
+		})
+	}
 }
 
 func setIPv4FibLookupMock(t *testing.T, objs *xdpObjects) {
@@ -178,7 +300,7 @@ func loadbpfProg(t *testing.T) (*xdpObjects, error) {
 	if err != nil {
 		var verr *ebpf.VerifierError
 		if errors.As(err, &verr) {
-			t.Fatalf("%+v\n", verr)
+			t.Fatalf("%v\n%+v", err, verr)
 		} else {
 			t.Fatal(err)
 		}
@@ -193,7 +315,7 @@ func runToBpfTestLiveFrame(t *testing.T, objs *xdpObjects, data []byte) error {
 		Repeat: 1,
 		Flags:  unix.BPF_F_TEST_XDP_LIVE_FRAMES,
 	}
-	_, err := objs.CpuDispatch.Run(runopts)
+	_, err := objs.CPUProgram().Run(runopts)
 	if err != nil {
 		return fmt.Errorf("run xdp prog: %w", err)
 	}
@@ -201,7 +323,7 @@ func runToBpfTestLiveFrame(t *testing.T, objs *xdpObjects, data []byte) error {
 	return nil
 }
 
-func gotPktStats(t *testing.T, vni uint32, objs *xdpObjects) (rxPkts, rxBytes uint64, corenum []uint8) {
+func gotPktStats(t *testing.T, vni uint32, objs *xdpObjects) (rxPkts, rxBytes uint64, corenum []uint32) {
 	t.Helper()
 	possibleCpus := ebpf.MustPossibleCPU()
 
@@ -211,12 +333,12 @@ func gotPktStats(t *testing.T, vni uint32, objs *xdpObjects) (rxPkts, rxBytes ui
 	}
 	gotRxPkts := uint64(0)
 	gotRxBytes := uint64(0)
-	corenum = make([]uint8, 0, possibleCpus)
+	corenum = make([]uint32, 0, possibleCpus)
 	for i := 0; i < possibleCpus; i++ {
 		if gotStats[i].RxPackets == 0 && gotStats[i].RxBytes == 0 {
 			continue
 		}
-		corenum = append(corenum, uint8(i))
+		corenum = append(corenum, uint32(i))
 		gotRxPkts += gotStats[i].RxPackets
 		gotRxBytes += gotStats[i].RxBytes
 	}

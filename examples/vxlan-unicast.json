@@ -1,0 +1,17 @@
+{
+  "ports": [
+    {"device": "lan0", "vni": 100},
+    {"device": "uplink0", "local_ip": "192.0.2.1"},
+    {"device": "uplink1", "local_ip": "198.51.100.1"}
+  ],
+  "groups": [
+    {
+      "vni": 100,
+      "devices": ["lan0", "uplink0", "uplink1"],
+      "unicast_peers": [
+        {"device": "uplink0", "remote_ip": "192.0.2.2", "remote_mac": "02:00:00:00:02:02"},
+        {"device": "uplink1", "remote_ip": "198.51.100.2", "remote_mac": "02:00:00:00:03:02"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+flowchart TB
+    accTitle: Local application delivery through a veth pair
+    accDescr: Within one host namespace, devmap sends one copy to the network and one to a local veth pair. The receiving peer rewrites a local unicast MAC and returns XDP_PASS, allowing delivery to a local UDP socket.
+    incoming["Incoming frame"] --> ingress
+    subgraph host["One host / network namespace"]
+        ingress["eth0<br/>ingress XDP"] --> group["DEVMAP broadcast"]
+        group --> networkTX["eth1<br/>devmap transmit"]
+        group --> hostTX["host_tx"]
+        subgraph pair["Local veth pair"]
+            hostTX --> hostRX["host_rx / ingress XDP<br/>rewrite dst MAC / XDP_PASS"]
+        end
+        hostRX --> stack["Build skb<br/>IP stack"]
+        stack --> app["Local UDP socket<br/>interface: host_rx"]
+    end
+    networkTX --> peers["Network peers"]
+    classDef forwarding fill:#eff6ff,stroke:#2563eb,color:#172554;
+    classDef local fill:#ecfdf5,stroke:#059669,color:#064e3b;
+    class ingress,group,networkTX,peers forwarding;
+    class hostTX,hostRX,stack,app local;
