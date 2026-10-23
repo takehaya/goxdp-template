@@ -1,0 +1,427 @@
+{
+  "time_utc": "2026-10-21T19:20:13Z",
+  "kernel": {
+    "system": "Linux",
+    "node": "takemio-main-server-01",
+    "release": "7.0.0-38-generic",
+    "version": "#38-Ubuntu SMP PREEMPT_DYNAMIC Fri Sep  4 09:10:14 UTC 2026",
+    "machine": "x86_64",
+    "processor": ""
+  },
+  "lscpu": {
+    "lscpu": [
+      {
+        "field": "Architecture:",
+        "data": "x86_64"
+      },
+      {
+        "field": "CPU op-mode(s):",
+        "data": "32-bit, 64-bit"
+      },
+      {
+        "field": "Address sizes:",
+        "data": "48 bits physical, 48 bits virtual"
+      },
+      {
+        "field": "Byte Order:",
+        "data": "Little Endian"
+      },
+      {
+        "field": "CPU(s):",
+        "data": "32"
+      },
+      {
+        "field": "On-line CPU(s) list:",
+        "data": "0-31"
+      },
+      {
+        "field": "Vendor ID:",
+        "data": "AuthenticAMD"
+      },
+      {
+        "field": "Model name:",
+        "data": "AMD EPYC 7713P 64-Core Processor"
+      },
+      {
+        "field": "CPU family:",
+        "data": "25"
+      },
+      {
+        "field": "Model:",
+        "data": "1"
+      },
+      {
+        "field": "Thread(s) per core:",
+        "data": "1"
+      },
+      {
+        "field": "Core(s) per socket:",
+        "data": "1"
+      },
+      {
+        "field": "Socket(s):",
+        "data": "32"
+      },
+      {
+        "field": "Stepping:",
+        "data": "1"
+      },
+      {
+        "field": "BogoMIPS:",
+        "data": "3999.99"
+      },
+      {
+        "field": "Flags:",
+        "data": "fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm rep_good nopl xtopology cpuid extd_apicid tsc_known_freq pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm cmp_legacy cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw perfctr_core ssbd ibrs ibpb stibp vmmcall fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid rdseed adx smap clflushopt clwb sha_ni xsaveopt xsavec xgetbv1 xsaves clzero xsaveerptr wbnoinvd arat umip pku ospke vaes vpclmulqdq rdpid fsrm arch_capabilities"
+      },
+      {
+        "field": "Hypervisor vendor:",
+        "data": "KVM"
+      },
+      {
+        "field": "Virtualization type:",
+        "data": "full"
+      },
+      {
+        "field": "L1d cache:",
+        "data": "2 MiB (32 instances)"
+      },
+      {
+        "field": "L1i cache:",
+        "data": "2 MiB (32 instances)"
+      },
+      {
+        "field": "L2 cache:",
+        "data": "16 MiB (32 instances)"
+      },
+      {
+        "field": "L3 cache:",
+        "data": "512 MiB (32 instances)"
+      },
+      {
+        "field": "NUMA node(s):",
+        "data": "1"
+      },
+      {
+        "field": "NUMA node0 CPU(s):",
+        "data": "0-31"
+      },
+      {
+        "field": "Vulnerability Gather data sampling:",
+        "data": "Not affected"
+      },
+      {
+        "field": "Vulnerability Ghostwrite:",
+        "data": "Not affected"
+      },
+      {
+        "field": "Vulnerability Indirect target selection:",
+        "data": "Not affected"
+      },
+      {
+        "field": "Vulnerability Itlb multihit:",
+        "data": "Not affected"
+      },
+      {
+        "field": "Vulnerability L1tf:",
+        "data": "Not affected"
+      },
+      {
+        "field": "Vulnerability Mds:",
+        "data": "Not affected"
+      },
+      {
+        "field": "Vulnerability Meltdown:",
+        "data": "Not affected"
+      },
+      {
+        "field": "Vulnerability Mmio stale data:",
+        "data": "Not affected"
+      },
+      {
+        "field": "Vulnerability Old microcode:",
+        "data": "Not affected"
+      },
+      {
+        "field": "Vulnerability Reg file data sampling:",
+        "data": "Not affected"
+      },
+      {
+        "field": "Vulnerability Retbleed:",
+        "data": "Not affected"
+      },
+      {
+        "field": "Vulnerability Spec rstack overflow:",
+        "data": "Vulnerable: Safe RET, no microcode"
+      },
+      {
+        "field": "Vulnerability Spec store bypass:",
+        "data": "Mitigation; Speculative Store Bypass disabled via prctl"
+      },
+      {
+        "field": "Vulnerability Spectre v1:",
+        "data": "Mitigation; usercopy/swapgs barriers and __user pointer sanitization"
+      },
+      {
+        "field": "Vulnerability Spectre v2:",
+        "data": "Mitigation; Retpolines; IBPB conditional; IBRS_FW; STIBP disabled; RSB filling; PBRSB-eIBRS Not affected; BHI Not affected"
+      },
+      {
+        "field": "Vulnerability Srbds:",
+        "data": "Not affected"
+      },
+      {
+        "field": "Vulnerability Tsa:",
+        "data": "Vulnerable: No microcode"
+      },
+      {
+        "field": "Vulnerability Tsx async abort:",
+        "data": "Not affected"
+      },
+      {
+        "field": "Vulnerability Vmscape:",
+        "data": "Not affected"
+      }
+    ]
+  },
+  "args": {
+    "binary": "/home/ubuntu/private/goxdp-template/bin/goxdp",
+    "xdperf": "/tmp/goxdp-xdperf",
+    "plugins": "/tmp/goxdp-bench-inputs",
+    "counters": "/home/ubuntu/private/goxdp-template/bin/goxdp-perf-counters",
+    "output": "/home/ubuntu/private/goxdp-template/docs/benchmarks/2026-10-22-veth/cpumap",
+    "frames": "64,1514",
+    "fanouts": "2",
+    "modes": "vxlan",
+    "backends": "xdp,tc",
+    "workers": 4,
+    "queues": 4,
+    "cpus": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "cpu_redirect": true,
+    "forward_cpu": 8,
+    "repeats": 3,
+    "seconds": 5,
+    "warmup": 2,
+    "idle_seconds": 2,
+    "batch_size": 1,
+    "seed": 20261022
+  },
+  "binary_sha256": "36e8b8437a841f4f39f9e7c8d9d415b21ad42f326c9866b1c7b2dabd511b058f",
+  "xdperf_sha256": "f508471f23d5e7be8f92c88be547cac8dd90462e3033acfdc9239b97b328c977",
+  "counters_sha256": "deb7156cd40c8d2fa4342fefff34b4b2c81b3d9239ebb290137702d4da555197",
+  "runner_sha256": "31cae3c84a6afddf68603518ed168e21872d6fe4027d80704fa7cf21efcb6239",
+  "plugin_sha256": "6e264ac2d39b59ac09d2eebfb193728edd68b2d82bb2b931c0b222a7992f9e9a",
+  "xdperf_build_info": "/tmp/goxdp-xdperf: go1.25.5\n\tpath\tgithub.com/takehaya/xdperf/cmd/xdperf\n\tmod\tgithub.com/takehaya/xdperf\tv0.19.3-0.20261021172906-ef4a98a3cb15+dirty\t\n\tdep\tgithub.com/cenkalti/backoff/v5\tv5.0.3\th1:ZN+IMa753KfX5hd8vVaMixjnqRZ3y8CuJKRKj1xcsSM=\n\tdep\tgithub.com/cespare/xxhash/v2\tv2.3.0\th1:UL815xU9SqsFlibzuggzjXhog7bL6oX9BbNZnL2UFvs=\n\tdep\tgithub.com/cilium/ebpf\tv0.19.0\n\t=>\tgithub.com/takehaya/ebpf\tv0.0.0-20251201163912-684226f5963b\th1:mRr5M3YRUzioVbMSgR0uPerovnr5+pxeXFyBQSBH1c8=\n\t\n\tdep\tgithub.com/cpuguy83/go-md2man/v2\tv2.0.7\th1:zbFlGlXEAKlwXpmvle3d8Oe3YnkKIK4xSRTd3sHPnBo=\n\tdep\tgithub.com/go-logr/logr\tv1.4.3\th1:CjnDlHq8ikf6E492q6eKboGOC0T8CDaOvkHCIg8idEI=\n\tdep\tgithub.com/go-logr/stdr\tv1.2.2\th1:hSWxHoqTgW2S2qGc0LTAI563KZ5YKYRhT3MFKZMbjag=\n\tdep\tgithub.com/google/gopacket\tv1.1.19\th1:ves8RnFZPGiFnTS0uPQStjwru6uO6h+nlr9j6fL7kF8=\n\tdep\tgithub.com/google/uuid\tv1.6.0\th1:NIvaJDMOsjHA8n1jAhLSgzrAzy1Hgr+hNrb57e+94F0=\n\tdep\tgithub.com/grpc-ecosystem/grpc-gateway/v2\tv2.29.0\th1:5VipnvEpbqr2gA2VbM+nYVbkIF28c5ZQfqCBQ5g2xfk=\n\tdep\tgithub.com/kelseyhightower/envconfig\tv1.4.0\th1:Im6hONhd3pLkfDFsbRgu68RDNkGF1r3dvMUtDTo2cv8=\n\tdep\tgithub.com/mcuadros/go-defaults\tv1.2.0\th1:FODb8WSf0uGaY8elWJAkoLL0Ri6AlZ1bFlenk56oZtc=\n\tdep\tgithub.com/russross/blackfriday/v2\tv2.1.0\th1:JIOH55/0cWyOuilr9/qlrm0BSXldqnqwMsf35Ld67mk=\n\tdep\tgithub.com/stealthrocket/wasi-go\tv0.8.0\th1:Hwnv3CUoMhhRyero9vt1vfwaYa9tu/Z5kmCW4WeAmVI=\n\tdep\tgithub.com/stealthrocket/wazergo\tv0.19.1\th1:BPrITETPgSFwiytwmToO0MbUC/+RGC39JScz1JmmG6c=\n\tdep\tgithub.com/takehaya/xdperf/pkg/guest\tv0.0.0\n\t=>\t./pkg/guest\t(devel)\t\n\t\n\tdep\tgithub.com/tetratelabs/wazero\tv1.9.0\th1:IcZ56OuxrtaEz8UYNRHBrUa9bYeX9oVY93KspZZBf/I=\n\tdep\tgithub.com/urfave/cli\tv1.22.17\th1:SYzXoiPfQjHBbkYxbew5prZHS1TOLT3ierW8SYLqtVQ=\n\tdep\tgithub.com/vishvananda/netlink\tv1.3.1\th1:3AEMt62VKqz90r0tmNhog0r/PpWKmrEShJU0wJW6bV0=\n\tdep\tgithub.com/vishvananda/netns\tv0.0.5\th1:DfiHV+j8bA32MFM7bfEunvT8IAqQ/NzSJHtcmW5zdEY=\n\tdep\tgo.opentelemetry.io/auto/sdk\tv1.2.1\th1:jXsnJ4Lmnqd11kwkBV2LgLoFMZKizbCi5fNZ/ipaZ64=\n\tdep\tgo.opentelemetry.io/otel\tv1.44.0\th1:JjwHmHpA4iZ3wBxluu2fbbE7j4kqlE8jXyAyPXH7HqU=\n\tdep\tgo.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc\tv1.44.0\th1:SUplec5dp06reu1zaXmOXdvqH398taqrDXqUl99jxSc=\n\tdep\tgo.opentelemetry.io/otel/metric\tv1.44.0\th1:1w0gILTcHdr3YI+ixLyjemwrVnsMURbTZFrSYCdDdmc=\n\tdep\tgo.opentelemetry.io/otel/sdk\tv1.44.0\th1:nHYwb9lK+fJPU/dnT6s7W7Z8itMWyqrnVfbheVYrZ58=\n\tdep\tgo.opentelemetry.io/otel/sdk/metric\tv1.44.0\th1:3LlKgI+VjbVsjNRFZJZAJ30WjXC5VkNRks6si09iEfI=\n\tdep\tgo.opentelemetry.io/otel/trace\tv1.44.0\th1:jxF5CsGYCe74MCRx2X4g7WsY/VBKRqqpNvXlX/6gtIk=\n\tdep\tgo.opentelemetry.io/proto/otlp\tv1.10.0\th1:IQRWgT5srOCYfiWnpqUYz9CVmbO8bFmKcwYxpuCSL2g=\n\tdep\tgo.uber.org/multierr\tv1.10.0\th1:S0h4aNzvfcFsC3dRF1jLoaov7oRaKqRGC/pUEJ2yvPQ=\n\tdep\tgo.uber.org/zap\tv1.27.0\th1:aJMhYGrd5QSmlpLMr2MftRKl7t8J8PTZPA732ud/XR8=\n\tdep\tgolang.org/x/net\tv0.55.0\th1:bcvxaJn3e1U6InsFWt1JUq1aSjnRxLzT2rtD2KfkDF8=\n\tdep\tgolang.org/x/sys\tv0.45.0\th1:dO4czNzziLiiXplLQgBCEpCvXQ3dnkn0SdaZSYdQ+FY=\n\tdep\tgolang.org/x/text\tv0.37.0\th1:Cqjiwd9eSg8e0QAkyCaQTNHFIIzWtidPahFWR83rTrc=\n\tdep\tgoogle.golang.org/genproto/googleapis/api\tv0.0.0-20260526163538-3dc84a4a5aaa\th1:Kjn0N0tCrDgiAFW+lGO4JZ3ck44CehvJQMAwj9QF0G8=\n\tdep\tgoogle.golang.org/genproto/googleapis/rpc\tv0.0.0-20260526163538-3dc84a4a5aaa\th1:mZHHdPZl0dbGHCflZgAq/Q468DWVFcU2whhB2KAo8fk=\n\tdep\tgoogle.golang.org/grpc\tv1.81.1\th1:VnnIIZ88UzOOKLukQi+ImGz8O1Wdp8nAGGnvOfEIWQQ=\n\tdep\tgoogle.golang.org/protobuf\tv1.36.11\th1:fV6ZwhNocDyBLK0dj+fg8ektcVegBBuEolpbTQyBNVE=\n\tbuild\t-buildmode=exe\n\tbuild\t-compiler=gc\n\tbuild\tCGO_ENABLED=1\n\tbuild\tCGO_CFLAGS=\n\tbuild\tCGO_CPPFLAGS=\n\tbuild\tCGO_CXXFLAGS=\n\tbuild\tCGO_LDFLAGS=\n\tbuild\tGOARCH=amd64\n\tbuild\tGOOS=linux\n\tbuild\tGOAMD64=v1\n\tbuild\tvcs=git\n\tbuild\tvcs.revision=ef4a98a3cb159ff9fd1ec09c263d5ce26f2efcd5\n\tbuild\tvcs.time=2026-10-21T17:29:06Z\n\tbuild\tvcs.modified=true\n",
+  "available_cpus": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31
+  ],
+  "goxdp_revision": "7e2aabd7a4afe65a2ff629d90f85c332b05e944a",
+  "goxdp_status": " M .gitignore\n M Makefile\n M README.md\n M cmd/goxdp/main.go\n D gen_bpf_helper.sh\n M go.mod\n M go.sum\n M pkg/coreelf/elf.go\n M pkg/coreelf/mock.go\n M pkg/coreelf/setup.go\n M pkg/coreelf/xdp_test.go\n M pkg/xdptool/apply.go\n M src/xdp_const.h\n M src/xdp_map.h\n M src/xdp_prog.c\n M src/xdp_utils.h\n?? .clang-format\n?? cmd/goxdp/main_test.go\n?? docs/\n?? examples/\n?? pkg/coreelf/broadcast.go\n?? pkg/coreelf/broadcast_integration_test.go\n?? pkg/coreelf/broadcast_test.go\n?? pkg/coreelf/cpu.go\n?? pkg/coreelf/cpu_test.go\n?? pkg/coreelf/local.go\n?? pkg/coreelf/local_integration_test.go\n?? pkg/coreelf/socket_integration_test.go\n?? pkg/coreelf/tc.go\n?? pkg/coreelf/tc_integration_test.go\n?? pkg/coreelf/tc_test.go\n?? pkg/coreelf/variants_test.go\n?? pkg/coreelf/vxlan.go\n?? pkg/coreelf/vxlan_integration_test.go\n?? pkg/coreelf/vxlan_test.go\n?? src/tc_broadcast.c\n?? src/tc_local.c\n?? src/tc_utils.h\n?? src/tc_vxlan.c\n?? src/xdp_broadcast.c\n?? src/xdp_dispatch.h\n?? src/xdp_local.c\n?? src/xdp_vxlan.c\n?? tests/\n",
+  "measurement": "XDPerf TX processed counts are offered frames, not proof of DUT acceptance; receiver XDP maps count actual arrivals. CPU/perf are system-wide and include generator, forwarding, sinks, and unrelated activity.",
+  "idle_baseline": {
+    "seconds": 2.000335212913342,
+    "cpu": {
+      "cpu": {
+        "busy_seconds": 0.63,
+        "softirq_seconds": 0.01,
+        "steal_seconds": 0.0
+      },
+      "cpu0": {
+        "busy_seconds": 0.02,
+        "softirq_seconds": 0.01,
+        "steal_seconds": 0.0
+      },
+      "cpu1": {
+        "busy_seconds": 0.02,
+        "softirq_seconds": 0.0,
+        "steal_seconds": 0.0
+      },
+      "cpu2": {
+        "busy_seconds": 0.08,
+        "softirq_seconds": 0.0,
+        "steal_seconds": 0.0
+      },
+      "cpu3": {
+        "busy_seconds": 0.01,
+        "softirq_seconds": 0.0,
+        "steal_seconds": 0.0
+      },
+      "cpu4": {
+        "busy_seconds": 0.0,
+        "softirq_seconds": 0.0,
+        "steal_seconds": 0.0
+      },
+      "cpu5": {
+        "busy_seconds": 0.01,
+        "softirq_seconds": 0.0,
+        "steal_seconds": 0.0
+      },
+      "cpu6": {
+        "busy_seconds": 0.04,
+        "softirq_seconds": 0.0,
+        "steal_seconds": 0.0
+      },
+      "cpu7": {
+        "busy_seconds": 0.0,
+        "softirq_seconds": 0.0,
+        "steal_seconds": 0.0
+      },
+      "cpu8": {
+        "busy_seconds": 0.01,
+        "softirq_seconds": 0.0,
+        "steal_seconds": 0.0
+      },
+      "cpu9": {
+        "busy_seconds": 0.01,
+        "softirq_seconds": 0.0,
+        "steal_seconds": 0.0
+      },
+      "cpu10": {
+        "busy_seconds": 0.02,
+        "softirq_seconds": 0.0,
+        "steal_seconds": 0.0
+      },
+      "cpu11": {
+        "busy_seconds": 0.02,
+        "softirq_seconds": 0.0,
+        "steal_seconds": 0.0
+      },
+      "cpu12": {
+        "busy_seconds": 0.02,
+        "softirq_seconds": 0.0,
+        "steal_seconds": 0.0
+      },
+      "cpu13": {
+        "busy_seconds": 0.01,
+        "softirq_seconds": 0.0,
+        "steal_seconds": 0.0
+      },
+      "cpu14": {
+        "busy_seconds": 0.02,
+        "softirq_seconds": 0.0,
+        "steal_seconds": 0.0
+      },
+      "cpu15": {
+        "busy_seconds": 0.02,
+        "softirq_seconds": 0.0,
+        "steal_seconds": 0.0
+      },
+      "cpu16": {
+        "busy_seconds": 0.01,
+        "softirq_seconds": 0.0,
+        "steal_seconds": 0.0
+      },
+      "cpu17": {
+        "busy_seconds": 0.0,
+        "softirq_seconds": 0.0,
+        "steal_seconds": 0.0
+      },
+      "cpu18": {
+        "busy_seconds": 0.02,
+        "softirq_seconds": 0.0,
+        "steal_seconds": 0.0
+      },
+      "cpu19": {
+        "busy_seconds": 0.06,
+        "softirq_seconds": 0.0,
+        "steal_seconds": 0.0
+      },
+      "cpu20": {
+        "busy_seconds": 0.05,
+        "softirq_seconds": 0.0,
+        "steal_seconds": 0.0
+      },
+      "cpu21": {
+        "busy_seconds": 0.0,
+        "softirq_seconds": 0.0,
+        "steal_seconds": 0.0
+      },
+      "cpu22": {
+        "busy_seconds": 0.01,
+        "softirq_seconds": 0.0,
+        "steal_seconds": 0.0
+      },
+      "cpu23": {
+        "busy_seconds": 0.0,
+        "softirq_seconds": 0.0,
+        "steal_seconds": 0.0
+      },
+      "cpu24": {
+        "busy_seconds": 0.0,
+        "softirq_seconds": 0.0,
+        "steal_seconds": 0.0
+      },
+      "cpu25": {
+        "busy_seconds": 0.02,
+        "softirq_seconds": 0.0,
+        "steal_seconds": 0.0
+      },
+      "cpu26": {
+        "busy_seconds": 0.01,
+        "softirq_seconds": 0.0,
+        "steal_seconds": 0.0
+      },
+      "cpu27": {
+        "busy_seconds": 0.06,
+        "softirq_seconds": 0.0,
+        "steal_seconds": 0.0
+      },
+      "cpu28": {
+        "busy_seconds": 0.02,
+        "softirq_seconds": 0.0,
+        "steal_seconds": 0.0
+      },
+      "cpu29": {
+        "busy_seconds": 0.0,
+        "softirq_seconds": 0.0,
+        "steal_seconds": 0.0
+      },
+      "cpu30": {
+        "busy_seconds": 0.05,
+        "softirq_seconds": 0.0,
+        "steal_seconds": 0.0
+      },
+      "cpu31": {
+        "busy_seconds": 0.02,
+        "softirq_seconds": 0.0,
+        "steal_seconds": 0.0
+      }
+    }
+  }
+}

@@ -2,50 +2,56 @@ package xdptool
 
 import (
 	"fmt"
+	"net"
 	"os"
 
 	"github.com/cilium/ebpf"
-	"github.com/pkg/errors"
-	"github.com/vishvananda/netlink"
+	"github.com/cilium/ebpf/link"
 )
 
 func LoadElf(filepath string) (*ebpf.Collection, error) {
 	f, err := os.Open(filepath)
 	if err != nil {
-		return nil, errors.WithStack(err)
+		return nil, err
 	}
+	defer f.Close()
 
-	// Read ELF
 	spec, err := ebpf.LoadCollectionSpecFromReader(f)
 	if err != nil {
-		return nil, errors.WithStack(err)
+		return nil, err
 	}
-
-	coll, err := ebpf.NewCollection(spec)
-	if err != nil {
-		return nil, errors.WithStack(err)
-	}
-	return coll, nil
+	return ebpf.NewCollection(spec)
 }
 
-func Attach(prog *ebpf.Program, device string) error {
-	link, err := netlink.LinkByName(device)
+// Attach returns an owned link. Close it to detach only this program, including
+// when a later attachment fails. Native XDP is required for devmap fan-out.
+func Attach(prog *ebpf.Program, device string) (link.Link, error) {
+	iface, err := net.InterfaceByName(device)
 	if err != nil {
-		return errors.New(fmt.Sprintf("%s not found in object", device))
+		return nil, fmt.Errorf("find device %s: %w", device, err)
 	}
-	if err := netlink.LinkSetXdpFd(link, prog.FD()); err != nil {
-		return errors.WithStack(err)
+	attached, err := link.AttachXDP(link.XDPOptions{
+		Program:   prog,
+		Interface: iface.Index,
+		Flags:     link.XDPDriverMode,
+	})
+	if err != nil {
+		return nil, fmt.Errorf("attach XDP to %s: %w", device, err)
 	}
-	return nil
+	return attached, nil
 }
 
-func Detach(device string) error {
-	link, err := netlink.LinkByName(device)
+// AttachTC returns an owned TCX ingress link without creating or replacing a qdisc.
+func AttachTC(prog *ebpf.Program, device string) (link.Link, error) {
+	iface, err := net.InterfaceByName(device)
 	if err != nil {
-		return errors.New(fmt.Sprintf("failed to get device %s: %s\n", device, err))
+		return nil, fmt.Errorf("find device %s: %w", device, err)
 	}
-	if err := netlink.LinkSetXdpFd(link, -1); err != nil {
-		return errors.WithStack(err)
+	attached, err := link.AttachTCX(link.TCXOptions{
+		Program: prog, Interface: iface.Index, Attach: ebpf.AttachTCXIngress,
+	})
+	if err != nil {
+		return nil, fmt.Errorf("attach TCX ingress to %s: %w", device, err)
 	}
-	return nil
+	return attached, nil
 }

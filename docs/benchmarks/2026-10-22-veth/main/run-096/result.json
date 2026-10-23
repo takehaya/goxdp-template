@@ -1,0 +1,603 @@
+{
+  "mode": "vxlan",
+  "frame_size": 1514,
+  "fanout": 2,
+  "repeat": 0,
+  "backend": "tc",
+  "workers": 4,
+  "queues": 4,
+  "cpu_redirect": false,
+  "seconds": 5.058073962,
+  "map_seconds": {
+    "tx": 5.058081447,
+    "rx0": 5.058044897,
+    "rx1": 5.058043068
+  },
+  "offered_pps": 441318.71409938566,
+  "delivered_pps": 882635.4645087556,
+  "delivered_bytes_per_second": 1380441866.4916937,
+  "loss_fraction": 2.224798034800024e-06,
+  "per_receiver_pps": {
+    "rx0": 441317.9490209653,
+    "rx1": 441317.5154877902
+  },
+  "before": {
+    "at_ns": 1997606812,
+    "end_ns": 1997730371,
+    "map_at_ns": {
+      "rx0": 1997713732,
+      "rx1": 1997725996,
+      "tx": 1997636157
+    },
+    "per_cpu_packets": {
+      "rx0": [
+        227298,
+        228158,
+        230374,
+        226341,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "rx1": [
+        227043,
+        228470,
+        229803,
+        226861,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "tx": [
+        230842,
+        227045,
+        229528,
+        224728,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "maps": {
+      "rx0": {
+        "packets": 912171,
+        "bytes": 1426635444,
+        "diff_errors": 0,
+        "checksum_errors": 0
+      },
+      "rx1": {
+        "packets": 912177,
+        "bytes": 1426644828,
+        "diff_errors": 0,
+        "checksum_errors": 0
+      },
+      "tx": {
+        "packets": 912143,
+        "bytes": 1380984502,
+        "diff_errors": 0,
+        "checksum_errors": 0
+      }
+    }
+  },
+  "after": {
+    "at_ns": 7055680774,
+    "end_ns": 7055774844,
+    "map_at_ns": {
+      "rx0": 7055758629,
+      "rx1": 7055769064,
+      "tx": 7055717604
+    },
+    "per_cpu_packets": {
+      "rx0": [
+        784633,
+        787819,
+        794892,
+        777033,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "rx1": [
+        783526,
+        789306,
+        792648,
+        778900,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "tx": [
+        797396,
+        783530,
+        794058,
+        769385,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "maps": {
+      "rx0": {
+        "packets": 3144377,
+        "bytes": 4917805628,
+        "diff_errors": 0,
+        "checksum_errors": 0
+      },
+      "rx1": {
+        "packets": 3144380,
+        "bytes": 4917810320,
+        "diff_errors": 0,
+        "checksum_errors": 0
+      },
+      "tx": {
+        "packets": 3144369,
+        "bytes": 4760574666,
+        "diff_errors": 0,
+        "checksum_errors": 0
+      }
+    }
+  },
+  "deltas": {
+    "tx": {
+      "packets": 2232226,
+      "bytes": 3379590164,
+      "diff_errors": 0,
+      "checksum_errors": 0
+    },
+    "rx0": {
+      "packets": 2232206,
+      "bytes": 3491170184,
+      "diff_errors": 0,
+      "checksum_errors": 0
+    },
+    "rx1": {
+      "packets": 2232203,
+      "bytes": 3491165492,
+      "diff_errors": 0,
+      "checksum_errors": 0
+    }
+  },
+  "cpu": {
+    "cpu": {
+      "busy_seconds": 22.23,
+      "softirq_seconds": 15.89,
+      "steal_seconds": 0.06
+    },
+    "cpu0": {
+      "busy_seconds": 5.06,
+      "softirq_seconds": 3.94,
+      "steal_seconds": 0.0
+    },
+    "cpu1": {
+      "busy_seconds": 5.06,
+      "softirq_seconds": 3.96,
+      "steal_seconds": 0.0
+    },
+    "cpu2": {
+      "busy_seconds": 5.06,
+      "softirq_seconds": 4.02,
+      "steal_seconds": 0.0
+    },
+    "cpu3": {
+      "busy_seconds": 5.05,
+      "softirq_seconds": 3.93,
+      "steal_seconds": 0.0
+    },
+    "cpu4": {
+      "busy_seconds": 0.02,
+      "softirq_seconds": 0.01,
+      "steal_seconds": 0.0
+    },
+    "cpu5": {
+      "busy_seconds": 0.02,
+      "softirq_seconds": 0.0,
+      "steal_seconds": 0.0
+    },
+    "cpu6": {
+      "busy_seconds": 0.05,
+      "softirq_seconds": 0.0,
+      "steal_seconds": 0.0
+    },
+    "cpu7": {
+      "busy_seconds": 0.03,
+      "softirq_seconds": 0.0,
+      "steal_seconds": 0.01
+    },
+    "cpu8": {
+      "busy_seconds": 0.39,
+      "softirq_seconds": 0.0,
+      "steal_seconds": 0.0
+    },
+    "cpu9": {
+      "busy_seconds": 0.05,
+      "softirq_seconds": 0.0,
+      "steal_seconds": 0.0
+    },
+    "cpu10": {
+      "busy_seconds": 0.03,
+      "softirq_seconds": 0.0,
+      "steal_seconds": 0.0
+    },
+    "cpu11": {
+      "busy_seconds": 0.12,
+      "softirq_seconds": 0.0,
+      "steal_seconds": 0.0
+    },
+    "cpu12": {
+      "busy_seconds": 0.02,
+      "softirq_seconds": 0.0,
+      "steal_seconds": 0.0
+    },
+    "cpu13": {
+      "busy_seconds": 0.07,
+      "softirq_seconds": 0.0,
+      "steal_seconds": 0.0
+    },
+    "cpu14": {
+      "busy_seconds": 0.06,
+      "softirq_seconds": 0.0,
+      "steal_seconds": 0.0
+    },
+    "cpu15": {
+      "busy_seconds": 0.07,
+      "softirq_seconds": 0.0,
+      "steal_seconds": 0.0
+    },
+    "cpu16": {
+      "busy_seconds": 0.23,
+      "softirq_seconds": 0.01,
+      "steal_seconds": 0.0
+    },
+    "cpu17": {
+      "busy_seconds": 0.13,
+      "softirq_seconds": 0.01,
+      "steal_seconds": 0.0
+    },
+    "cpu18": {
+      "busy_seconds": 0.02,
+      "softirq_seconds": 0.0,
+      "steal_seconds": 0.0
+    },
+    "cpu19": {
+      "busy_seconds": 0.03,
+      "softirq_seconds": 0.0,
+      "steal_seconds": 0.0
+    },
+    "cpu20": {
+      "busy_seconds": 0.12,
+      "softirq_seconds": 0.0,
+      "steal_seconds": 0.0
+    },
+    "cpu21": {
+      "busy_seconds": 0.05,
+      "softirq_seconds": 0.0,
+      "steal_seconds": 0.0
+    },
+    "cpu22": {
+      "busy_seconds": 0.05,
+      "softirq_seconds": 0.0,
+      "steal_seconds": 0.01
+    },
+    "cpu23": {
+      "busy_seconds": 0.09,
+      "softirq_seconds": 0.01,
+      "steal_seconds": 0.0
+    },
+    "cpu24": {
+      "busy_seconds": 0.04,
+      "softirq_seconds": 0.0,
+      "steal_seconds": 0.0
+    },
+    "cpu25": {
+      "busy_seconds": 0.01,
+      "softirq_seconds": 0.0,
+      "steal_seconds": 0.0
+    },
+    "cpu26": {
+      "busy_seconds": 0.09,
+      "softirq_seconds": 0.0,
+      "steal_seconds": 0.0
+    },
+    "cpu27": {
+      "busy_seconds": 0.07,
+      "softirq_seconds": 0.01,
+      "steal_seconds": 0.0
+    },
+    "cpu28": {
+      "busy_seconds": 0.07,
+      "softirq_seconds": 0.01,
+      "steal_seconds": 0.0
+    },
+    "cpu29": {
+      "busy_seconds": 0.05,
+      "softirq_seconds": 0.01,
+      "steal_seconds": 0.0
+    },
+    "cpu30": {
+      "busy_seconds": 0.02,
+      "softirq_seconds": 0.0,
+      "steal_seconds": 0.0
+    },
+    "cpu31": {
+      "busy_seconds": 0.03,
+      "softirq_seconds": 0.0,
+      "steal_seconds": 0.0
+    }
+  },
+  "perf": {
+    "cycles": 72263352083.0,
+    "instructions": 52501746673.0,
+    "duration_time": 5031195728.0,
+    "context-switches": 158130.0,
+    "cpu-migrations": 46.0
+  },
+  "perf_raw": "# started on Thu Oct 22 04:12:24 2026\n\n72263352083,,cycles,160422259397,100.00,,\n52501746673,,instructions,160422822337,100.00,,\n5031195728,,duration_time,1,100.00,,\n158130,,context-switches,160421101246,100.00,,\n46,,cpu-migrations,160420917406,100.00,,\n",
+  "perf_command_seconds": 5.057607075,
+  "link_before_generator": {
+    "ifindex": 9,
+    "link_index": 9,
+    "ifname": "p0",
+    "flags": [
+      "BROADCAST",
+      "MULTICAST",
+      "UP",
+      "LOWER_UP"
+    ],
+    "mtu": 1600,
+    "xdp": {
+      "mode": 1,
+      "prog": {
+        "id": 291351,
+        "name": "vxlan_ingress",
+        "tag": "e337afaaedca4cc8",
+        "jited": 1
+      },
+      "attached": [
+        {
+          "mode": 1,
+          "prog": {
+            "id": 291351,
+            "name": "vxlan_ingress",
+            "tag": "e337afaaedca4cc8",
+            "jited": 1
+          }
+        }
+      ]
+    },
+    "qdisc": "noqueue",
+    "operstate": "UP",
+    "linkmode": "DEFAULT",
+    "group": "default",
+    "txqlen": 1000,
+    "link_type": "ether",
+    "address": "02:00:00:00:00:01",
+    "broadcast": "ff:ff:ff:ff:ff:ff",
+    "link_netnsid": 0,
+    "stats64": {
+      "rx": {
+        "bytes": 0,
+        "packets": 0,
+        "errors": 0,
+        "dropped": 0,
+        "over_errors": 0,
+        "multicast": 0
+      },
+      "tx": {
+        "bytes": 0,
+        "packets": 0,
+        "errors": 0,
+        "dropped": 0,
+        "carrier_errors": 0,
+        "collisions": 0
+      }
+    }
+  },
+  "queue_before_generator": "NIC statistics:\n     peer_ifindex: 9\n     rx_queue_0_xdp_packets: 0\n     rx_queue_0_xdp_bytes: 0\n     rx_queue_0_drops: 0\n     rx_queue_0_xdp_redirect: 0\n     rx_queue_0_xdp_drops: 0\n     rx_queue_0_xdp_tx: 0\n     rx_queue_0_xdp_tx_errors: 0\n     rx_queue_1_xdp_packets: 0\n     rx_queue_1_xdp_bytes: 0\n     rx_queue_1_drops: 0\n     rx_queue_1_xdp_redirect: 0\n     rx_queue_1_xdp_drops: 0\n     rx_queue_1_xdp_tx: 0\n     rx_queue_1_xdp_tx_errors: 0\n     rx_queue_2_xdp_packets: 0\n     rx_queue_2_xdp_bytes: 0\n     rx_queue_2_drops: 0\n     rx_queue_2_xdp_redirect: 0\n     rx_queue_2_xdp_drops: 0\n     rx_queue_2_xdp_tx: 0\n     rx_queue_2_xdp_tx_errors: 0\n     rx_queue_3_xdp_packets: 0\n     rx_queue_3_xdp_bytes: 0\n     rx_queue_3_drops: 0\n     rx_queue_3_xdp_redirect: 0\n     rx_queue_3_xdp_drops: 0\n     rx_queue_3_xdp_tx: 0\n     rx_queue_3_xdp_tx_errors: 0\n     tx_queue_0_xdp_xmit: 0\n     tx_queue_0_xdp_xmit_errors: 0\n     tx_queue_1_xdp_xmit: 0\n     tx_queue_1_xdp_xmit_errors: 0\n     tx_queue_2_xdp_xmit: 0\n     tx_queue_2_xdp_xmit_errors: 0\n     tx_queue_3_xdp_xmit: 0\n     tx_queue_3_xdp_xmit_errors: 0\n     rx_pp_alloc_fast: 0\n     rx_pp_alloc_slow: 0\n     rx_pp_alloc_slow_ho: 0\n     rx_pp_alloc_empty: 0\n     rx_pp_alloc_refill: 0\n     rx_pp_alloc_waive: 0\n     rx_pp_recycle_cached: 0\n     rx_pp_recycle_cache_full: 0\n     rx_pp_recycle_ring: 0\n     rx_pp_recycle_ring_full: 0\n     rx_pp_recycle_released_ref: 0\n",
+  "topology": {
+    "gxbench-2945646-a841b9-dut/p0": {
+      "channels": "Channel parameters for p0:\nPre-set maximums:\nRX:\t\t4\nTX:\t\t4\nOther:\t\tn/a\nCombined:\tn/a\nCurrent hardware settings:\nRX:\t\t4\nTX:\t\t4\nOther:\t\tn/a\nCombined:\tn/a\n",
+      "features": "Features for p0:\nrx-checksumming: off\ntx-checksumming: off\n\ttx-checksum-ipv4: off [fixed]\n\ttx-checksum-ip-generic: off\n\ttx-checksum-ipv6: off [fixed]\n\ttx-checksum-fcoe-crc: off [fixed]\n\ttx-checksum-sctp: off\nscatter-gather: on\n\ttx-scatter-gather: on\n\ttx-scatter-gather-fraglist: on\ntcp-segmentation-offload: off\n\ttx-tcp-segmentation: off\n\ttx-tcp-ecn-segmentation: off\n\ttx-tcp-mangleid-segmentation: off\n\ttx-tcp6-segmentation: off\n\ttx-tcp-accecn-segmentation: off\ngeneric-segmentation-offload: off\ngeneric-receive-offload: off\nlarge-receive-offload: off [fixed]\nrx-vlan-offload: on\ntx-vlan-offload: on\nntuple-filters: off [fixed]\nreceive-hashing: off [fixed]\nhighdma: on\nrx-vlan-filter: off [fixed]\nvlan-challenged: off [fixed]\ntx-gso-robust: off [fixed]\ntx-fcoe-segmentation: off [fixed]\ntx-gre-segmentation: on\ntx-gre-csum-segmentation: on\ntx-ipxip4-segmentation: on\ntx-ipxip6-segmentation: on\ntx-udp_tnl-segmentation: on\ntx-udp_tnl-csum-segmentation: on\ntx-gso-partial: off [fixed]\ntx-tunnel-remcsum-segmentation: off [fixed]\ntx-sctp-segmentation: on\ntx-esp-segmentation: off [fixed]\ntx-udp-segmentation: off [requested on]\ntx-gso-list: on\ntx-nocache-copy: off\nloopback: off [fixed]\nrx-fcs: off [fixed]\nrx-all: off [fixed]\ntx-vlan-stag-hw-insert: on\nrx-vlan-stag-hw-parse: on\nrx-vlan-stag-filter: off [fixed]\nl2-fwd-offload: off [fixed]\nhw-tc-offload: off [fixed]\nesp-hw-offload: off [fixed]\nesp-tx-csum-hw-offload: off [fixed]\nrx-udp_tunnel-port-offload: off [fixed]\ntls-hw-tx-offload: off [fixed]\ntls-hw-rx-offload: off [fixed]\nrx-gro-hw: off [fixed]\ntls-hw-record: off [fixed]\nrx-gro-list: off\nmacsec-hw-offload: off [fixed]\nrx-udp-gro-forwarding: off\nhsr-tag-ins-offload: off [fixed]\nhsr-tag-rm-offload: off [fixed]\nhsr-fwd-offload: off [fixed]\nhsr-dup-offload: off [fixed]\n"
+    },
+    "gxbench-2945646-a841b9-source/eth0": {
+      "channels": "Channel parameters for eth0:\nPre-set maximums:\nRX:\t\t4\nTX:\t\t4\nOther:\t\tn/a\nCombined:\tn/a\nCurrent hardware settings:\nRX:\t\t4\nTX:\t\t4\nOther:\t\tn/a\nCombined:\tn/a\n",
+      "features": "Features for eth0:\nrx-checksumming: off\ntx-checksumming: off\n\ttx-checksum-ipv4: off [fixed]\n\ttx-checksum-ip-generic: off\n\ttx-checksum-ipv6: off [fixed]\n\ttx-checksum-fcoe-crc: off [fixed]\n\ttx-checksum-sctp: off\nscatter-gather: on\n\ttx-scatter-gather: on\n\ttx-scatter-gather-fraglist: on\ntcp-segmentation-offload: off\n\ttx-tcp-segmentation: off\n\ttx-tcp-ecn-segmentation: off\n\ttx-tcp-mangleid-segmentation: off\n\ttx-tcp6-segmentation: off\n\ttx-tcp-accecn-segmentation: off\ngeneric-segmentation-offload: off\ngeneric-receive-offload: off\nlarge-receive-offload: off [fixed]\nrx-vlan-offload: on\ntx-vlan-offload: on\nntuple-filters: off [fixed]\nreceive-hashing: off [fixed]\nhighdma: on\nrx-vlan-filter: off [fixed]\nvlan-challenged: off [fixed]\ntx-gso-robust: off [fixed]\ntx-fcoe-segmentation: off [fixed]\ntx-gre-segmentation: on\ntx-gre-csum-segmentation: on\ntx-ipxip4-segmentation: on\ntx-ipxip6-segmentation: on\ntx-udp_tnl-segmentation: on\ntx-udp_tnl-csum-segmentation: on\ntx-gso-partial: off [fixed]\ntx-tunnel-remcsum-segmentation: off [fixed]\ntx-sctp-segmentation: on\ntx-esp-segmentation: off [fixed]\ntx-udp-segmentation: off [requested on]\ntx-gso-list: on\ntx-nocache-copy: off\nloopback: off [fixed]\nrx-fcs: off [fixed]\nrx-all: off [fixed]\ntx-vlan-stag-hw-insert: on\nrx-vlan-stag-hw-parse: on\nrx-vlan-stag-filter: off [fixed]\nl2-fwd-offload: off [fixed]\nhw-tc-offload: off [fixed]\nesp-hw-offload: off [fixed]\nesp-tx-csum-hw-offload: off [fixed]\nrx-udp_tunnel-port-offload: off [fixed]\ntls-hw-tx-offload: off [fixed]\ntls-hw-rx-offload: off [fixed]\nrx-gro-hw: off [fixed]\ntls-hw-record: off [fixed]\nrx-gro-list: off\nmacsec-hw-offload: off [fixed]\nrx-udp-gro-forwarding: off\nhsr-tag-ins-offload: off [fixed]\nhsr-tag-rm-offload: off [fixed]\nhsr-fwd-offload: off [fixed]\nhsr-dup-offload: off [fixed]\n"
+    },
+    "gxbench-2945646-a841b9-dut/p1": {
+      "channels": "Channel parameters for p1:\nPre-set maximums:\nRX:\t\t4\nTX:\t\t4\nOther:\t\tn/a\nCombined:\tn/a\nCurrent hardware settings:\nRX:\t\t4\nTX:\t\t4\nOther:\t\tn/a\nCombined:\tn/a\n",
+      "features": "Features for p1:\nrx-checksumming: off\ntx-checksumming: off\n\ttx-checksum-ipv4: off [fixed]\n\ttx-checksum-ip-generic: off\n\ttx-checksum-ipv6: off [fixed]\n\ttx-checksum-fcoe-crc: off [fixed]\n\ttx-checksum-sctp: off\nscatter-gather: on\n\ttx-scatter-gather: on\n\ttx-scatter-gather-fraglist: on\ntcp-segmentation-offload: off\n\ttx-tcp-segmentation: off\n\ttx-tcp-ecn-segmentation: off\n\ttx-tcp-mangleid-segmentation: off\n\ttx-tcp6-segmentation: off\n\ttx-tcp-accecn-segmentation: off\ngeneric-segmentation-offload: off\ngeneric-receive-offload: off\nlarge-receive-offload: off [fixed]\nrx-vlan-offload: on\ntx-vlan-offload: on\nntuple-filters: off [fixed]\nreceive-hashing: off [fixed]\nhighdma: on\nrx-vlan-filter: off [fixed]\nvlan-challenged: off [fixed]\ntx-gso-robust: off [fixed]\ntx-fcoe-segmentation: off [fixed]\ntx-gre-segmentation: on\ntx-gre-csum-segmentation: on\ntx-ipxip4-segmentation: on\ntx-ipxip6-segmentation: on\ntx-udp_tnl-segmentation: on\ntx-udp_tnl-csum-segmentation: on\ntx-gso-partial: off [fixed]\ntx-tunnel-remcsum-segmentation: off [fixed]\ntx-sctp-segmentation: on\ntx-esp-segmentation: off [fixed]\ntx-udp-segmentation: off [requested on]\ntx-gso-list: on\ntx-nocache-copy: off\nloopback: off [fixed]\nrx-fcs: off [fixed]\nrx-all: off [fixed]\ntx-vlan-stag-hw-insert: on\nrx-vlan-stag-hw-parse: on\nrx-vlan-stag-filter: off [fixed]\nl2-fwd-offload: off [fixed]\nhw-tc-offload: off [fixed]\nesp-hw-offload: off [fixed]\nesp-tx-csum-hw-offload: off [fixed]\nrx-udp_tunnel-port-offload: off [fixed]\ntls-hw-tx-offload: off [fixed]\ntls-hw-rx-offload: off [fixed]\nrx-gro-hw: off [fixed]\ntls-hw-record: off [fixed]\nrx-gro-list: off\nmacsec-hw-offload: off [fixed]\nrx-udp-gro-forwarding: off\nhsr-tag-ins-offload: off [fixed]\nhsr-tag-rm-offload: off [fixed]\nhsr-fwd-offload: off [fixed]\nhsr-dup-offload: off [fixed]\n"
+    },
+    "gxbench-2945646-a841b9-rx0/eth0": {
+      "channels": "Channel parameters for eth0:\nPre-set maximums:\nRX:\t\t4\nTX:\t\t4\nOther:\t\tn/a\nCombined:\tn/a\nCurrent hardware settings:\nRX:\t\t4\nTX:\t\t4\nOther:\t\tn/a\nCombined:\tn/a\n",
+      "features": "Features for eth0:\nrx-checksumming: off\ntx-checksumming: off\n\ttx-checksum-ipv4: off [fixed]\n\ttx-checksum-ip-generic: off\n\ttx-checksum-ipv6: off [fixed]\n\ttx-checksum-fcoe-crc: off [fixed]\n\ttx-checksum-sctp: off\nscatter-gather: on\n\ttx-scatter-gather: on\n\ttx-scatter-gather-fraglist: on\ntcp-segmentation-offload: off\n\ttx-tcp-segmentation: off\n\ttx-tcp-ecn-segmentation: off\n\ttx-tcp-mangleid-segmentation: off\n\ttx-tcp6-segmentation: off\n\ttx-tcp-accecn-segmentation: off\ngeneric-segmentation-offload: off\ngeneric-receive-offload: off\nlarge-receive-offload: off [fixed]\nrx-vlan-offload: on\ntx-vlan-offload: on\nntuple-filters: off [fixed]\nreceive-hashing: off [fixed]\nhighdma: on\nrx-vlan-filter: off [fixed]\nvlan-challenged: off [fixed]\ntx-gso-robust: off [fixed]\ntx-fcoe-segmentation: off [fixed]\ntx-gre-segmentation: on\ntx-gre-csum-segmentation: on\ntx-ipxip4-segmentation: on\ntx-ipxip6-segmentation: on\ntx-udp_tnl-segmentation: on\ntx-udp_tnl-csum-segmentation: on\ntx-gso-partial: off [fixed]\ntx-tunnel-remcsum-segmentation: off [fixed]\ntx-sctp-segmentation: on\ntx-esp-segmentation: off [fixed]\ntx-udp-segmentation: off [requested on]\ntx-gso-list: on\ntx-nocache-copy: off\nloopback: off [fixed]\nrx-fcs: off [fixed]\nrx-all: off [fixed]\ntx-vlan-stag-hw-insert: on\nrx-vlan-stag-hw-parse: on\nrx-vlan-stag-filter: off [fixed]\nl2-fwd-offload: off [fixed]\nhw-tc-offload: off [fixed]\nesp-hw-offload: off [fixed]\nesp-tx-csum-hw-offload: off [fixed]\nrx-udp_tunnel-port-offload: off [fixed]\ntls-hw-tx-offload: off [fixed]\ntls-hw-rx-offload: off [fixed]\nrx-gro-hw: off [fixed]\ntls-hw-record: off [fixed]\nrx-gro-list: off\nmacsec-hw-offload: off [fixed]\nrx-udp-gro-forwarding: off\nhsr-tag-ins-offload: off [fixed]\nhsr-tag-rm-offload: off [fixed]\nhsr-fwd-offload: off [fixed]\nhsr-dup-offload: off [fixed]\n"
+    },
+    "gxbench-2945646-a841b9-dut/p2": {
+      "channels": "Channel parameters for p2:\nPre-set maximums:\nRX:\t\t4\nTX:\t\t4\nOther:\t\tn/a\nCombined:\tn/a\nCurrent hardware settings:\nRX:\t\t4\nTX:\t\t4\nOther:\t\tn/a\nCombined:\tn/a\n",
+      "features": "Features for p2:\nrx-checksumming: off\ntx-checksumming: off\n\ttx-checksum-ipv4: off [fixed]\n\ttx-checksum-ip-generic: off\n\ttx-checksum-ipv6: off [fixed]\n\ttx-checksum-fcoe-crc: off [fixed]\n\ttx-checksum-sctp: off\nscatter-gather: on\n\ttx-scatter-gather: on\n\ttx-scatter-gather-fraglist: on\ntcp-segmentation-offload: off\n\ttx-tcp-segmentation: off\n\ttx-tcp-ecn-segmentation: off\n\ttx-tcp-mangleid-segmentation: off\n\ttx-tcp6-segmentation: off\n\ttx-tcp-accecn-segmentation: off\ngeneric-segmentation-offload: off\ngeneric-receive-offload: off\nlarge-receive-offload: off [fixed]\nrx-vlan-offload: on\ntx-vlan-offload: on\nntuple-filters: off [fixed]\nreceive-hashing: off [fixed]\nhighdma: on\nrx-vlan-filter: off [fixed]\nvlan-challenged: off [fixed]\ntx-gso-robust: off [fixed]\ntx-fcoe-segmentation: off [fixed]\ntx-gre-segmentation: on\ntx-gre-csum-segmentation: on\ntx-ipxip4-segmentation: on\ntx-ipxip6-segmentation: on\ntx-udp_tnl-segmentation: on\ntx-udp_tnl-csum-segmentation: on\ntx-gso-partial: off [fixed]\ntx-tunnel-remcsum-segmentation: off [fixed]\ntx-sctp-segmentation: on\ntx-esp-segmentation: off [fixed]\ntx-udp-segmentation: off [requested on]\ntx-gso-list: on\ntx-nocache-copy: off\nloopback: off [fixed]\nrx-fcs: off [fixed]\nrx-all: off [fixed]\ntx-vlan-stag-hw-insert: on\nrx-vlan-stag-hw-parse: on\nrx-vlan-stag-filter: off [fixed]\nl2-fwd-offload: off [fixed]\nhw-tc-offload: off [fixed]\nesp-hw-offload: off [fixed]\nesp-tx-csum-hw-offload: off [fixed]\nrx-udp_tunnel-port-offload: off [fixed]\ntls-hw-tx-offload: off [fixed]\ntls-hw-rx-offload: off [fixed]\nrx-gro-hw: off [fixed]\ntls-hw-record: off [fixed]\nrx-gro-list: off\nmacsec-hw-offload: off [fixed]\nrx-udp-gro-forwarding: off\nhsr-tag-ins-offload: off [fixed]\nhsr-tag-rm-offload: off [fixed]\nhsr-fwd-offload: off [fixed]\nhsr-dup-offload: off [fixed]\n"
+    },
+    "gxbench-2945646-a841b9-rx1/eth0": {
+      "channels": "Channel parameters for eth0:\nPre-set maximums:\nRX:\t\t4\nTX:\t\t4\nOther:\t\tn/a\nCombined:\tn/a\nCurrent hardware settings:\nRX:\t\t4\nTX:\t\t4\nOther:\t\tn/a\nCombined:\tn/a\n",
+      "features": "Features for eth0:\nrx-checksumming: off\ntx-checksumming: off\n\ttx-checksum-ipv4: off [fixed]\n\ttx-checksum-ip-generic: off\n\ttx-checksum-ipv6: off [fixed]\n\ttx-checksum-fcoe-crc: off [fixed]\n\ttx-checksum-sctp: off\nscatter-gather: on\n\ttx-scatter-gather: on\n\ttx-scatter-gather-fraglist: on\ntcp-segmentation-offload: off\n\ttx-tcp-segmentation: off\n\ttx-tcp-ecn-segmentation: off\n\ttx-tcp-mangleid-segmentation: off\n\ttx-tcp6-segmentation: off\n\ttx-tcp-accecn-segmentation: off\ngeneric-segmentation-offload: off\ngeneric-receive-offload: off\nlarge-receive-offload: off [fixed]\nrx-vlan-offload: on\ntx-vlan-offload: on\nntuple-filters: off [fixed]\nreceive-hashing: off [fixed]\nhighdma: on\nrx-vlan-filter: off [fixed]\nvlan-challenged: off [fixed]\ntx-gso-robust: off [fixed]\ntx-fcoe-segmentation: off [fixed]\ntx-gre-segmentation: on\ntx-gre-csum-segmentation: on\ntx-ipxip4-segmentation: on\ntx-ipxip6-segmentation: on\ntx-udp_tnl-segmentation: on\ntx-udp_tnl-csum-segmentation: on\ntx-gso-partial: off [fixed]\ntx-tunnel-remcsum-segmentation: off [fixed]\ntx-sctp-segmentation: on\ntx-esp-segmentation: off [fixed]\ntx-udp-segmentation: off [requested on]\ntx-gso-list: on\ntx-nocache-copy: off\nloopback: off [fixed]\nrx-fcs: off [fixed]\nrx-all: off [fixed]\ntx-vlan-stag-hw-insert: on\nrx-vlan-stag-hw-parse: on\nrx-vlan-stag-filter: off [fixed]\nl2-fwd-offload: off [fixed]\nhw-tc-offload: off [fixed]\nesp-hw-offload: off [fixed]\nesp-tx-csum-hw-offload: off [fixed]\nrx-udp_tunnel-port-offload: off [fixed]\ntls-hw-tx-offload: off [fixed]\ntls-hw-rx-offload: off [fixed]\nrx-gro-hw: off [fixed]\ntls-hw-record: off [fixed]\nrx-gro-list: off\nmacsec-hw-offload: off [fixed]\nrx-udp-gro-forwarding: off\nhsr-tag-ins-offload: off [fixed]\nhsr-tag-rm-offload: off [fixed]\nhsr-fwd-offload: off [fixed]\nhsr-dup-offload: off [fixed]\n"
+    }
+  },
+  "generator_cpus": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "command": [
+    "/tmp/goxdp-xdperf",
+    "run",
+    "--device",
+    "eth0",
+    "--send",
+    "--plugin",
+    "simpleudp.go",
+    "--plugin-path",
+    "/tmp/goxdp-bench-inputs",
+    "--cfgpath",
+    "/home/ubuntu/private/goxdp-template/docs/benchmarks/2026-10-22-veth/main/run-096/generator.json",
+    "--count",
+    "4096",
+    "--infinite",
+    "--parallelism",
+    "4",
+    "--cpu-mode",
+    "0,1,2,3",
+    "--batch-size",
+    "1",
+    "--xdp-mode",
+    "native",
+    "--show-nic-stats"
+  ]
+}

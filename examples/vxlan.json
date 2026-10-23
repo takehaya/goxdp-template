@@ -1,0 +1,18 @@
+{
+  "ports": [
+    {"device": "lan0", "vni": 100},
+    {"device": "lan1", "vni": 100},
+    {"device": "uplink0", "local_ip": "192.0.2.1"},
+    {"device": "uplink1", "local_ip": "198.51.100.1"}
+  ],
+  "groups": [
+    {
+      "vni": 100,
+      "multicast_ip": "239.1.1.100",
+      "devices": ["lan0", "lan1", "uplink0", "uplink1"]
+    }
+  ],
+  "fdb": [
+    {"vni": 100, "mac": "02:00:00:00:00:02", "device": "lan1"}
+  ]
+}

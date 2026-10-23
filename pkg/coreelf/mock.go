@@ -1,3 +1,5 @@
+//go:build integration
+
 package coreelf
 
 import (
@@ -7,6 +9,9 @@ import (
 	"github.com/cilium/ebpf"
 	"github.com/takehaya/goxdp-template/pkg/xdptool"
 )
+
+//go:generate go tool bpf2go -target bpf -tags integration,!nocpumap -output-stem xdp_mock xdp ../../src/xdp_prog.c -- -O2 -g -Wall -Werror -DXDP_TEST -UNO_CPUMAP
+//go:generate go tool bpf2go -target bpf -tags integration,nocpumap -output-stem xdp_mock_direct xdp ../../src/xdp_prog.c -- -O2 -g -Wall -Werror -DXDP_TEST -DNO_CPUMAP
 
 // fiblookup(ipv4) mock implementation
 type IPv4FibLookUpMockKey struct {

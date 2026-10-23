@@ -1,0 +1,1055 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 7K of event 'cycles'
+# Event count (approx.): 116228488385
+#
+# Overhead  Symbol                                          IPC   [IPC Coverage]
+# ........  ..............................................  ....................
+#
+     6.09%  [k] lookup_nulls_elem_raw                       -      -
+            |
+            ---github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.gowrap4
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.func1
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).run
+               github.com/takehaya/xdperf/pkg/xdperf.runPacketBatches
+               github.com/cilium/ebpf.(*Program).Run-fm
+               github.com/cilium/ebpf.(*Program).Run
+               github.com/cilium/ebpf.(*Program).run
+               github.com/cilium/ebpf/internal/sys.BPF
+               github.com/cilium/ebpf/internal/unix.Syscall (inlined)
+               syscall.Syscall (inlined)
+               syscall.Syscall
+               internal/runtime/syscall.Syscall6
+               entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               x64_sys_call
+               __x64_sys_bpf
+               __sys_bpf
+               bpf_prog_test_run_xdp
+               bpf_test_run_xdp_live
+               xdp_test_run_batch.constprop.0
+               __local_bh_enable_ip
+               do_softirq.part.0
+               __do_softirq
+               handle_softirqs
+               net_rx_action
+               __napi_poll
+               veth_poll
+               |
+                --5.31%--xdp_do_flush
+                          __dev_flush
+                          bq_xmit_all
+                          dev_map_bpf_prog_run
+                          bpf_dispatcher_xdp_func
+                          bpf_prog_2877afe1eb03791e_vxlan_rewrite
+                          |
+                           --4.41%--htab_lru_percpu_map_lookup_elem
+                                     lookup_nulls_elem_raw
+
+     4.54%  [k] veth_poll                                   -      -
+            |
+            ---github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.gowrap4
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.func1
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).run
+               github.com/takehaya/xdperf/pkg/xdperf.runPacketBatches
+               github.com/cilium/ebpf.(*Program).Run-fm
+               github.com/cilium/ebpf.(*Program).Run
+               github.com/cilium/ebpf.(*Program).run
+               github.com/cilium/ebpf/internal/sys.BPF
+               github.com/cilium/ebpf/internal/unix.Syscall (inlined)
+               syscall.Syscall (inlined)
+               syscall.Syscall
+               internal/runtime/syscall.Syscall6
+               entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               x64_sys_call
+               __x64_sys_bpf
+               __sys_bpf
+               bpf_prog_test_run_xdp
+               bpf_test_run_xdp_live
+               xdp_test_run_batch.constprop.0
+               __local_bh_enable_ip
+               do_softirq.part.0
+               __do_softirq
+               handle_softirqs
+               net_rx_action
+               |
+                --4.19%--__napi_poll
+                          veth_poll
+
+     4.16%  [k] net_rx_action                               -      -
+            |
+            ---github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.gowrap4
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.func1
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).run
+               github.com/takehaya/xdperf/pkg/xdperf.runPacketBatches
+               github.com/cilium/ebpf.(*Program).Run-fm
+               github.com/cilium/ebpf.(*Program).Run
+               github.com/cilium/ebpf.(*Program).run
+               github.com/cilium/ebpf/internal/sys.BPF
+               github.com/cilium/ebpf/internal/unix.Syscall (inlined)
+               syscall.Syscall (inlined)
+               syscall.Syscall
+               internal/runtime/syscall.Syscall6
+               entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               x64_sys_call
+               __x64_sys_bpf
+               __sys_bpf
+               bpf_prog_test_run_xdp
+               bpf_test_run_xdp_live
+               xdp_test_run_batch.constprop.0
+               __local_bh_enable_ip
+               do_softirq.part.0
+               __do_softirq
+               |
+                --3.96%--handle_softirqs
+                          net_rx_action
+
+     4.07%  [k] bpf_prog_2877afe1eb03791e_vxlan_rewrite     -      -
+            |
+            ---github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.gowrap4
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.func1
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).run
+               github.com/takehaya/xdperf/pkg/xdperf.runPacketBatches
+               github.com/cilium/ebpf.(*Program).Run-fm
+               github.com/cilium/ebpf.(*Program).Run
+               github.com/cilium/ebpf.(*Program).run
+               github.com/cilium/ebpf/internal/sys.BPF
+               github.com/cilium/ebpf/internal/unix.Syscall (inlined)
+               syscall.Syscall (inlined)
+               syscall.Syscall
+               internal/runtime/syscall.Syscall6
+               entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               x64_sys_call
+               __x64_sys_bpf
+               __sys_bpf
+               bpf_prog_test_run_xdp
+               bpf_test_run_xdp_live
+               xdp_test_run_batch.constprop.0
+               __local_bh_enable_ip
+               do_softirq.part.0
+               __do_softirq
+               handle_softirqs
+               net_rx_action
+               __napi_poll
+               veth_poll
+               xdp_do_flush
+               __dev_flush
+               bq_xmit_all
+               dev_map_bpf_prog_run
+               bpf_dispatcher_xdp_func
+               bpf_prog_2877afe1eb03791e_vxlan_rewrite
+
+     3.84%  [k] dev_map_enqueue_multi                       -      -
+            |
+            ---github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.gowrap4
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.func1
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).run
+               github.com/takehaya/xdperf/pkg/xdperf.runPacketBatches
+               github.com/cilium/ebpf.(*Program).Run-fm
+               github.com/cilium/ebpf.(*Program).Run
+               github.com/cilium/ebpf.(*Program).run
+               github.com/cilium/ebpf/internal/sys.BPF
+               github.com/cilium/ebpf/internal/unix.Syscall (inlined)
+               syscall.Syscall (inlined)
+               syscall.Syscall
+               internal/runtime/syscall.Syscall6
+               entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               x64_sys_call
+               __x64_sys_bpf
+               __sys_bpf
+               bpf_prog_test_run_xdp
+               bpf_test_run_xdp_live
+               xdp_test_run_batch.constprop.0
+               __local_bh_enable_ip
+               do_softirq.part.0
+               __do_softirq
+               handle_softirqs
+               net_rx_action
+               __napi_poll
+               veth_poll
+               veth_xdp_rcv
+               veth_xdp_rcv_one
+               |
+                --3.82%--xdp_do_redirect
+                          dev_map_enqueue_multi
+
+     3.75%  [k] veth_xdp_xmit                               -      -
+            |
+            ---github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.gowrap4
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.func1
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).run
+               github.com/takehaya/xdperf/pkg/xdperf.runPacketBatches
+               github.com/cilium/ebpf.(*Program).Run-fm
+               github.com/cilium/ebpf.(*Program).Run
+               github.com/cilium/ebpf.(*Program).run
+               github.com/cilium/ebpf/internal/sys.BPF
+               github.com/cilium/ebpf/internal/unix.Syscall (inlined)
+               syscall.Syscall (inlined)
+               syscall.Syscall
+               internal/runtime/syscall.Syscall6
+               entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               x64_sys_call
+               __x64_sys_bpf
+               __sys_bpf
+               bpf_prog_test_run_xdp
+               bpf_test_run_xdp_live
+               xdp_test_run_batch.constprop.0
+               |
+               |--2.29%--__local_bh_enable_ip
+               |          do_softirq.part.0
+               |          __do_softirq
+               |          handle_softirqs
+               |          net_rx_action
+               |          __napi_poll
+               |          veth_poll
+               |          xdp_do_flush
+               |          __dev_flush
+               |          bq_xmit_all
+               |          |
+               |           --2.25%--veth_ndo_xdp_xmit
+               |                     veth_xdp_xmit
+               |
+                --1.46%--xdp_do_flush
+                          __dev_flush
+                          bq_xmit_all
+                          veth_ndo_xdp_xmit
+                          veth_xdp_xmit
+
+     3.70%  [k] htab_lock_bucket                            -      -
+            |
+            ---github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.gowrap4
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.func1
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).run
+               github.com/takehaya/xdperf/pkg/xdperf.runPacketBatches
+               github.com/cilium/ebpf.(*Program).Run-fm
+               github.com/cilium/ebpf.(*Program).Run
+               github.com/cilium/ebpf.(*Program).run
+               github.com/cilium/ebpf/internal/sys.BPF
+               github.com/cilium/ebpf/internal/unix.Syscall (inlined)
+               syscall.Syscall (inlined)
+               syscall.Syscall
+               internal/runtime/syscall.Syscall6
+               entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               x64_sys_call
+               __x64_sys_bpf
+               __sys_bpf
+               bpf_prog_test_run_xdp
+               bpf_test_run_xdp_live
+               xdp_test_run_batch.constprop.0
+               __local_bh_enable_ip
+               do_softirq.part.0
+               __do_softirq
+               handle_softirqs
+               net_rx_action
+               __napi_poll
+               veth_poll
+               veth_xdp_rcv
+               veth_xdp_rcv_one
+               bpf_dispatcher_xdp_func
+               bpf_prog_5a2214f1781f0161_vxlan_ingress
+               htab_lru_percpu_map_update_elem
+               |
+                --3.58%--__htab_lru_percpu_map_update_elem
+                          htab_lock_bucket
+
+     3.55%  [k] veth_xdp_rcv_one                            -      -
+            |
+            ---github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.gowrap4
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.func1
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).run
+               github.com/takehaya/xdperf/pkg/xdperf.runPacketBatches
+               github.com/cilium/ebpf.(*Program).Run-fm
+               github.com/cilium/ebpf.(*Program).Run
+               github.com/cilium/ebpf.(*Program).run
+               github.com/cilium/ebpf/internal/sys.BPF
+               github.com/cilium/ebpf/internal/unix.Syscall (inlined)
+               syscall.Syscall (inlined)
+               syscall.Syscall
+               internal/runtime/syscall.Syscall6
+               entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               x64_sys_call
+               __x64_sys_bpf
+               __sys_bpf
+               bpf_prog_test_run_xdp
+               bpf_test_run_xdp_live
+               xdp_test_run_batch.constprop.0
+               __local_bh_enable_ip
+               do_softirq.part.0
+               __do_softirq
+               handle_softirqs
+               net_rx_action
+               __napi_poll
+               veth_poll
+               |
+                --3.48%--veth_xdp_rcv
+                          veth_xdp_rcv_one
+
+     3.13%  [k] bpf_prog_5a2214f1781f0161_vxlan_ingress     -      -
+            |
+            ---github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.gowrap4
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.func1
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).run
+               github.com/takehaya/xdperf/pkg/xdperf.runPacketBatches
+               github.com/cilium/ebpf.(*Program).Run-fm
+               github.com/cilium/ebpf.(*Program).Run
+               github.com/cilium/ebpf.(*Program).run
+               github.com/cilium/ebpf/internal/sys.BPF
+               github.com/cilium/ebpf/internal/unix.Syscall (inlined)
+               syscall.Syscall (inlined)
+               syscall.Syscall
+               internal/runtime/syscall.Syscall6
+               entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               x64_sys_call
+               __x64_sys_bpf
+               __sys_bpf
+               bpf_prog_test_run_xdp
+               bpf_test_run_xdp_live
+               xdp_test_run_batch.constprop.0
+               __local_bh_enable_ip
+               do_softirq.part.0
+               __do_softirq
+               handle_softirqs
+               net_rx_action
+               __napi_poll
+               veth_poll
+               veth_xdp_rcv
+               veth_xdp_rcv_one
+               bpf_dispatcher_xdp_func
+               bpf_prog_5a2214f1781f0161_vxlan_ingress
+
+     2.64%  [k] xdp_test_run_batch.constprop.0              -      -
+            |
+            ---github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.gowrap4
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.func1
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).run
+               github.com/takehaya/xdperf/pkg/xdperf.runPacketBatches
+               github.com/cilium/ebpf.(*Program).Run-fm
+               github.com/cilium/ebpf.(*Program).Run
+               github.com/cilium/ebpf.(*Program).run
+               github.com/cilium/ebpf/internal/sys.BPF
+               github.com/cilium/ebpf/internal/unix.Syscall (inlined)
+               syscall.Syscall (inlined)
+               syscall.Syscall
+               internal/runtime/syscall.Syscall6
+               entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               x64_sys_call
+               __x64_sys_bpf
+               __sys_bpf
+               bpf_prog_test_run_xdp
+               |
+                --2.56%--bpf_test_run_xdp_live
+                          xdp_test_run_batch.constprop.0
+
+     2.40%  [k] veth_xdp_rcv                                -      -
+            |
+            ---github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.gowrap4
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.func1
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).run
+               github.com/takehaya/xdperf/pkg/xdperf.runPacketBatches
+               github.com/cilium/ebpf.(*Program).Run-fm
+               github.com/cilium/ebpf.(*Program).Run
+               github.com/cilium/ebpf.(*Program).run
+               github.com/cilium/ebpf/internal/sys.BPF
+               github.com/cilium/ebpf/internal/unix.Syscall (inlined)
+               syscall.Syscall (inlined)
+               syscall.Syscall
+               internal/runtime/syscall.Syscall6
+               entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               x64_sys_call
+               __x64_sys_bpf
+               __sys_bpf
+               bpf_prog_test_run_xdp
+               bpf_test_run_xdp_live
+               xdp_test_run_batch.constprop.0
+               __local_bh_enable_ip
+               do_softirq.part.0
+               __do_softirq
+               handle_softirqs
+               net_rx_action
+               __napi_poll
+               |
+                --2.39%--veth_poll
+                          veth_xdp_rcv
+
+     2.29%  [k] napi_schedule_prep                          -      -
+            |
+            ---github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.gowrap4
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.func1
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).run
+               github.com/takehaya/xdperf/pkg/xdperf.runPacketBatches
+               github.com/cilium/ebpf.(*Program).Run-fm
+               github.com/cilium/ebpf.(*Program).Run
+               github.com/cilium/ebpf.(*Program).run
+               github.com/cilium/ebpf/internal/sys.BPF
+               github.com/cilium/ebpf/internal/unix.Syscall (inlined)
+               syscall.Syscall (inlined)
+               syscall.Syscall
+               internal/runtime/syscall.Syscall6
+               entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               x64_sys_call
+               __x64_sys_bpf
+               __sys_bpf
+               bpf_prog_test_run_xdp
+               bpf_test_run_xdp_live
+               xdp_test_run_batch.constprop.0
+               |
+                --1.94%--__local_bh_enable_ip
+                          do_softirq.part.0
+                          __do_softirq
+                          handle_softirqs
+                          net_rx_action
+                          __napi_poll
+                          veth_poll
+                          xdp_do_flush
+                          __dev_flush
+                          bq_xmit_all
+                          veth_ndo_xdp_xmit
+                          |
+                           --1.13%--veth_xdp_xmit
+                                     napi_schedule_prep
+
+     2.29%  [k] bpf_prog_7fe0765356e49e8d_xdp_tx            -      -
+            |
+            ---github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.gowrap4
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.func1
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).run
+               github.com/takehaya/xdperf/pkg/xdperf.runPacketBatches
+               github.com/cilium/ebpf.(*Program).Run-fm
+               github.com/cilium/ebpf.(*Program).Run
+               github.com/cilium/ebpf.(*Program).run
+               github.com/cilium/ebpf/internal/sys.BPF
+               github.com/cilium/ebpf/internal/unix.Syscall (inlined)
+               syscall.Syscall (inlined)
+               syscall.Syscall
+               internal/runtime/syscall.Syscall6
+               entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               x64_sys_call
+               __x64_sys_bpf
+               __sys_bpf
+               bpf_prog_test_run_xdp
+               bpf_test_run_xdp_live
+               xdp_test_run_batch.constprop.0
+               |
+                --2.26%--bpf_dispatcher_xdp_func
+                          bpf_prog_7fe0765356e49e8d_xdp_tx
+
+     2.26%  [k] __pi_memcpy                                 -      -
+            |
+            ---github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.gowrap4
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.func1
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).run
+               github.com/takehaya/xdperf/pkg/xdperf.runPacketBatches
+               github.com/cilium/ebpf.(*Program).Run-fm
+               github.com/cilium/ebpf.(*Program).Run
+               github.com/cilium/ebpf.(*Program).run
+               github.com/cilium/ebpf/internal/sys.BPF
+               github.com/cilium/ebpf/internal/unix.Syscall (inlined)
+               syscall.Syscall (inlined)
+               syscall.Syscall
+               internal/runtime/syscall.Syscall6
+               entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               x64_sys_call
+               __x64_sys_bpf
+               __sys_bpf
+               bpf_prog_test_run_xdp
+               bpf_test_run_xdp_live
+               xdp_test_run_batch.constprop.0
+               |
+               |--1.24%--bpf_dispatcher_xdp_func
+               |          bpf_prog_7fe0765356e49e8d_xdp_tx
+               |
+                --1.02%--__local_bh_enable_ip
+                          do_softirq.part.0
+                          __do_softirq
+                          handle_softirqs
+                          net_rx_action
+                          __napi_poll
+                          veth_poll
+                          veth_xdp_rcv
+                          veth_xdp_rcv_one
+
+     1.97%  [k] __htab_map_lookup_elem                      -      -
+            |
+            ---github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.gowrap4
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.func1
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).run
+               github.com/takehaya/xdperf/pkg/xdperf.runPacketBatches
+               github.com/cilium/ebpf.(*Program).Run-fm
+               github.com/cilium/ebpf.(*Program).Run
+               github.com/cilium/ebpf.(*Program).run
+               github.com/cilium/ebpf/internal/sys.BPF
+               github.com/cilium/ebpf/internal/unix.Syscall (inlined)
+               syscall.Syscall (inlined)
+               syscall.Syscall
+               internal/runtime/syscall.Syscall6
+               entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               x64_sys_call
+               __x64_sys_bpf
+               __sys_bpf
+               bpf_prog_test_run_xdp
+               bpf_test_run_xdp_live
+               xdp_test_run_batch.constprop.0
+               __local_bh_enable_ip
+               do_softirq.part.0
+               __do_softirq
+               handle_softirqs
+               net_rx_action
+               __napi_poll
+               veth_poll
+               |
+                --1.12%--xdp_do_flush
+                          __dev_flush
+                          bq_xmit_all
+                          dev_map_bpf_prog_run
+                          bpf_dispatcher_xdp_func
+                          |
+                           --1.09%--bpf_prog_2877afe1eb03791e_vxlan_rewrite
+                                     __htab_map_lookup_elem
+
+     1.91%  [k] dev_map_bpf_prog_run                        -      -
+            |
+            ---github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.gowrap4
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.func1
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).run
+               github.com/takehaya/xdperf/pkg/xdperf.runPacketBatches
+               github.com/cilium/ebpf.(*Program).Run-fm
+               github.com/cilium/ebpf.(*Program).Run
+               github.com/cilium/ebpf.(*Program).run
+               github.com/cilium/ebpf/internal/sys.BPF
+               github.com/cilium/ebpf/internal/unix.Syscall (inlined)
+               syscall.Syscall (inlined)
+               syscall.Syscall
+               internal/runtime/syscall.Syscall6
+               entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               x64_sys_call
+               __x64_sys_bpf
+               __sys_bpf
+               bpf_prog_test_run_xdp
+               bpf_test_run_xdp_live
+               xdp_test_run_batch.constprop.0
+               __local_bh_enable_ip
+               do_softirq.part.0
+               __do_softirq
+               handle_softirqs
+               net_rx_action
+               __napi_poll
+               veth_poll
+               xdp_do_flush
+               __dev_flush
+               |
+                --1.89%--bq_xmit_all
+                          dev_map_bpf_prog_run
+
+     1.56%  [k] kernel_init_pages                           -      -
+            |
+            ---github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.gowrap4
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.func1
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).run
+               github.com/takehaya/xdperf/pkg/xdperf.runPacketBatches
+               github.com/cilium/ebpf.(*Program).Run-fm
+               github.com/cilium/ebpf.(*Program).Run
+               github.com/cilium/ebpf.(*Program).run
+               github.com/cilium/ebpf/internal/sys.BPF
+               github.com/cilium/ebpf/internal/unix.Syscall (inlined)
+               syscall.Syscall (inlined)
+               syscall.Syscall
+               internal/runtime/syscall.Syscall6
+               entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               x64_sys_call
+               __x64_sys_bpf
+               __sys_bpf
+               bpf_prog_test_run_xdp
+               bpf_test_run_xdp_live
+               xdp_test_run_batch.constprop.0
+               __local_bh_enable_ip
+               do_softirq.part.0
+               __do_softirq
+               handle_softirqs
+               net_rx_action
+               __napi_poll
+               veth_poll
+               veth_xdp_rcv
+               veth_xdp_rcv_one
+               xdp_do_redirect
+               dev_map_enqueue_multi
+               xdpf_clone
+               __alloc_pages_noprof
+               __alloc_frozen_pages_noprof
+               get_page_from_freelist
+               |
+                --1.46%--post_alloc_hook
+                          kernel_init_pages
+
+     1.53%  [k] skb_defer_free_flush                        -      -
+            |
+            ---github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.gowrap4
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.func1
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).run
+               github.com/takehaya/xdperf/pkg/xdperf.runPacketBatches
+               github.com/cilium/ebpf.(*Program).Run-fm
+               github.com/cilium/ebpf.(*Program).Run
+               github.com/cilium/ebpf.(*Program).run
+               github.com/cilium/ebpf/internal/sys.BPF
+               github.com/cilium/ebpf/internal/unix.Syscall (inlined)
+               syscall.Syscall (inlined)
+               syscall.Syscall
+               internal/runtime/syscall.Syscall6
+               entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               x64_sys_call
+               __x64_sys_bpf
+               __sys_bpf
+               bpf_prog_test_run_xdp
+               bpf_test_run_xdp_live
+               xdp_test_run_batch.constprop.0
+               __local_bh_enable_ip
+               do_softirq.part.0
+               __do_softirq
+               handle_softirqs
+               |
+                --1.51%--net_rx_action
+                          skb_defer_free_flush
+
+     1.51%  [k] htab_map_hash                               -      -
+            |
+            ---github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.gowrap4
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.func1
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).run
+               github.com/takehaya/xdperf/pkg/xdperf.runPacketBatches
+               github.com/cilium/ebpf.(*Program).Run-fm
+               github.com/cilium/ebpf.(*Program).Run
+               github.com/cilium/ebpf.(*Program).run
+               github.com/cilium/ebpf/internal/sys.BPF
+               github.com/cilium/ebpf/internal/unix.Syscall (inlined)
+               syscall.Syscall (inlined)
+               syscall.Syscall
+               internal/runtime/syscall.Syscall6
+               entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               x64_sys_call
+               __x64_sys_bpf
+               __sys_bpf
+               bpf_prog_test_run_xdp
+               bpf_test_run_xdp_live
+               xdp_test_run_batch.constprop.0
+               __local_bh_enable_ip
+               do_softirq.part.0
+               __do_softirq
+               handle_softirqs
+               net_rx_action
+               __napi_poll
+               veth_poll
+
+     1.36%  [k] bq_xmit_all                                 -      -
+            |
+            ---github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.gowrap4
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.func1
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).run
+               github.com/takehaya/xdperf/pkg/xdperf.runPacketBatches
+               github.com/cilium/ebpf.(*Program).Run-fm
+               github.com/cilium/ebpf.(*Program).Run
+               github.com/cilium/ebpf.(*Program).run
+               github.com/cilium/ebpf/internal/sys.BPF
+               github.com/cilium/ebpf/internal/unix.Syscall (inlined)
+               syscall.Syscall (inlined)
+               syscall.Syscall
+               internal/runtime/syscall.Syscall6
+               entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               x64_sys_call
+               __x64_sys_bpf
+               __sys_bpf
+               bpf_prog_test_run_xdp
+               bpf_test_run_xdp_live
+               xdp_test_run_batch.constprop.0
+
+     1.35%  [k] __free_frozen_pages                         -      -
+            |
+            ---github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.gowrap4
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.func1
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).run
+               github.com/takehaya/xdperf/pkg/xdperf.runPacketBatches
+               github.com/cilium/ebpf.(*Program).Run-fm
+               github.com/cilium/ebpf.(*Program).Run
+               github.com/cilium/ebpf.(*Program).run
+               github.com/cilium/ebpf/internal/sys.BPF
+               github.com/cilium/ebpf/internal/unix.Syscall (inlined)
+               syscall.Syscall (inlined)
+               syscall.Syscall
+               internal/runtime/syscall.Syscall6
+               entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               x64_sys_call
+               __x64_sys_bpf
+               __sys_bpf
+               bpf_prog_test_run_xdp
+               bpf_test_run_xdp_live
+               xdp_test_run_batch.constprop.0
+               __local_bh_enable_ip
+               do_softirq.part.0
+               __do_softirq
+               handle_softirqs
+               net_rx_action
+               __napi_poll
+               veth_poll
+               veth_xdp_rcv
+               veth_xdp_rcv_one
+               xdp_return_frame
+               __xdp_return
+               __folio_put
+               |
+                --1.31%--free_frozen_pages
+                          __free_frozen_pages
+
+     1.29%  [k] bpf_common_lru_push_free                    -      -
+            |
+            ---github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.gowrap4
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.func1
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).run
+               github.com/takehaya/xdperf/pkg/xdperf.runPacketBatches
+               github.com/cilium/ebpf.(*Program).Run-fm
+               github.com/cilium/ebpf.(*Program).Run
+               github.com/cilium/ebpf.(*Program).run
+               github.com/cilium/ebpf/internal/sys.BPF
+               github.com/cilium/ebpf/internal/unix.Syscall (inlined)
+               syscall.Syscall (inlined)
+               syscall.Syscall
+               internal/runtime/syscall.Syscall6
+               entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               x64_sys_call
+               __x64_sys_bpf
+               __sys_bpf
+               bpf_prog_test_run_xdp
+               bpf_test_run_xdp_live
+               xdp_test_run_batch.constprop.0
+               __local_bh_enable_ip
+               do_softirq.part.0
+               __do_softirq
+               handle_softirqs
+               net_rx_action
+               __napi_poll
+               veth_poll
+               veth_xdp_rcv
+               veth_xdp_rcv_one
+               bpf_dispatcher_xdp_func
+               bpf_prog_5a2214f1781f0161_vxlan_ingress
+               htab_lru_percpu_map_update_elem
+               __htab_lru_percpu_map_update_elem
+               |
+                --1.22%--bpf_lru_push_free
+                          bpf_common_lru_push_free
+
+     1.18%  [k] htab_lru_percpu_map_lookup_elem             -      -
+            |
+            ---github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.gowrap4
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.func1
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).run
+               github.com/takehaya/xdperf/pkg/xdperf.runPacketBatches
+               github.com/cilium/ebpf.(*Program).Run-fm
+               github.com/cilium/ebpf.(*Program).Run
+               github.com/cilium/ebpf.(*Program).run
+               github.com/cilium/ebpf/internal/sys.BPF
+               github.com/cilium/ebpf/internal/unix.Syscall (inlined)
+               syscall.Syscall (inlined)
+               syscall.Syscall
+               internal/runtime/syscall.Syscall6
+               entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               x64_sys_call
+               __x64_sys_bpf
+               __sys_bpf
+               bpf_prog_test_run_xdp
+               bpf_test_run_xdp_live
+               xdp_test_run_batch.constprop.0
+               __local_bh_enable_ip
+               do_softirq.part.0
+               __do_softirq
+               handle_softirqs
+               net_rx_action
+               __napi_poll
+               veth_poll
+               xdp_do_flush
+               __dev_flush
+               bq_xmit_all
+               dev_map_bpf_prog_run
+               bpf_dispatcher_xdp_func
+               |
+                --1.09%--bpf_prog_2877afe1eb03791e_vxlan_rewrite
+                          htab_lru_percpu_map_lookup_elem
+
+     1.17%  [k] get_page_from_freelist                      -      -
+            |
+            ---github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.gowrap4
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.func1
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).run
+               github.com/takehaya/xdperf/pkg/xdperf.runPacketBatches
+               github.com/cilium/ebpf.(*Program).Run-fm
+               github.com/cilium/ebpf.(*Program).Run
+               github.com/cilium/ebpf.(*Program).run
+               github.com/cilium/ebpf/internal/sys.BPF
+               github.com/cilium/ebpf/internal/unix.Syscall (inlined)
+               syscall.Syscall (inlined)
+               syscall.Syscall
+               internal/runtime/syscall.Syscall6
+               entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               x64_sys_call
+               __x64_sys_bpf
+               __sys_bpf
+               bpf_prog_test_run_xdp
+               bpf_test_run_xdp_live
+               xdp_test_run_batch.constprop.0
+               __local_bh_enable_ip
+               do_softirq.part.0
+               __do_softirq
+               handle_softirqs
+               net_rx_action
+               __napi_poll
+               veth_poll
+               veth_xdp_rcv
+               veth_xdp_rcv_one
+               xdp_do_redirect
+               dev_map_enqueue_multi
+               xdpf_clone
+               __alloc_pages_noprof
+               __alloc_frozen_pages_noprof
+               get_page_from_freelist
+
+     1.13%  [k] lookup_elem_raw                             -      -
+            |
+            ---github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.gowrap4
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.func1
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).run
+               github.com/takehaya/xdperf/pkg/xdperf.runPacketBatches
+               github.com/cilium/ebpf.(*Program).Run-fm
+               github.com/cilium/ebpf.(*Program).Run
+               github.com/cilium/ebpf.(*Program).run
+               github.com/cilium/ebpf/internal/sys.BPF
+               github.com/cilium/ebpf/internal/unix.Syscall (inlined)
+               syscall.Syscall (inlined)
+               syscall.Syscall
+               internal/runtime/syscall.Syscall6
+               entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               x64_sys_call
+               __x64_sys_bpf
+               __sys_bpf
+               bpf_prog_test_run_xdp
+               bpf_test_run_xdp_live
+               xdp_test_run_batch.constprop.0
+               __local_bh_enable_ip
+               do_softirq.part.0
+               __do_softirq
+               handle_softirqs
+               net_rx_action
+               __napi_poll
+               veth_poll
+               veth_xdp_rcv
+               veth_xdp_rcv_one
+               bpf_dispatcher_xdp_func
+               bpf_prog_5a2214f1781f0161_vxlan_ingress
+               htab_lru_percpu_map_update_elem
+               |
+                --1.12%--__htab_lru_percpu_map_update_elem
+                          lookup_elem_raw
+
+     1.12%  [k] veth_ndo_xdp_xmit                           -      -
+            |
+            ---github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.gowrap4
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.func1
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).run
+               github.com/takehaya/xdperf/pkg/xdperf.runPacketBatches
+               github.com/cilium/ebpf.(*Program).Run-fm
+               github.com/cilium/ebpf.(*Program).Run
+               github.com/cilium/ebpf.(*Program).run
+               github.com/cilium/ebpf/internal/sys.BPF
+               github.com/cilium/ebpf/internal/unix.Syscall (inlined)
+               syscall.Syscall (inlined)
+               syscall.Syscall
+               internal/runtime/syscall.Syscall6
+               entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               x64_sys_call
+               __x64_sys_bpf
+               __sys_bpf
+               bpf_prog_test_run_xdp
+               bpf_test_run_xdp_live
+               xdp_test_run_batch.constprop.0
+
+     1.11%  [k] __htab_lru_percpu_map_update_elem           -      -
+            |
+            ---github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.gowrap4
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.func1
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).run
+               github.com/takehaya/xdperf/pkg/xdperf.runPacketBatches
+               github.com/cilium/ebpf.(*Program).Run-fm
+               github.com/cilium/ebpf.(*Program).Run
+               github.com/cilium/ebpf.(*Program).run
+               github.com/cilium/ebpf/internal/sys.BPF
+               github.com/cilium/ebpf/internal/unix.Syscall (inlined)
+               syscall.Syscall (inlined)
+               syscall.Syscall
+               internal/runtime/syscall.Syscall6
+               entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               x64_sys_call
+               __x64_sys_bpf
+               __sys_bpf
+               bpf_prog_test_run_xdp
+               bpf_test_run_xdp_live
+               xdp_test_run_batch.constprop.0
+               __local_bh_enable_ip
+               do_softirq.part.0
+               __do_softirq
+               handle_softirqs
+               net_rx_action
+               __napi_poll
+               veth_poll
+               veth_xdp_rcv
+               veth_xdp_rcv_one
+               bpf_dispatcher_xdp_func
+               bpf_prog_5a2214f1781f0161_vxlan_ingress
+               htab_lru_percpu_map_update_elem
+               __htab_lru_percpu_map_update_elem
+
+     1.09%  [k] napi_complete_done                          -      -
+            |
+            ---github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.gowrap4
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.func1
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).run
+               github.com/takehaya/xdperf/pkg/xdperf.runPacketBatches
+               github.com/cilium/ebpf.(*Program).Run-fm
+               github.com/cilium/ebpf.(*Program).Run
+               github.com/cilium/ebpf.(*Program).run
+               github.com/cilium/ebpf/internal/sys.BPF
+               github.com/cilium/ebpf/internal/unix.Syscall (inlined)
+               syscall.Syscall (inlined)
+               syscall.Syscall
+               internal/runtime/syscall.Syscall6
+               entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               x64_sys_call
+               __x64_sys_bpf
+               __sys_bpf
+               bpf_prog_test_run_xdp
+               bpf_test_run_xdp_live
+               xdp_test_run_batch.constprop.0
+               __local_bh_enable_ip
+               do_softirq.part.0
+               __do_softirq
+               handle_softirqs
+               net_rx_action
+               __napi_poll
+               |
+                --1.06%--veth_poll
+                          napi_complete_done
+
+     1.07%  [k] bpf_xdp_store_bytes                         -      -
+            |
+            ---github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.gowrap4
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.func1
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).run
+               github.com/takehaya/xdperf/pkg/xdperf.runPacketBatches
+               github.com/cilium/ebpf.(*Program).Run-fm
+               github.com/cilium/ebpf.(*Program).Run
+               github.com/cilium/ebpf.(*Program).run
+               github.com/cilium/ebpf/internal/sys.BPF
+               github.com/cilium/ebpf/internal/unix.Syscall (inlined)
+               syscall.Syscall (inlined)
+               syscall.Syscall
+               internal/runtime/syscall.Syscall6
+               entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               x64_sys_call
+               __x64_sys_bpf
+               __sys_bpf
+               bpf_prog_test_run_xdp
+               bpf_test_run_xdp_live
+               xdp_test_run_batch.constprop.0
+               bpf_dispatcher_xdp_func
+               bpf_prog_7fe0765356e49e8d_xdp_tx
+
+     1.06%  [k] page_pool_put_unrefed_netmem                -      -
+            |
+            ---github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.gowrap4
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.func1
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).run
+               github.com/takehaya/xdperf/pkg/xdperf.runPacketBatches
+               github.com/cilium/ebpf.(*Program).Run-fm
+               github.com/cilium/ebpf.(*Program).Run
+               github.com/cilium/ebpf.(*Program).run
+               github.com/cilium/ebpf/internal/sys.BPF
+               github.com/cilium/ebpf/internal/unix.Syscall (inlined)
+               syscall.Syscall (inlined)
+               syscall.Syscall
+               internal/runtime/syscall.Syscall6
+               entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               x64_sys_call
+               __x64_sys_bpf
+               __sys_bpf
+               bpf_prog_test_run_xdp
+               bpf_test_run_xdp_live
+               xdp_test_run_batch.constprop.0
+               __local_bh_enable_ip
+               do_softirq.part.0
+               __do_softirq
+               handle_softirqs
+               net_rx_action
+               __napi_poll
+               veth_poll
+               veth_xdp_rcv
+               veth_xdp_rcv_one
+               xdp_return_frame
+               |
+                --1.03%--__xdp_return
+                          page_pool_put_unrefed_netmem
+
+     1.04%  [k] __napi_schedule                             -      -
+            |
+            ---github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.gowrap4
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).runTXPacket.func1
+               github.com/takehaya/xdperf/pkg/xdperf.(*Xdperf).run
+               github.com/takehaya/xdperf/pkg/xdperf.runPacketBatches
+               github.com/cilium/ebpf.(*Program).Run-fm
+               github.com/cilium/ebpf.(*Program).Run
+               github.com/cilium/ebpf.(*Program).run
+               github.com/cilium/ebpf/internal/sys.BPF
+               github.com/cilium/ebpf/internal/unix.Syscall (inlined)
+               syscall.Syscall (inlined)
+               syscall.Syscall
+               internal/runtime/syscall.Syscall6
+               entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               x64_sys_call
+               __x64_sys_bpf
+               __sys_bpf
+               bpf_prog_test_run_xdp
+               bpf_test_run_xdp_live
+               xdp_test_run_batch.constprop.0
+
+
+
+#
+# (Cannot load tips.txt file, please install perf!)
+#

@@ -1,0 +1,26 @@
+{
+  "id": 297843,
+  "type": "xdp",
+  "name": "vxlan_ingress",
+  "tag": "5a2214f1781f0161",
+  "gpl_compatible": true,
+  "loaded_at": 1792638759,
+  "uid": 0,
+  "orphaned": false,
+  "bytes_xlated": 7280,
+  "jited": true,
+  "bytes_jited": 4245,
+  "bytes_memlock": 12288,
+  "map_ids": [
+    360745,
+    360746,
+    360748,
+    360749,
+    360750,
+    360741,
+    360742,
+    360743,
+    360739
+  ],
+  "btf_id": 622960
+}

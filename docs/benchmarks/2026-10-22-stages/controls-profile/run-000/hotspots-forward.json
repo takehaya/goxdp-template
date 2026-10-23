@@ -1,0 +1,1232 @@
+[
+  {
+    "self_percent": 6.11,
+    "estimated_cycles": 2269822651,
+    "symbol": "[k] dev_map_enqueue_multi"
+  },
+  {
+    "self_percent": 5.29,
+    "estimated_cycles": 1963330342,
+    "symbol": "[k] bpf_prog_2877afe1eb03791e_vxlan_rewrite"
+  },
+  {
+    "self_percent": 5.1,
+    "estimated_cycles": 1892641203,
+    "symbol": "[k] lookup_nulls_elem_raw"
+  },
+  {
+    "self_percent": 3.74,
+    "estimated_cycles": 1388867062,
+    "symbol": "[k] cpu_map_bpf_prog_run_xdp"
+  },
+  {
+    "self_percent": 3.22,
+    "estimated_cycles": 1195148932,
+    "symbol": "[k] __htab_map_lookup_elem"
+  },
+  {
+    "self_percent": 2.89,
+    "estimated_cycles": 1072716382,
+    "symbol": "[k] bpf_prog_80dbfeadbc3fcc56_vxlan_cpu_forward"
+  },
+  {
+    "self_percent": 2.87,
+    "estimated_cycles": 1064537738,
+    "symbol": "[k] kernel_init_pages"
+  },
+  {
+    "self_percent": 2.73,
+    "estimated_cycles": 1014408603,
+    "symbol": "[k] __free_frozen_pages"
+  },
+  {
+    "self_percent": 2.58,
+    "estimated_cycles": 958139159,
+    "symbol": "[k] veth_xdp_rcv_one"
+  },
+  {
+    "self_percent": 2.5,
+    "estimated_cycles": 926568383,
+    "symbol": "[k] htab_lock_bucket"
+  },
+  {
+    "self_percent": 1.84,
+    "estimated_cycles": 684575153,
+    "symbol": "[k] htab_map_hash"
+  },
+  {
+    "self_percent": 1.83,
+    "estimated_cycles": 678657946,
+    "symbol": "[k] htab_lru_percpu_map_lookup_elem"
+  },
+  {
+    "self_percent": 1.63,
+    "estimated_cycles": 605466415,
+    "symbol": "[k] veth_xdp_rcv"
+  },
+  {
+    "self_percent": 1.63,
+    "estimated_cycles": 604413159,
+    "symbol": "[k] __pi_memcpy"
+  },
+  {
+    "self_percent": 1.58,
+    "estimated_cycles": 587034585,
+    "symbol": "[k] _raw_spin_lock"
+  },
+  {
+    "self_percent": 1.57,
+    "estimated_cycles": 582385331,
+    "symbol": "[k] __htab_lru_percpu_map_update_elem"
+  },
+  {
+    "self_percent": 1.52,
+    "estimated_cycles": 565370751,
+    "symbol": "[k] free_pcppages_bulk"
+  },
+  {
+    "self_percent": 1.44,
+    "estimated_cycles": 533572118,
+    "symbol": "[k] cpu_map_kthread_run"
+  },
+  {
+    "self_percent": 1.42,
+    "estimated_cycles": 525970271,
+    "symbol": "[k] dev_map_bpf_prog_run"
+  },
+  {
+    "self_percent": 1.42,
+    "estimated_cycles": 525864114,
+    "symbol": "[k] bpf_common_lru_pop_free"
+  },
+  {
+    "self_percent": 1.39,
+    "estimated_cycles": 515438421,
+    "symbol": "[k] __free_one_page"
+  },
+  {
+    "self_percent": 1.38,
+    "estimated_cycles": 513040550,
+    "symbol": "[k] page_pool_put_unrefed_netmem"
+  },
+  {
+    "self_percent": 1.35,
+    "estimated_cycles": 500330501,
+    "symbol": "[k] __xdp_return"
+  },
+  {
+    "self_percent": 1.3,
+    "estimated_cycles": 482360098,
+    "symbol": "[k] __pv_queued_spin_lock_slowpath"
+  },
+  {
+    "self_percent": 1.2,
+    "estimated_cycles": 446444580,
+    "symbol": "[k] bpf_common_lru_push_free"
+  },
+  {
+    "self_percent": 1.12,
+    "estimated_cycles": 417353712,
+    "symbol": "[k] get_page_from_freelist"
+  },
+  {
+    "self_percent": 1.08,
+    "estimated_cycles": 400044065,
+    "symbol": "[k] _raw_spin_unlock"
+  },
+  {
+    "self_percent": 1.07,
+    "estimated_cycles": 395548815,
+    "symbol": "[k] rmqueue_pcplist"
+  },
+  {
+    "self_percent": 1.03,
+    "estimated_cycles": 381076062,
+    "symbol": "[k] free_frozen_page_commit.isra.0"
+  },
+  {
+    "self_percent": 1.0,
+    "estimated_cycles": 370495793,
+    "symbol": "[k] veth_xdp_xmit"
+  },
+  {
+    "self_percent": 0.99,
+    "estimated_cycles": 367608597,
+    "symbol": "[k] __alloc_frozen_pages_noprof"
+  },
+  {
+    "self_percent": 0.91,
+    "estimated_cycles": 338081098,
+    "symbol": "[k] bpf_prog_cfdd691df7535532_vxlan_egress"
+  },
+  {
+    "self_percent": 0.91,
+    "estimated_cycles": 336995257,
+    "symbol": "[k] memcmp"
+  },
+  {
+    "self_percent": 0.9,
+    "estimated_cycles": 335304489,
+    "symbol": "[k] xdp_do_redirect"
+  },
+  {
+    "self_percent": 0.89,
+    "estimated_cycles": 331026810,
+    "symbol": "[k] xdp_return_frame"
+  },
+  {
+    "self_percent": 0.89,
+    "estimated_cycles": 330988172,
+    "symbol": "[k] bpf_dispatcher_xdp_func"
+  },
+  {
+    "self_percent": 0.88,
+    "estimated_cycles": 327641183,
+    "symbol": "[k] net_rx_action"
+  },
+  {
+    "self_percent": 0.86,
+    "estimated_cycles": 319336102,
+    "symbol": "[k] __folio_put"
+  },
+  {
+    "self_percent": 0.81,
+    "estimated_cycles": 301411888,
+    "symbol": "[k] resilient_queued_spin_lock_slowpath"
+  },
+  {
+    "self_percent": 0.76,
+    "estimated_cycles": 280713284,
+    "symbol": "[k] lookup_elem_raw"
+  },
+  {
+    "self_percent": 0.68,
+    "estimated_cycles": 252967326,
+    "symbol": "[k] bpf_prog_cfdd691df7535532_vxlan_cpu"
+  },
+  {
+    "self_percent": 0.64,
+    "estimated_cycles": 237263778,
+    "symbol": "[k] veth_poll"
+  },
+  {
+    "self_percent": 0.63,
+    "estimated_cycles": 234271896,
+    "symbol": "[k] bpf_prog_e05ca328fbeb63d0_xdp_rx"
+  },
+  {
+    "self_percent": 0.63,
+    "estimated_cycles": 232959904,
+    "symbol": "[k] bq_enqueue"
+  },
+  {
+    "self_percent": 0.62,
+    "estimated_cycles": 231976417,
+    "symbol": "[k] prealloc_lru_pop"
+  },
+  {
+    "self_percent": 0.62,
+    "estimated_cycles": 231106233,
+    "symbol": "[k] asm_sysvec_apic_timer_interrupt"
+  },
+  {
+    "self_percent": 0.61,
+    "estimated_cycles": 225832985,
+    "symbol": "[k] pcpu_copy_value"
+  },
+  {
+    "self_percent": 0.58,
+    "estimated_cycles": 217140366,
+    "symbol": "[k] bpf_xdp_adjust_meta"
+  },
+  {
+    "self_percent": 0.57,
+    "estimated_cycles": 211782187,
+    "symbol": "[k] is_valid_dst"
+  },
+  {
+    "self_percent": 0.53,
+    "estimated_cycles": 196372088,
+    "symbol": "[k] rmqueue.isra.0"
+  },
+  {
+    "self_percent": 0.48,
+    "estimated_cycles": 179015239,
+    "symbol": "[k] handle_softirqs"
+  },
+  {
+    "self_percent": 0.48,
+    "estimated_cycles": 178763848,
+    "symbol": "[k] free_frozen_pages"
+  },
+  {
+    "self_percent": 0.48,
+    "estimated_cycles": 178038450,
+    "symbol": "[k] page_pool_return_netmem"
+  },
+  {
+    "self_percent": 0.47,
+    "estimated_cycles": 174407877,
+    "symbol": "[k] __raw_callee_save___pv_queued_spin_unlock"
+  },
+  {
+    "self_percent": 0.46,
+    "estimated_cycles": 169287792,
+    "symbol": "[k] __rmqueue_pcplist"
+  },
+  {
+    "self_percent": 0.43,
+    "estimated_cycles": 159715226,
+    "symbol": "[k] bq_xmit_all"
+  },
+  {
+    "self_percent": 0.42,
+    "estimated_cycles": 157201054,
+    "symbol": "[k] post_alloc_hook"
+  },
+  {
+    "self_percent": 0.41,
+    "estimated_cycles": 151830289,
+    "symbol": "[k] bpf_prog_0521f3b14f581879_tracepoint_xdp_xdp_cpumap_kthread_3"
+  },
+  {
+    "self_percent": 0.4,
+    "estimated_cycles": 148158288,
+    "symbol": "[k] dev_hash_map_redirect"
+  },
+  {
+    "self_percent": 0.39,
+    "estimated_cycles": 145780554,
+    "symbol": "[k] __next_zones_zonelist"
+  },
+  {
+    "self_percent": 0.37,
+    "estimated_cycles": 136663584,
+    "symbol": "[k] pv_native_safe_halt"
+  },
+  {
+    "self_percent": 0.37,
+    "estimated_cycles": 136336673,
+    "symbol": "[k] srso_alias_return_thunk"
+  },
+  {
+    "self_percent": 0.37,
+    "estimated_cycles": 136181832,
+    "symbol": "[k] bpf_xdp_adjust_head"
+  },
+  {
+    "self_percent": 0.36,
+    "estimated_cycles": 135486920,
+    "symbol": "[k] __nr_to_section"
+  },
+  {
+    "self_percent": 0.36,
+    "estimated_cycles": 134923149,
+    "symbol": "[k] __napi_schedule"
+  },
+  {
+    "self_percent": 0.35,
+    "estimated_cycles": 130831369,
+    "symbol": "[k] native_write_msr"
+  },
+  {
+    "self_percent": 0.34,
+    "estimated_cycles": 125711544,
+    "symbol": "[k] bpf_lru_pop_free"
+  },
+  {
+    "self_percent": 0.34,
+    "estimated_cycles": 124564336,
+    "symbol": "[k] skb_defer_free_flush"
+  },
+  {
+    "self_percent": 0.33,
+    "estimated_cycles": 123065241,
+    "symbol": "[k] __rcu_read_lock"
+  },
+  {
+    "self_percent": 0.33,
+    "estimated_cycles": 122732791,
+    "symbol": "[k] __x86_indirect_thunk_rdx"
+  },
+  {
+    "self_percent": 0.32,
+    "estimated_cycles": 117030310,
+    "symbol": "[k] cpu_map_bpf_prog_run"
+  },
+  {
+    "self_percent": 0.31,
+    "estimated_cycles": 115494866,
+    "symbol": "[k] _raw_spin_trylock"
+  },
+  {
+    "self_percent": 0.3,
+    "estimated_cycles": 112588176,
+    "symbol": "[k] pvclock_clocksource_read_nowd"
+  },
+  {
+    "self_percent": 0.29,
+    "estimated_cycles": 105980391,
+    "symbol": "[k] __switch_to"
+  },
+  {
+    "self_percent": 0.28,
+    "estimated_cycles": 103846759,
+    "symbol": "[k] __rcu_read_unlock"
+  },
+  {
+    "self_percent": 0.27,
+    "estimated_cycles": 101079550,
+    "symbol": "[k] bpf_obj_memcpy"
+  },
+  {
+    "self_percent": 0.26,
+    "estimated_cycles": 98301496,
+    "symbol": "[k] bpf_obj_cancel_fields"
+  },
+  {
+    "self_percent": 0.26,
+    "estimated_cycles": 97791293,
+    "symbol": "[k] __schedule"
+  },
+  {
+    "self_percent": 0.23,
+    "estimated_cycles": 86630729,
+    "symbol": "[k] xdpf_clone"
+  },
+  {
+    "self_percent": 0.22,
+    "estimated_cycles": 82058942,
+    "symbol": "[k] psi_group_change"
+  },
+  {
+    "self_percent": 0.22,
+    "estimated_cycles": 80074454,
+    "symbol": "[k] native_read_msr"
+  },
+  {
+    "self_percent": 0.2,
+    "estimated_cycles": 75030389,
+    "symbol": "[k] netdev_upper_get_next_dev_rcu"
+  },
+  {
+    "self_percent": 0.19,
+    "estimated_cycles": 72108583,
+    "symbol": "[k] bpf_lru_push_free"
+  },
+  {
+    "self_percent": 0.19,
+    "estimated_cycles": 70091677,
+    "symbol": "[k] __update_load_avg_se"
+  },
+  {
+    "self_percent": 0.18,
+    "estimated_cycles": 68519901,
+    "symbol": "[k] perf_trace_buf_alloc"
+  },
+  {
+    "self_percent": 0.18,
+    "estimated_cycles": 65844990,
+    "symbol": "[k] __update_load_avg_cfs_rq"
+  },
+  {
+    "self_percent": 0.17,
+    "estimated_cycles": 63990077,
+    "symbol": "[k] perf_trace_run_bpf_submit"
+  },
+  {
+    "self_percent": 0.17,
+    "estimated_cycles": 63411907,
+    "symbol": "[k] _find_next_bit"
+  },
+  {
+    "self_percent": 0.16,
+    "estimated_cycles": 59173996,
+    "symbol": "[k] veth_ndo_xdp_xmit"
+  },
+  {
+    "self_percent": 0.16,
+    "estimated_cycles": 57609426,
+    "symbol": "[k] __dev_flush"
+  },
+  {
+    "self_percent": 0.15,
+    "estimated_cycles": 54604803,
+    "symbol": "[k] trace_call_bpf"
+  },
+  {
+    "self_percent": 0.14,
+    "estimated_cycles": 53555970,
+    "symbol": "[k] ttwu_do_activate"
+  },
+  {
+    "self_percent": 0.14,
+    "estimated_cycles": 52836176,
+    "symbol": "[k] __alloc_pages_noprof"
+  },
+  {
+    "self_percent": 0.14,
+    "estimated_cycles": 52732503,
+    "symbol": "[k] sched_ttwu_pending"
+  },
+  {
+    "self_percent": 0.14,
+    "estimated_cycles": 52418486,
+    "symbol": "[k] psi_task_switch"
+  },
+  {
+    "self_percent": 0.14,
+    "estimated_cycles": 51904420,
+    "symbol": "[k] pick_task_fair"
+  },
+  {
+    "self_percent": 0.14,
+    "estimated_cycles": 51530768,
+    "symbol": "[k] update_load_avg"
+  },
+  {
+    "self_percent": 0.14,
+    "estimated_cycles": 51229436,
+    "symbol": "[k] kthread_should_stop"
+  },
+  {
+    "self_percent": 0.14,
+    "estimated_cycles": 51080569,
+    "symbol": "[k] enqueue_task_fair"
+  },
+  {
+    "self_percent": 0.13,
+    "estimated_cycles": 49046433,
+    "symbol": "[k] dequeue_entity"
+  },
+  {
+    "self_percent": 0.13,
+    "estimated_cycles": 48456394,
+    "symbol": "[k] ktime_get_mono_fast_ns"
+  },
+  {
+    "self_percent": 0.13,
+    "estimated_cycles": 46951071,
+    "symbol": "[k] __napi_poll"
+  },
+  {
+    "self_percent": 0.11,
+    "estimated_cycles": 41029114,
+    "symbol": "[k] __mem_cgroup_uncharge"
+  },
+  {
+    "self_percent": 0.11,
+    "estimated_cycles": 40781040,
+    "symbol": "[k] __sched_balance_update_blocked_averages"
+  },
+  {
+    "self_percent": 0.11,
+    "estimated_cycles": 39876228,
+    "symbol": "[k] bpf_map_free_internal_structs"
+  },
+  {
+    "self_percent": 0.11,
+    "estimated_cycles": 39664662,
+    "symbol": "[k] update_curr"
+  },
+  {
+    "self_percent": 0.1,
+    "estimated_cycles": 38614051,
+    "symbol": "[k] check_timeout"
+  },
+  {
+    "self_percent": 0.1,
+    "estimated_cycles": 38304090,
+    "symbol": "[k] __flush_smp_call_function_queue"
+  },
+  {
+    "self_percent": 0.1,
+    "estimated_cycles": 38058848,
+    "symbol": "[k] asm_sysvec_call_function_single"
+  },
+  {
+    "self_percent": 0.1,
+    "estimated_cycles": 36961288,
+    "symbol": "[k] irqentry_exit"
+  },
+  {
+    "self_percent": 0.1,
+    "estimated_cycles": 36690885,
+    "symbol": "[k] cpuacct_charge"
+  },
+  {
+    "self_percent": 0.1,
+    "estimated_cycles": 36335262,
+    "symbol": "[k] sched_balance_newidle"
+  },
+  {
+    "self_percent": 0.1,
+    "estimated_cycles": 36123341,
+    "symbol": "[k] sched_clock_cpu"
+  },
+  {
+    "self_percent": 0.1,
+    "estimated_cycles": 35940949,
+    "symbol": "[k] update_cfs_rq_load_avg"
+  },
+  {
+    "self_percent": 0.1,
+    "estimated_cycles": 35522313,
+    "symbol": "[k] update_rq_clock"
+  },
+  {
+    "self_percent": 0.09,
+    "estimated_cycles": 32513028,
+    "symbol": "[k] tick_nohz_idle_enter"
+  },
+  {
+    "self_percent": 0.08,
+    "estimated_cycles": 30013206,
+    "symbol": "[k] napi_schedule_prep"
+  },
+  {
+    "self_percent": 0.08,
+    "estimated_cycles": 29604528,
+    "symbol": "[k] rb_next"
+  },
+  {
+    "self_percent": 0.08,
+    "estimated_cycles": 29591102,
+    "symbol": "[k] set_next_task_fair"
+  },
+  {
+    "self_percent": 0.08,
+    "estimated_cycles": 28452561,
+    "symbol": "[k] raw_spin_rq_unlock"
+  },
+  {
+    "self_percent": 0.08,
+    "estimated_cycles": 28360477,
+    "symbol": "[k] pick_next_task_fair"
+  },
+  {
+    "self_percent": 0.08,
+    "estimated_cycles": 28339570,
+    "symbol": "[k] do_idle"
+  },
+  {
+    "self_percent": 0.08,
+    "estimated_cycles": 28066846,
+    "symbol": "[k] asm_sysvec_call_function"
+  },
+  {
+    "self_percent": 0.07,
+    "estimated_cycles": 27801341,
+    "symbol": "[k] hrtimer_interrupt"
+  },
+  {
+    "self_percent": 0.07,
+    "estimated_cycles": 27213790,
+    "symbol": "[k] try_to_block_task.constprop.0.isra.0"
+  },
+  {
+    "self_percent": 0.07,
+    "estimated_cycles": 27125341,
+    "symbol": "[k] irq_work_tick"
+  },
+  {
+    "self_percent": 0.07,
+    "estimated_cycles": 26883417,
+    "symbol": "[k] __wrgsbase_inactive"
+  },
+  {
+    "self_percent": 0.07,
+    "estimated_cycles": 26867443,
+    "symbol": "[k] llist_del_first"
+  },
+  {
+    "self_percent": 0.07,
+    "estimated_cycles": 26654283,
+    "symbol": "[k] account_system_index_time"
+  },
+  {
+    "self_percent": 0.07,
+    "estimated_cycles": 26379363,
+    "symbol": "[k] perf_adjust_freq_unthr_context"
+  },
+  {
+    "self_percent": 0.07,
+    "estimated_cycles": 26293256,
+    "symbol": "[k] prepare_task_switch"
+  },
+  {
+    "self_percent": 0.07,
+    "estimated_cycles": 25581458,
+    "symbol": "[k] enqueue_entity"
+  },
+  {
+    "self_percent": 0.07,
+    "estimated_cycles": 25315213,
+    "symbol": "[k] sched_clock"
+  },
+  {
+    "self_percent": 0.07,
+    "estimated_cycles": 24954357,
+    "symbol": "[k] psi_flags_change"
+  },
+  {
+    "self_percent": 0.07,
+    "estimated_cycles": 24622177,
+    "symbol": "[k] do_softirq.part.0"
+  },
+  {
+    "self_percent": 0.07,
+    "estimated_cycles": 24433738,
+    "symbol": "[k] update_curr_idle"
+  },
+  {
+    "self_percent": 0.07,
+    "estimated_cycles": 24269972,
+    "symbol": "[k] kvm_clock_get_cycles"
+  },
+  {
+    "self_percent": 0.07,
+    "estimated_cycles": 24265527,
+    "symbol": "[k] psi_task_change"
+  },
+  {
+    "self_percent": 0.07,
+    "estimated_cycles": 24244259,
+    "symbol": "[k] cpuidle_idle_call"
+  },
+  {
+    "self_percent": 0.06,
+    "estimated_cycles": 23600090,
+    "symbol": "[k] tsc_verify_tsc_adjust"
+  },
+  {
+    "self_percent": 0.06,
+    "estimated_cycles": 23295766,
+    "symbol": "[k] __raw_spin_lock_irqsave"
+  },
+  {
+    "self_percent": 0.06,
+    "estimated_cycles": 22738487,
+    "symbol": "[k] record_times"
+  },
+  {
+    "self_percent": 0.06,
+    "estimated_cycles": 22676086,
+    "symbol": "[k] dequeue_task"
+  },
+  {
+    "self_percent": 0.06,
+    "estimated_cycles": 22445098,
+    "symbol": "[k] rcu_preempt_deferred_qs"
+  },
+  {
+    "self_percent": 0.06,
+    "estimated_cycles": 21853739,
+    "symbol": "[k] perf_trace_xdp_cpumap_kthread"
+  },
+  {
+    "self_percent": 0.06,
+    "estimated_cycles": 21407431,
+    "symbol": "[k] __resched_curr"
+  },
+  {
+    "self_percent": 0.06,
+    "estimated_cycles": 21319241,
+    "symbol": "[k] __mod_zone_page_state"
+  },
+  {
+    "self_percent": 0.06,
+    "estimated_cycles": 21269620,
+    "symbol": "[k] update_cfs_group"
+  },
+  {
+    "self_percent": 0.05,
+    "estimated_cycles": 19703186,
+    "symbol": "[k] vruntime_eligible"
+  },
+  {
+    "self_percent": 0.05,
+    "estimated_cycles": 19101704,
+    "symbol": "[k] htab_lru_percpu_map_update_elem"
+  },
+  {
+    "self_percent": 0.05,
+    "estimated_cycles": 18785565,
+    "symbol": "[k] update_process_times"
+  },
+  {
+    "self_percent": 0.05,
+    "estimated_cycles": 17623904,
+    "symbol": "[k] llist_reverse_order"
+  },
+  {
+    "self_percent": 0.04,
+    "estimated_cycles": 15313930,
+    "symbol": "[k] __remove_hrtimer"
+  },
+  {
+    "self_percent": 0.04,
+    "estimated_cycles": 15046529,
+    "symbol": "[k] napi_complete_done"
+  },
+  {
+    "self_percent": 0.04,
+    "estimated_cycles": 14477811,
+    "symbol": "[k] rcu_core"
+  },
+  {
+    "self_percent": 0.04,
+    "estimated_cycles": 14354747,
+    "symbol": "[.] 0x000000000d81f640"
+  },
+  {
+    "self_percent": 0.04,
+    "estimated_cycles": 14311259,
+    "symbol": "[k] pktgen_thread_worker"
+  },
+  {
+    "self_percent": 0.04,
+    "estimated_cycles": 14310888,
+    "symbol": "[k] update_fast_timekeeper"
+  },
+  {
+    "self_percent": 0.04,
+    "estimated_cycles": 14282889,
+    "symbol": "[k] __dequeue_entity"
+  },
+  {
+    "self_percent": 0.04,
+    "estimated_cycles": 14280434,
+    "symbol": "[k] tmigr_requires_handle_remote"
+  },
+  {
+    "self_percent": 0.04,
+    "estimated_cycles": 14259199,
+    "symbol": "[k] rcu_note_context_switch"
+  },
+  {
+    "self_percent": 0.04,
+    "estimated_cycles": 14245842,
+    "symbol": "[k] __x64_sys_fcntl"
+  },
+  {
+    "self_percent": 0.04,
+    "estimated_cycles": 14225089,
+    "symbol": "[k] set_task_cpu"
+  },
+  {
+    "self_percent": 0.04,
+    "estimated_cycles": 14221165,
+    "symbol": "[k] timerqueue_add"
+  },
+  {
+    "self_percent": 0.04,
+    "estimated_cycles": 14214539,
+    "symbol": "[.] 0x0000000000032c84"
+  },
+  {
+    "self_percent": 0.04,
+    "estimated_cycles": 14187735,
+    "symbol": "[.] 0x00000000000355c2"
+  },
+  {
+    "self_percent": 0.04,
+    "estimated_cycles": 14160079,
+    "symbol": "[k] do_futex"
+  },
+  {
+    "self_percent": 0.04,
+    "estimated_cycles": 14087652,
+    "symbol": "[.] 0x0000000000082471"
+  },
+  {
+    "self_percent": 0.04,
+    "estimated_cycles": 13943447,
+    "symbol": "[k] __enqueue_entity"
+  },
+  {
+    "self_percent": 0.04,
+    "estimated_cycles": 13503816,
+    "symbol": "[.] 0x000000000d820cc9"
+  },
+  {
+    "self_percent": 0.04,
+    "estimated_cycles": 13495435,
+    "symbol": "[k] task_tick_fair"
+  },
+  {
+    "self_percent": 0.04,
+    "estimated_cycles": 13411060,
+    "symbol": "[k] entry_SYSCALL_64_after_hwframe"
+  },
+  {
+    "self_percent": 0.04,
+    "estimated_cycles": 13218505,
+    "symbol": "[k] default_idle"
+  },
+  {
+    "self_percent": 0.04,
+    "estimated_cycles": 13189275,
+    "symbol": "[k] raise_softirq_irqoff"
+  },
+  {
+    "self_percent": 0.04,
+    "estimated_cycles": 13126847,
+    "symbol": "[k] sched_tick"
+  },
+  {
+    "self_percent": 0.04,
+    "estimated_cycles": 13060275,
+    "symbol": "[k] update_se"
+  },
+  {
+    "self_percent": 0.03,
+    "estimated_cycles": 12892651,
+    "symbol": "[k] sched_core_idle_cpu"
+  },
+  {
+    "self_percent": 0.03,
+    "estimated_cycles": 12887259,
+    "symbol": "[k] local_touch_nmi"
+  },
+  {
+    "self_percent": 0.03,
+    "estimated_cycles": 12881431,
+    "symbol": "[k] pick_next_task"
+  },
+  {
+    "self_percent": 0.03,
+    "estimated_cycles": 12858775,
+    "symbol": "[k] __calc_delta.constprop.0"
+  },
+  {
+    "self_percent": 0.03,
+    "estimated_cycles": 12645605,
+    "symbol": "[k] irq_exit_rcu"
+  },
+  {
+    "self_percent": 0.03,
+    "estimated_cycles": 12535873,
+    "symbol": "[k] update_sg_lb_stats"
+  },
+  {
+    "self_percent": 0.03,
+    "estimated_cycles": 12481043,
+    "symbol": "[.] 0x000000000017787d"
+  },
+  {
+    "self_percent": 0.03,
+    "estimated_cycles": 12478235,
+    "symbol": "[k] tick_program_event"
+  },
+  {
+    "self_percent": 0.03,
+    "estimated_cycles": 12466261,
+    "symbol": "[k] ktime_get"
+  },
+  {
+    "self_percent": 0.03,
+    "estimated_cycles": 12437909,
+    "symbol": "[k] native_load_tls"
+  },
+  {
+    "self_percent": 0.03,
+    "estimated_cycles": 12372679,
+    "symbol": "[k] put_prev_task_idle"
+  },
+  {
+    "self_percent": 0.03,
+    "estimated_cycles": 12311742,
+    "symbol": "[k] ct_kernel_exit.isra.0"
+  },
+  {
+    "self_percent": 0.03,
+    "estimated_cycles": 12304676,
+    "symbol": "[k] _raw_spin_lock_irqsave"
+  },
+  {
+    "self_percent": 0.03,
+    "estimated_cycles": 12165913,
+    "symbol": "[.] 0x0000000000074157"
+  },
+  {
+    "self_percent": 0.03,
+    "estimated_cycles": 12118943,
+    "symbol": "[k] tracing_record_taskinfo_sched_switch"
+  },
+  {
+    "self_percent": 0.03,
+    "estimated_cycles": 12040778,
+    "symbol": "[k] vsnprintf"
+  },
+  {
+    "self_percent": 0.03,
+    "estimated_cycles": 12026794,
+    "symbol": "[k] __secure_computing"
+  },
+  {
+    "self_percent": 0.03,
+    "estimated_cycles": 11988688,
+    "symbol": "[k] finish_task_switch.isra.0"
+  },
+  {
+    "self_percent": 0.03,
+    "estimated_cycles": 11968595,
+    "symbol": "[k] ct_irq_exit"
+  },
+  {
+    "self_percent": 0.03,
+    "estimated_cycles": 11939440,
+    "symbol": "[k] probe_sched_switch"
+  },
+  {
+    "self_percent": 0.03,
+    "estimated_cycles": 11882971,
+    "symbol": "[.] 0x000000000002373d"
+  },
+  {
+    "self_percent": 0.03,
+    "estimated_cycles": 11807222,
+    "symbol": "[k] tick_nohz_next_event"
+  },
+  {
+    "self_percent": 0.03,
+    "estimated_cycles": 11609917,
+    "symbol": "[.] 0x00000000043150ae"
+  },
+  {
+    "self_percent": 0.03,
+    "estimated_cycles": 11514448,
+    "symbol": "[k] xdp_do_flush"
+  },
+  {
+    "self_percent": 0.03,
+    "estimated_cycles": 11419206,
+    "symbol": "[k] account_system_time"
+  },
+  {
+    "self_percent": 0.03,
+    "estimated_cycles": 11071541,
+    "symbol": "[k] __do_softirq"
+  },
+  {
+    "self_percent": 0.03,
+    "estimated_cycles": 10881081,
+    "symbol": "[.] 0x0000000000963ae3"
+  },
+  {
+    "self_percent": 0.03,
+    "estimated_cycles": 10829098,
+    "symbol": "[k] dequeue_entities"
+  },
+  {
+    "self_percent": 0.03,
+    "estimated_cycles": 10810393,
+    "symbol": "[k] __get_next_timer_interrupt"
+  },
+  {
+    "self_percent": 0.03,
+    "estimated_cycles": 10175322,
+    "symbol": "[k] _find_first_bit"
+  },
+  {
+    "self_percent": 0.03,
+    "estimated_cycles": 10168032,
+    "symbol": "[k] __switch_to_asm"
+  },
+  {
+    "self_percent": 0.03,
+    "estimated_cycles": 9991084,
+    "symbol": "[.] internal/runtime/syscall.EpollWait"
+  },
+  {
+    "self_percent": 0.03,
+    "estimated_cycles": 9733264,
+    "symbol": "[k] tick_check_broadcast_expired"
+  },
+  {
+    "self_percent": 0.02,
+    "estimated_cycles": 8808571,
+    "symbol": "[k] check_update_overutilized_status"
+  },
+  {
+    "self_percent": 0.02,
+    "estimated_cycles": 8555927,
+    "symbol": "[k] tmigr_active_up"
+  },
+  {
+    "self_percent": 0.02,
+    "estimated_cycles": 8061279,
+    "symbol": "[k] bpf_dispatcher_xdp"
+  },
+  {
+    "self_percent": 0.02,
+    "estimated_cycles": 8053634,
+    "symbol": "[k] tmigr_handle_remote_cpu"
+  },
+  {
+    "self_percent": 0.02,
+    "estimated_cycles": 7987041,
+    "symbol": "[k] perf_swevent_get_recursion_context"
+  },
+  {
+    "self_percent": 0.02,
+    "estimated_cycles": 6374294,
+    "symbol": "[.] 0x000000000049eec4"
+  },
+  {
+    "self_percent": 0.02,
+    "estimated_cycles": 6305075,
+    "symbol": "[k] __rdgsbase_inactive"
+  },
+  {
+    "self_percent": 0.02,
+    "estimated_cycles": 6093496,
+    "symbol": "[k] generic_smp_call_function_single_interrupt"
+  },
+  {
+    "self_percent": 0.02,
+    "estimated_cycles": 5921666,
+    "symbol": "[k] apparmor_file_open"
+  },
+  {
+    "self_percent": 0.01,
+    "estimated_cycles": 4966066,
+    "symbol": "[k] error_return"
+  },
+  {
+    "self_percent": 0.01,
+    "estimated_cycles": 4959144,
+    "symbol": "[k] raw_spin_rq_lock_nested"
+  },
+  {
+    "self_percent": 0.01,
+    "estimated_cycles": 4699722,
+    "symbol": "[k] account_process_tick"
+  },
+  {
+    "self_percent": 0.01,
+    "estimated_cycles": 4311814,
+    "symbol": "[k] update_entity_lag"
+  },
+  {
+    "self_percent": 0.01,
+    "estimated_cycles": 4221195,
+    "symbol": "[k] update_curr_dl_se"
+  },
+  {
+    "self_percent": 0.01,
+    "estimated_cycles": 3429717,
+    "symbol": "[k] __run_timers"
+  },
+  {
+    "self_percent": 0.01,
+    "estimated_cycles": 3166277,
+    "symbol": "[k] exit_to_user_mode_loop"
+  },
+  {
+    "self_percent": 0.01,
+    "estimated_cycles": 2823699,
+    "symbol": "[k] nf_nat_inet_fn"
+  },
+  {
+    "self_percent": 0.01,
+    "estimated_cycles": 2785269,
+    "symbol": "[k] cleanup_module"
+  },
+  {
+    "self_percent": 0.01,
+    "estimated_cycles": 2503506,
+    "symbol": "[.] 0x000000000d91e5a4"
+  },
+  {
+    "self_percent": 0.01,
+    "estimated_cycles": 2025037,
+    "symbol": "[k] try_to_wake_up"
+  },
+  {
+    "self_percent": 0.01,
+    "estimated_cycles": 1957317,
+    "symbol": "[.] 0x000000000008bd2a"
+  },
+  {
+    "self_percent": 0.01,
+    "estimated_cycles": 1893607,
+    "symbol": "[.] 0x000000000009b946"
+  },
+  {
+    "self_percent": 0.01,
+    "estimated_cycles": 1871331,
+    "symbol": "[k] __rb_insert_augmented"
+  },
+  {
+    "self_percent": 0.0,
+    "estimated_cycles": 1462750,
+    "symbol": "[k] __htab_map_lookup_and_delete_batch"
+  },
+  {
+    "self_percent": 0.0,
+    "estimated_cycles": 1363187,
+    "symbol": "[k] do_syscall_64"
+  },
+  {
+    "self_percent": 0.0,
+    "estimated_cycles": 1300124,
+    "symbol": "[k] propagate_entity_load_avg"
+  },
+  {
+    "self_percent": 0.0,
+    "estimated_cycles": 1116909,
+    "symbol": "[k] wakeup_preempt"
+  },
+  {
+    "self_percent": 0.0,
+    "estimated_cycles": 1012754,
+    "symbol": "[k] os_xsave"
+  },
+  {
+    "self_percent": 0.0,
+    "estimated_cycles": 912372,
+    "symbol": "[.] 0x000000000d928162"
+  },
+  {
+    "self_percent": 0.0,
+    "estimated_cycles": 906122,
+    "symbol": "[k] set_next_entity"
+  },
+  {
+    "self_percent": 0.0,
+    "estimated_cycles": 11733,
+    "symbol": "[k] sched_setaffinity"
+  },
+  {
+    "self_percent": 0.0,
+    "estimated_cycles": 2982,
+    "symbol": "[k] __pi_memset"
+  },
+  {
+    "self_percent": 0.0,
+    "estimated_cycles": 18,
+    "symbol": "[k] __kmalloc_node_noprof"
+  },
+  {
+    "self_percent": 0.0,
+    "estimated_cycles": 17,
+    "symbol": "[k] __check_object_size"
+  },
+  {
+    "self_percent": 0.0,
+    "estimated_cycles": 14,
+    "symbol": "[k] check_heap_object"
+  },
+  {
+    "self_percent": 0.0,
+    "estimated_cycles": 2,
+    "symbol": "[.] ioctl"
+  },
+  {
+    "self_percent": 0.0,
+    "estimated_cycles": 2,
+    "symbol": "[k] put_ctx"
+  }
+]

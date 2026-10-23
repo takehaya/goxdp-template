@@ -1,0 +1,130 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 1K of event 'cycles'
+# Event count (approx.): 28920289745
+#
+# Overhead;      Period;Symbol                                                           ;IPC   [IPC Coverage]
+ 1.41%  ; 407193537  ;[k] __alloc_frozen_pages_noprof                                  ;-      -
+ 0.25%  ; 72677648   ;[k] __alloc_pages_noprof                                         ;-      -
+ 0.00%  ; 17         ;[k] __check_object_size                                          ;-      -
+ 0.05%  ; 14553179   ;[k] __dequeue_entity                                             ;-      -
+ 0.30%  ; 87049854   ;[k] __dev_flush                                                  ;-      -
+ 0.96%  ; 276376570  ;[k] __folio_put                                                  ;-      -
+ 2.46%  ; 712583723  ;[k] __free_frozen_pages                                          ;-      -
+ 1.31%  ; 377965899  ;[k] __free_one_page                                              ;-      -
+ 2.77%  ; 800195386  ;[k] __htab_lru_percpu_map_update_elem                            ;-      -
+ 3.62%  ; 1046528854 ;[k] __htab_map_lookup_elem                                       ;-      -
+ 0.00%  ; 5526       ;[k] __kmalloc_node_noprof                                        ;-      -
+ 0.05%  ; 14567726   ;[k] __local_bh_enable_ip                                         ;-      -
+ 0.05%  ; 14418197   ;[k] __mem_cgroup_uncharge                                        ;-      -
+ 0.05%  ; 14505201   ;[k] __mod_zone_page_state                                        ;-      -
+ 0.15%  ; 43587342   ;[k] __napi_schedule                                              ;-      -
+ 0.25%  ; 72838276   ;[k] __next_zones_zonelist                                        ;-      -
+ 0.40%  ; 116236184  ;[k] __nr_to_section                                              ;-      -
+ 2.32%  ; 669568317  ;[k] __pi_memcpy                                                  ;-      -
+ 0.15%  ; 43509407   ;[k] __pv_queued_spin_lock_slowpath                               ;-      -
+ 0.60%  ; 174513246  ;[k] __raw_callee_save___pv_queued_spin_unlock                    ;-      -
+ 0.10%  ; 29093477   ;[k] __raw_spin_lock_irqsave                                      ;-      -
+ 0.10%  ; 29110487   ;[k] __rcu_read_lock                                              ;-      -
+ 0.30%  ; 87300011   ;[k] __rcu_read_unlock                                            ;-      -
+ 0.75%  ; 217841942  ;[k] __rmqueue_pcplist                                            ;-      -
+ 0.05%  ; 14542117   ;[k] __switch_to                                                  ;-      -
+ 0.05%  ; 14492818   ;[k] __switch_to_asm                                              ;-      -
+ 0.05%  ; 14559163   ;[k] __update_load_avg_cfs_rq                                     ;-      -
+ 0.10%  ; 29176107   ;[k] __x86_indirect_thunk_rdx                                     ;-      -
+ 1.71%  ; 493999051  ;[k] __xdp_return                                                 ;-      -
+ 0.05%  ; 14582966   ;[k] _find_first_bit                                              ;-      -
+ 0.30%  ; 87226281   ;[k] _find_next_bit                                               ;-      -
+ 2.31%  ; 668446838  ;[k] _raw_spin_lock                                               ;-      -
+ 0.35%  ; 101960436  ;[k] _raw_spin_trylock                                            ;-      -
+ 1.36%  ; 392423444  ;[k] _raw_spin_unlock                                             ;-      -
+ 0.05%  ; 14549099   ;[k] _raw_spin_unlock_irqrestore                                  ;-      -
+ 0.05%  ; 14568164   ;[k] account_system_index_time                                    ;-      -
+ 0.05%  ; 14561354   ;[k] arch_scale_freq_tick                                         ;-      -
+ 0.50%  ; 145441280  ;[k] asm_sysvec_apic_timer_interrupt                              ;-      -
+ 0.80%  ; 232412323  ;[k] bpf_common_lru_pop_free                                      ;-      -
+ 0.40%  ; 116339924  ;[k] bpf_common_lru_push_free                                     ;-      -
+ 0.81%  ; 232993335  ;[k] bpf_dispatcher_xdp_func                                      ;-      -
+ 0.30%  ; 87332894   ;[k] bpf_lru_pop_free                                             ;-      -
+ 0.10%  ; 29124419   ;[k] bpf_lru_push_free                                            ;-      -
+ 0.20%  ; 58244171   ;[k] bpf_map_free_internal_structs                                ;-      -
+ 0.25%  ; 72809252   ;[k] bpf_obj_cancel_fields                                        ;-      -
+ 0.70%  ; 203544248  ;[k] bpf_obj_memcpy                                               ;-      -
+ 7.30%  ; 2110964919 ;[k] bpf_prog_2877afe1eb03791e_vxlan_rewrite                      ;-      -
+ 2.86%  ; 828493180  ;[k] bpf_prog_80dbfeadbc3fcc56_vxlan_cpu_forward                  ;-      -
+ 0.35%  ; 101809427  ;[k] bpf_prog_888053cf45392463_tracepoint_xdp_xdp_cpumap_kthread_3;-      -
+ 0.70%  ; 203624334  ;[k] bpf_prog_cfdd691df7535532_vxlan_cpu                          ;-      -
+ 1.21%  ; 349378472  ;[k] bpf_prog_cfdd691df7535532_vxlan_egress                       ;-      -
+ 1.06%  ; 305469544  ;[k] bpf_prog_e05ca328fbeb63d0_xdp_rx                             ;-      -
+ 0.60%  ; 174353713  ;[k] bpf_xdp_adjust_head                                          ;-      -
+ 0.50%  ; 145425838  ;[k] bpf_xdp_adjust_meta                                          ;-      -
+ 0.55%  ; 159918610  ;[k] bq_enqueue                                                   ;-      -
+ 0.10%  ; 29081850   ;[k] bq_xmit_all                                                  ;-      -
+ 0.50%  ; 145600310  ;[k] cpu_map_bpf_prog_run                                         ;-      -
+ 4.64%  ; 1341129656 ;[k] cpu_map_bpf_prog_run_xdp                                     ;-      -
+ 1.71%  ; 494542142  ;[k] cpu_map_kthread_run                                          ;-      -
+ 0.30%  ; 87187919   ;[k] dev_hash_map_redirect                                        ;-      -
+ 2.16%  ; 626052304  ;[k] dev_map_bpf_prog_run                                         ;-      -
+ 6.28%  ; 1816610018 ;[k] dev_map_enqueue_multi                                        ;-      -
+ 0.05%  ; 14567575   ;[k] do_softirq.part.0                                            ;-      -
+ 0.00%  ; 2          ;[k] fpregs_assert_state_consistent                               ;-      -
+ 0.75%  ; 218307468  ;[k] free_frozen_page_commit.isra.0                               ;-      -
+ 0.45%  ; 130910294  ;[k] free_frozen_pages                                            ;-      -
+ 1.43%  ; 413888236  ;[k] free_pcppages_bulk                                           ;-      -
+ 1.61%  ; 465385265  ;[k] get_page_from_freelist                                       ;-      -
+ 0.50%  ; 145261128  ;[k] handle_softirqs                                              ;-      -
+ 0.35%  ; 101921833  ;[k] htab_lock_bucket                                             ;-      -
+ 2.72%  ; 785416874  ;[k] htab_lru_percpu_map_lookup_elem                              ;-      -
+ 0.20%  ; 58125560   ;[k] htab_lru_percpu_map_update_elem                              ;-      -
+ 3.02%  ; 871949949  ;[k] htab_map_hash                                                ;-      -
+ 0.10%  ; 29009332   ;[k] irq_work_tick                                                ;-      -
+ 0.40%  ; 116213391  ;[k] is_valid_dst                                                 ;-      -
+ 3.02%  ; 872724499  ;[k] kernel_init_pages                                            ;-      -
+ 0.05%  ; 14550545   ;[k] kthread_should_stop                                          ;-      -
+ 0.05%  ; 14550038   ;[k] ktime_get                                                    ;-      -
+ 0.10%  ; 29037086   ;[k] ktime_get_update_offsets_now                                 ;-      -
+ 0.20%  ; 58019825   ;[k] llist_del_first                                              ;-      -
+ 0.40%  ; 116394832  ;[k] lookup_elem_raw                                              ;-      -
+ 4.73%  ; 1366966268 ;[k] lookup_nulls_elem_raw                                        ;-      -
+ 0.65%  ; 189074389  ;[k] memcmp                                                       ;-      -
+ 0.15%  ; 43445654   ;[k] napi_complete_done                                           ;-      -
+ 0.05%  ; 14536208   ;[k] napi_schedule_prep                                           ;-      -
+ 0.15%  ; 43695789   ;[k] native_read_msr                                              ;-      -
+ 0.25%  ; 72641049   ;[k] native_write_msr                                             ;-      -
+ 0.65%  ; 188828295  ;[k] net_rx_action                                                ;-      -
+ 0.15%  ; 43459641   ;[k] netdev_upper_get_next_dev_rcu                                ;-      -
+ 1.96%  ; 566593910  ;[k] page_pool_put_unrefed_netmem                                 ;-      -
+ 0.55%  ; 160083354  ;[k] page_pool_return_netmem                                      ;-      -
+ 0.91%  ; 261764088  ;[k] pcpu_copy_value                                              ;-      -
+ 0.15%  ; 43707315   ;[k] perf_trace_run_bpf_submit                                    ;-      -
+ 0.05%  ; 14552058   ;[k] pktgen_thread_worker                                         ;-      -
+ 0.36%  ; 103559380  ;[k] post_alloc_hook                                              ;-      -
+ 1.41%  ; 406952201  ;[k] prealloc_lru_pop                                             ;-      -
+ 0.05%  ; 14577893   ;[k] propagate_entity_load_avg                                    ;-      -
+ 0.10%  ; 29162494   ;[k] rcu_stall_kick_kthreads                                      ;-      -
+ 0.45%  ; 130994152  ;[k] rmqueue.isra.0                                               ;-      -
+ 1.46%  ; 421980594  ;[k] rmqueue_pcplist                                              ;-      -
+ 0.10%  ; 29034903   ;[k] sched_clock_noinstr                                          ;-      -
+ 0.30%  ; 87217425   ;[k] skb_defer_free_flush                                         ;-      -
+ 0.40%  ; 116107307  ;[k] srso_alias_return_thunk                                      ;-      -
+ 0.05%  ; 14467309   ;[k] task_tick_fair                                               ;-      -
+ 0.05%  ; 14568904   ;[k] tmigr_handle_remote                                          ;-      -
+ 0.55%  ; 159611668  ;[k] trace_call_bpf                                               ;-      -
+ 0.10%  ; 29177220   ;[k] veth_ndo_xdp_xmit                                            ;-      -
+ 0.76%  ; 218499988  ;[k] veth_poll                                                    ;-      -
+ 1.91%  ; 552449096  ;[k] veth_xdp_rcv                                                 ;-      -
+ 3.47%  ; 1003068228 ;[k] veth_xdp_rcv_one                                             ;-      -
+ 0.55%  ; 159884926  ;[k] veth_xdp_xmit                                                ;-      -
+ 0.05%  ; 14450628   ;[k] xdp_do_flush                                                 ;-      -
+ 1.05%  ; 304762839  ;[k] xdp_do_redirect                                              ;-      -
+ 0.96%  ; 276279058  ;[k] xdp_return_frame                                             ;-      -
+ 0.20%  ; 58142694   ;[k] xdpf_clone                                                   ;-      -
+ 0.05%  ; 14567162   ;[.] 0x00000000011132c6                                           ;-      -
+
+
+#
+# (Cannot load tips.txt file, please install perf!)
+#

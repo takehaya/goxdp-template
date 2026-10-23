@@ -1,0 +1,43 @@
+{
+  "time_utc": "2026-10-22T03:31:26Z",
+  "args": {
+    "binary": "/home/ubuntu/private/goxdp-template/bin/goxdp",
+    "counters": "/home/ubuntu/private/goxdp-template/bin/goxdp-perf-counters",
+    "xdperf": "/tmp/goxdp-xdperf",
+    "plugins": "/tmp/goxdp-bench-inputs",
+    "cpus": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "forward_cpus": [
+      8,
+      9,
+      10,
+      11
+    ],
+    "batch_size": 1,
+    "flows": 64,
+    "warmup": 2,
+    "seconds": 10,
+    "profile": true,
+    "pps": 400000
+  },
+  "binary_sha256": "9499635dbf7245175f5de31c85baa7e0c9e40bfabcc25a2ed7a05769bec148c5",
+  "xdperf_sha256": "f508471f23d5e7be8f92c88be547cac8dd90462e3033acfdc9239b97b328c977",
+  "counters_sha256": "deb7156cd40c8d2fa4342fefff34b4b2c81b3d9239ebb290137702d4da555197",
+  "plugin_sha256": "6e264ac2d39b59ac09d2eebfb193728edd68b2d82bb2b931c0b222a7992f9e9a",
+  "runner_sha256": "c7197eb919aa2494a6bfaf855980665b7671a5a841837ba81c8fbfae1fbfb43a",
+  "diagnostic_sha256": "0b789c0e2bfb14c1a264d5bea117a900087f36683d9378c345ca9445105b408a",
+  "controls": [
+    {
+      "flows": 64,
+      "pps": 400000
+    },
+    {
+      "flows": 4096,
+      "pps": 0
+    }
+  ]
+}

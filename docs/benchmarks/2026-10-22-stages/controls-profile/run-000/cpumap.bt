@@ -1,0 +1,13 @@
+BEGIN { printf("ready\n"); @start_ns = nsecs; }
+tracepoint:xdp:xdp_cpumap_enqueue /args.map_id == 365059/ {
+  @enqueue_processed[args.to_cpu] = sum(args.processed);
+  @enqueue_drops[args.to_cpu] = sum(args.drops);
+}
+tracepoint:xdp:xdp_cpumap_kthread /args.map_id == 365059/ {
+  @thread_processed[args.cpu] = sum(args.processed);
+  @thread_drops[args.cpu] = sum(args.drops);
+  @xdp_drop[args.cpu] = sum(args.xdp_drop);
+  @xdp_redirect[args.cpu] = sum(args.xdp_redirect);
+  @xdp_pass[args.cpu] = sum(args.xdp_pass);
+}
+END { @end_ns = nsecs; }

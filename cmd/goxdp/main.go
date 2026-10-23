@@ -1,14 +1,19 @@
 package main
 
 import (
+	"context"
+	"errors"
 	"fmt"
+	"io"
 	"log"
+	"net"
 	"os"
 	"os/signal"
 	"syscall"
 
 	"github.com/cilium/ebpf"
-	"github.com/pkg/errors"
+	"github.com/cilium/ebpf/link"
+	"github.com/cilium/ebpf/rlimit"
 	"github.com/takehaya/goxdp-template/pkg/coreelf"
 	"github.com/takehaya/goxdp-template/pkg/version"
 	"github.com/takehaya/goxdp-template/pkg/xdptool"
@@ -16,78 +21,313 @@ import (
 )
 
 func main() {
-	app := newApp(version.Version)
-	if err := app.Run(os.Args); err != nil {
-		log.Fatalf("%+v", err)
+	if err := newApp(version.Version).Run(os.Args); err != nil {
+		var verr *ebpf.VerifierError
+		if errors.As(err, &verr) {
+			log.Printf("%+v", verr)
+		}
+		log.Fatal(err)
 	}
 }
 
 func newApp(version string) *cli.App {
 	app := cli.NewApp()
-	app.Name = "goxdp_tmp"
+	app.Name = "goxdp"
 	app.Version = version
-
-	app.Usage = "A template for writing XDP programs in Go"
-
+	app.Usage = "XDP examples using cilium/ebpf"
 	app.EnableBashCompletion = true
 	app.Flags = []cli.Flag{
+		cli.StringFlag{
+			Name:  "backend",
+			Value: "xdp",
+			Usage: "Replication backend: xdp or tc (XDP ingress with TC cloning)",
+		},
+		cli.BoolFlag{
+			Name:  "cpu-redirect",
+			Usage: "Run VXLAN or FIB forwarding through CPUMAP before forwarding",
+		},
+		cli.IntSliceFlag{
+			Name:  "cpu",
+			Usage: "Target CPU for --cpu-redirect (repeatable; defaults to process affinity)",
+		},
+		cli.StringFlag{
+			Name:  "mode",
+			Value: "vxlan",
+			Usage: "Example to run: vxlan, broadcast, or fib",
+		},
+		cli.StringFlag{
+			Name:  "config",
+			Usage: "VXLAN JSON configuration (ports, VNI groups, and optional local FDB)",
+		},
 		cli.StringSliceFlag{
 			Name:  "device",
-			Value: &cli.StringSlice{"eth1"},
-			Usage: "Adding a device to attach",
+			Usage: "Ingress interface to attach to (repeatable)",
+		},
+		cli.StringSliceFlag{
+			Name:  "egress",
+			Usage: "Replication group member for broadcast mode (repeatable, up to 64)",
+		},
+		cli.StringSliceFlag{
+			Name:  "local-delivery",
+			Usage: "Local receiving veth (repeatable; add its peer as an egress/access member)",
 		},
 	}
 	app.Action = run
 	return app
 }
 
-func disposeDevice(devices []string) error {
-	for _, dev := range devices {
-		err := xdptool.Detach(dev)
+func run(ctx *cli.Context) error {
+	mode := ctx.String("mode")
+	backend := ctx.String("backend")
+	if backend != "xdp" && backend != "tc" {
+		return fmt.Errorf("unknown backend %q: choose xdp or tc", backend)
+	}
+	if backend == "tc" && mode == "fib" {
+		return errors.New("--backend tc is supported in broadcast and vxlan modes")
+	}
+	localDevices := ctx.StringSlice("local-delivery")
+	if len(localDevices) != 0 && mode != "broadcast" && mode != "vxlan" {
+		return errors.New("--local-delivery is supported in broadcast and vxlan modes")
+	}
+	redirectCPU := ctx.Bool("cpu-redirect")
+	if ctx.IsSet("cpu") && !redirectCPU {
+		return errors.New("--cpu requires --cpu-redirect")
+	}
+	if redirectCPU && mode != "vxlan" && mode != "fib" {
+		return errors.New("--cpu-redirect is supported in vxlan and fib modes")
+	}
+	if redirectCPU && !coreelf.CPUMAPEnabled {
+		return coreelf.ErrCPUMAPDisabled
+	}
+	var cpus []uint32
+	if redirectCPU {
+		var err error
+		cpus, err = coreelf.SelectCPUs(ctx.IntSlice("cpu"))
 		if err != nil {
-			return errors.WithStack(err)
+			return err
 		}
-		log.Println("detach device: ", dev)
+		log.Printf("CPU redirect targets: %v", cpus)
+	}
+	devices := ctx.StringSlice("device")
+	egress := ctx.StringSlice("egress")
+	var vxlanConfig coreelf.VXLANConfig
+	configPath := ctx.String("config")
+	if configPath != "" {
+		if mode != "vxlan" {
+			return errors.New("--config is only supported in vxlan mode")
+		}
+		f, err := os.Open(configPath)
+		if err != nil {
+			return err
+		}
+		vxlanConfig, err = coreelf.DecodeVXLANConfig(f)
+		f.Close()
+		if err != nil {
+			return err
+		}
+		if len(devices) == 0 {
+			devices = vxlanConfig.Devices()
+		}
+	}
+	if err := validateOptions(mode, devices, egress); err != nil {
+		return err
+	}
+	if _, err := interfaceIndices(devices); err != nil {
+		return err
+	}
+	ifindices, err := interfaceIndices(egress)
+	if err != nil {
+		return err
+	}
+	if err := validateLocalDelivery(localDevices, devices, egress, vxlanConfig.Devices()); err != nil {
+		return err
+	}
+	if mode == "vxlan" && configPath == "" {
+		return errors.New("vxlan mode requires --config; use --mode fib for the FIB lookup example")
+	}
+	if mode == "vxlan" {
+		configured := make(map[string]bool)
+		for _, name := range vxlanConfig.Devices() {
+			configured[name] = true
+		}
+		for _, name := range devices {
+			if !configured[name] {
+				return fmt.Errorf("device %s is absent from VXLAN config", name)
+			}
+		}
+	}
+	if err := rlimit.RemoveMemlock(); err != nil {
+		return fmt.Errorf("remove memlock limit: %w", err)
+	}
+
+	if mode == "broadcast" {
+		if backend == "tc" {
+			objs, err := coreelf.ReadTCBroadcastCollection(ifindices)
+			if err != nil {
+				return err
+			}
+			defer objs.Close()
+			return runAttached(objs.XdpBroadcast, objs.TcBroadcast, devices, localDevices)
+		}
+		objs, err := coreelf.ReadBroadcastCollection(ifindices)
+		if err != nil {
+			return err
+		}
+		defer objs.Close()
+		log.Printf("replication group: %v (ingress excluded)", egress)
+		return runAttached(objs.XdpBroadcast, nil, devices, localDevices)
+	}
+	if mode == "vxlan" {
+		load := coreelf.ReadVXLANCollection
+		if backend == "tc" {
+			load = coreelf.ReadTCVXLANCollection
+		}
+		obj, err := load(vxlanConfig, cpus...)
+		if err != nil {
+			return err
+		}
+		defer obj.Close()
+		return runAttached(obj.Program(), obj.TCProgram(), devices, localDevices)
+	}
+
+	ncpus, err := ebpf.PossibleCPU()
+	if err != nil {
+		return err
+	}
+	objs, err := coreelf.ReadCollection(ncpus, cpus...)
+	if err != nil {
+		return err
+	}
+	defer objs.Close()
+	if redirectCPU {
+		return runAttached(objs.CPUProgram(), nil, devices, nil)
+	}
+	return runAttached(objs.XdpProg, nil, devices, nil)
+}
+
+func validateLocalDelivery(receivers []string, forwarding ...[]string) error {
+	if _, err := interfaceIndices(receivers); err != nil {
+		return err
+	}
+	for _, name := range receivers {
+		for _, devices := range forwarding {
+			for _, device := range devices {
+				if name == device {
+					return fmt.Errorf("local-delivery receiver %s must be separate from forwarding ports", name)
+				}
+			}
+		}
+		iface, err := net.InterfaceByName(name)
+		if err != nil {
+			return err
+		}
+		if len(iface.HardwareAddr) != 6 {
+			return fmt.Errorf("local-delivery receiver %s must be an Ethernet interface", name)
+		}
 	}
 	return nil
 }
 
-func run(ctx *cli.Context) error {
-	devices := ctx.StringSlice("device")
-	log.Println(devices)
-	// get ebpf binary
-	obj, err := coreelf.ReadCollection(ebpf.MustPossibleCPU())
-	if err != nil {
-		var verr *ebpf.VerifierError
-		if !errors.As(err, &verr) {
-			fmt.Println("fail to load xdp objects for verifier log...")
-			fmt.Printf("%+v\n", verr)
-		}
-		return errors.WithStack(err)
+func validateOptions(mode string, devices, egress []string) error {
+	if mode != "vxlan" && mode != "broadcast" && mode != "fib" {
+		return fmt.Errorf("unknown mode %q: choose vxlan, broadcast, or fib", mode)
 	}
+	if len(devices) == 0 {
+		return errors.New("specify at least one --device ingress interface")
+	}
+	if mode == "broadcast" && len(egress) == 0 {
+		return errors.New("broadcast mode requires at least one --egress interface")
+	}
+	if mode != "broadcast" && len(egress) != 0 {
+		return errors.New("--egress is only supported in broadcast mode")
+	}
+	return nil
+}
 
-	//attach xdp
-	for _, dev := range devices {
-		err = xdptool.Attach(obj.XdpProg, dev)
+func interfaceIndices(names []string) ([]uint32, error) {
+	indices := make([]uint32, 0, len(names))
+	seen := make(map[string]bool, len(names))
+	for _, name := range names {
+		if seen[name] {
+			return nil, fmt.Errorf("duplicate interface %q", name)
+		}
+		iface, err := net.InterfaceByName(name)
 		if err != nil {
-			return errors.WithStack(err)
+			return nil, fmt.Errorf("find interface %q: %w", name, err)
 		}
-		log.Println("attached device: ", dev)
+		indices = append(indices, uint32(iface.Index))
+		seen[name] = true
 	}
+	return indices, nil
+}
 
-	signalChan := make(chan os.Signal, 1)
-	signal.Notify(signalChan, syscall.SIGHUP, syscall.SIGINT, syscall.SIGTERM, syscall.SIGQUIT)
+func runAttached(prog, tcProg *ebpf.Program, devices, localDevices []string) (retErr error) {
+	ctx, stop := signal.NotifyContext(context.Background(), syscall.SIGHUP, syscall.SIGINT, syscall.SIGTERM, syscall.SIGQUIT)
+	defer stop()
 
-	log.Println("XDP program successfully loaded and attached.")
-	log.Println("Press CTRL+C to stop.")
-	for {
-		select {
-		case <-signalChan:
-			err := disposeDevice(devices)
+	var links []link.Link
+	var localObjects []io.Closer
+	defer func() {
+		for i := len(links) - 1; i >= 0; i-- {
+			retErr = errors.Join(retErr, links[i].Close())
+		}
+		for _, objects := range localObjects {
+			retErr = errors.Join(retErr, objects.Close())
+		}
+	}()
+	for _, dev := range localDevices {
+		iface, err := net.InterfaceByName(dev)
+		if err != nil {
+			return err
+		}
+		var receiver *ebpf.Program
+		if tcProg != nil {
+			objects, err := coreelf.ReadTCLocalDeliveryCollection(iface.HardwareAddr)
 			if err != nil {
-				return errors.WithStack(err)
+				return err
 			}
-			return nil
+			localObjects = append(localObjects, objects)
+			tcLink, err := xdptool.AttachTC(objects.TcLocalReceive, dev)
+			if err != nil {
+				return err
+			}
+			links = append(links, tcLink)
+			receiver = objects.LocalReceive
+		} else {
+			objects, err := coreelf.ReadLocalDeliveryCollection(iface.HardwareAddr)
+			if err != nil {
+				return err
+			}
+			localObjects = append(localObjects, objects)
+			receiver = objects.LocalReceive
 		}
+		attached, err := xdptool.Attach(receiver, dev)
+		if err != nil {
+			return err
+		}
+		links = append(links, attached)
+		log.Printf("local stack delivery on %s", dev)
 	}
+	for _, dev := range devices {
+		if tcProg == nil {
+			break
+		}
+		attached, err := xdptool.AttachTC(tcProg, dev)
+		if err != nil {
+			return err
+		}
+		links = append(links, attached)
+		log.Printf("attached TCX ingress to %s", dev)
+	}
+	for _, dev := range devices {
+		attached, err := xdptool.Attach(prog, dev)
+		if err != nil {
+			return err
+		}
+		links = append(links, attached)
+		log.Printf("attached native XDP to %s", dev)
+	}
+	log.Println("Press CTRL+C to detach and stop.")
+	<-ctx.Done()
+	return nil
 }

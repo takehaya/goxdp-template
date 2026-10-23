@@ -1,0 +1,16 @@
+flowchart TB
+    accTitle: Shared VXLAN header and per-copy rewriting
+    accDescr: A VNI 100 inner frame carries a REWRITE command with HEADER_READY, inner length, and flow hash. Devmap broadcasts it to two tunnel outputs and an access output. Each tunnel reconstructs the cache key, retrieves the common header and its own peer, and fills Outer addresses and a flow-derived UDP source port. The access output keeps the original Inner frame.
+    inner["Inner F + metadata<br/>REWRITE / VNI 100 / HEADER_READY<br/>inner_len / flow_hash"] --> group["DEVMAP broadcast"]
+    group --> first["uplink0 / tunnel egress<br/>header_cache + peer_cache"]
+    group --> second["uplink1 / tunnel egress<br/>header_cache + peer_cache"]
+    group --> access["Access egress<br/>discard metadata"]
+    first --> packetB["Outer dst: VTEP B<br/>UDP / VXLAN / Inner F"]
+    second --> packetC["Outer dst: VTEP C<br/>UDP / VXLAN / Inner F"]
+    access --> frame["Access output<br/>Inner F"]
+    classDef shared fill:#eff6ff,stroke:#2563eb,color:#172554;
+    classDef tunnel fill:#ecfdf5,stroke:#059669,color:#064e3b;
+    classDef accessCopy fill:#fff7ed,stroke:#ea580c,color:#7c2d12;
+    class inner,group shared;
+    class first,second,packetB,packetC tunnel;
+    class access,frame accessCopy;

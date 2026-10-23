@@ -1,0 +1,19 @@
+{
+  "ports": [
+    {"device": "trunk0", "vlans": [{"vid": 10, "vni": 100}, {"vid": 20, "vni": 200}]},
+    {"device": "trunk1", "vlans": [{"vid": 10, "vni": 100}, {"vid": 20, "vni": 200}]},
+    {"device": "wan0", "local_ip": "192.0.2.1"}
+  ],
+  "groups": [
+    {
+      "vni": 100,
+      "devices": ["trunk0", "trunk1", "wan0"],
+      "unicast_peers": [{"device": "wan0", "remote_ip": "192.0.2.2", "remote_mac": "02:00:00:00:02:01"}]
+    },
+    {
+      "vni": 200,
+      "devices": ["trunk0", "trunk1", "wan0"],
+      "unicast_peers": [{"device": "wan0", "remote_ip": "192.0.2.2", "remote_mac": "02:00:00:00:02:01"}]
+    }
+  ]
+}

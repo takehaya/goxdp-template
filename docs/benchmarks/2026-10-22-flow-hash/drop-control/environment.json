@@ -1,0 +1,31 @@
+{
+  "time_utc": "2026-10-22T02:41:17Z",
+  "kernel": {
+    "system": "Linux",
+    "node": "takemio-main-server-01",
+    "release": "7.0.0-38-generic",
+    "version": "#38-Ubuntu SMP PREEMPT_DYNAMIC Fri Sep  4 09:10:14 UTC 2026",
+    "machine": "x86_64",
+    "processor": ""
+  },
+  "args": {
+    "xdperf": "/tmp/goxdp-xdperf",
+    "plugins": "/tmp/goxdp-bench-inputs",
+    "counters": "/home/ubuntu/private/goxdp-template/bin/goxdp-perf-counters",
+    "cpus": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "warmup": 2,
+    "seconds": 5,
+    "batch_size": 1
+  },
+  "control_sha256": "f1981fa1921b7eec5a77f8be9ecc7884d75a619e6cfcc9bbb5429b0470151cc0",
+  "runner_sha256": "490d36ba5793786154c432053cb319cf3cea1cf782935c657847491a5ad689c1",
+  "xdperf_sha256": "f508471f23d5e7be8f92c88be547cac8dd90462e3033acfdc9239b97b328c977",
+  "counters_sha256": "deb7156cd40c8d2fa4342fefff34b4b2c81b3d9239ebb290137702d4da555197",
+  "plugin_sha256": "6e264ac2d39b59ac09d2eebfb193728edd68b2d82bb2b931c0b222a7992f9e9a",
+  "topology": "XDPerf source -> one multiqueue veth pair -> XDPerf receiver XDP_DROP; no forwarding program, replication, VXLAN, or CPUMAP"
+}

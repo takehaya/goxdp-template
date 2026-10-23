@@ -1,0 +1,25 @@
+{
+  "completed_trials": 50,
+  "uninstrumented_trials": 42,
+  "profile_trials": 8,
+  "validated_endpoint_records": 300,
+  "cpumap_traces_with_enqueue_dequeue_conservation": 5,
+  "hashes": {
+    "binary_sha256": "9499635dbf7245175f5de31c85baa7e0c9e40bfabcc25a2ed7a05769bec148c5",
+    "xdperf_sha256": "f508471f23d5e7be8f92c88be547cac8dd90462e3033acfdc9239b97b328c977",
+    "plugin_sha256": "6e264ac2d39b59ac09d2eebfb193728edd68b2d82bb2b931c0b222a7992f9e9a",
+    "counters_sha256": "deb7156cd40c8d2fa4342fefff34b4b2c81b3d9239ebb290137702d4da555197"
+  },
+  "uninstrumented_map_window_seconds": [
+    5.037061815,
+    5.090950653
+  ],
+  "snapshot_span_ms": [
+    0.06848,
+    0.21769
+  ],
+  "checked_local_document_links": 217,
+  "generator_and_receiver_error_counters": 0,
+  "profile_lost_samples": 0,
+  "cleanup_error_records": 0
+}

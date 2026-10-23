@@ -1,0 +1,22 @@
+flowchart TB
+    accTitle: XDP and XDP plus TC VXLAN replication paths
+    accDescr: Both backends classify and decapsulate in XDP with optional CPUMAP. The XDP backend replicates through a devmap and rewrites each tunnel copy in an egress program. The TC backend passes an skb to TC, sends access copies first, prepends Outer once, and rewrites each tunnel destination. Both preserve the Inner frame.
+    subgraph xdp["XDP backend"]
+        direction TB
+        xi["Ingress XDP<br/>validate / decap<br/>optional CPUMAP"] --> group["DEVMAP broadcast"]
+        group --> rewrite["Per-copy egress XDP<br/>attach Outer / rewrite"]
+        rewrite --> xo["Tunnel copies<br/>same Inner / varied Outer"]
+    end
+    subgraph tc["XDP + TC backend"]
+        direction TB
+        ti["Ingress XDP<br/>validate / decap<br/>optional CPUMAP"] --> pass["XDP_PASS<br/>create skb"]
+        pass --> clone["TC ingress<br/>access copies first<br/>prepend Outer once"]
+        clone --> target["Rewrite each destination<br/>N-1 clones + redirect"]
+        target --> tout["Tunnel copies<br/>same Inner / varied Outer"]
+    end
+    classDef native fill:#eff6ff,stroke:#2563eb,color:#172554;
+    classDef skb fill:#fff7ed,stroke:#ea580c,color:#7c2d12;
+    classDef output fill:#ecfdf5,stroke:#059669,color:#064e3b;
+    class xi,group,rewrite,ti native;
+    class pass,clone,target skb;
+    class xo,tout output;
