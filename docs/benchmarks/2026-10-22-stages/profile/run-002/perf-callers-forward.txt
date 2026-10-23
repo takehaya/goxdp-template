@@ -1,0 +1,476 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 7K of event 'cycles'
+# Event count (approx.): 113136025888
+#
+# Overhead  Symbol                                                             IPC   [IPC Coverage]
+# ........  .................................................................  ....................
+#
+     6.95%  [k] lookup_nulls_elem_raw                                          -      -
+            |
+            ---ret_from_fork
+               kthread
+               cpu_map_kthread_run
+               |
+                --6.55%--cpu_map_bpf_prog_run
+                          |
+                           --6.00%--xdp_do_flush
+                                     __dev_flush
+                                     bq_xmit_all
+                                     dev_map_bpf_prog_run
+                                     bpf_dispatcher_xdp_func
+                                     bpf_prog_2877afe1eb03791e_vxlan_rewrite
+                                     |
+                                     |--4.57%--htab_lru_percpu_map_lookup_elem
+                                     |          lookup_nulls_elem_raw
+                                     |
+                                      --1.40%--__htab_map_lookup_elem
+                                                lookup_nulls_elem_raw
+
+     5.91%  [k] dev_map_enqueue_multi                                          -      -
+            |
+            ---ret_from_fork
+               kthread
+               cpu_map_kthread_run
+               cpu_map_bpf_prog_run
+               cpu_map_bpf_prog_run_xdp
+               |
+                --5.88%--xdp_do_redirect
+                          dev_map_enqueue_multi
+
+     5.23%  [k] bpf_prog_2877afe1eb03791e_vxlan_rewrite                        -      -
+            |
+            ---ret_from_fork
+               kthread
+               cpu_map_kthread_run
+               cpu_map_bpf_prog_run
+               xdp_do_flush
+               __dev_flush
+               bq_xmit_all
+               dev_map_bpf_prog_run
+               bpf_dispatcher_xdp_func
+               bpf_prog_2877afe1eb03791e_vxlan_rewrite
+
+     5.10%  [k] cpu_map_bpf_prog_run_xdp                                       -      -
+            |
+            ---ret_from_fork
+               kthread
+               cpu_map_kthread_run
+               cpu_map_bpf_prog_run
+               cpu_map_bpf_prog_run_xdp
+
+     3.92%  [k] htab_lock_bucket                                               -      -
+            |
+            ---ret_from_fork
+               kthread
+               cpu_map_kthread_run
+               cpu_map_bpf_prog_run
+               cpu_map_bpf_prog_run_xdp
+               bpf_dispatcher_xdp_func
+               bpf_prog_80dbfeadbc3fcc56_vxlan_cpu_forward
+               htab_lru_percpu_map_update_elem
+               |
+                --3.87%--__htab_lru_percpu_map_update_elem
+                          htab_lock_bucket
+
+     3.30%  [k] __htab_map_lookup_elem                                         -      -
+            |
+            ---ret_from_fork
+               kthread
+               cpu_map_kthread_run
+               |
+                --3.02%--cpu_map_bpf_prog_run
+                          |
+                           --2.20%--xdp_do_flush
+                                     __dev_flush
+                                     bq_xmit_all
+                                     dev_map_bpf_prog_run
+                                     bpf_dispatcher_xdp_func
+                                     |
+                                      --2.15%--bpf_prog_2877afe1eb03791e_vxlan_rewrite
+                                                __htab_map_lookup_elem
+
+     2.86%  [k] bpf_prog_80dbfeadbc3fcc56_vxlan_cpu_forward                    -      -
+            |
+            ---ret_from_fork
+               kthread
+               cpu_map_kthread_run
+               cpu_map_bpf_prog_run
+               cpu_map_bpf_prog_run_xdp
+               |
+                --2.83%--bpf_dispatcher_xdp_func
+                          bpf_prog_80dbfeadbc3fcc56_vxlan_cpu_forward
+
+     2.70%  [k] __free_frozen_pages                                            -      -
+            |
+            ---ret_from_fork
+               kthread
+               cpu_map_kthread_run
+               __local_bh_enable_ip
+               do_softirq.part.0
+               __do_softirq
+               handle_softirqs
+               net_rx_action
+               __napi_poll
+               veth_poll
+               veth_xdp_rcv
+               veth_xdp_rcv_one
+               xdp_return_frame
+               __xdp_return
+               |
+               |--1.41%--page_pool_put_unrefed_netmem
+               |          page_pool_return_netmem
+               |          __folio_put
+               |          |
+               |           --1.37%--free_frozen_pages
+               |                     __free_frozen_pages
+               |
+                --1.29%--__folio_put
+                          |
+                           --1.25%--free_frozen_pages
+                                     __free_frozen_pages
+
+     2.69%  [k] htab_map_hash                                                  -      -
+            |
+            ---ret_from_fork
+               kthread
+               cpu_map_kthread_run
+               |
+                --2.64%--cpu_map_bpf_prog_run
+                          |
+                           --2.00%--xdp_do_flush
+                                     __dev_flush
+                                     bq_xmit_all
+                                     dev_map_bpf_prog_run
+                                     bpf_dispatcher_xdp_func
+                                     bpf_prog_2877afe1eb03791e_vxlan_rewrite
+                                     htab_map_hash
+
+     2.59%  [k] veth_xdp_rcv_one                                               -      -
+            |
+            ---ret_from_fork
+               kthread
+               cpu_map_kthread_run
+               __local_bh_enable_ip
+               do_softirq.part.0
+               __do_softirq
+               handle_softirqs
+               net_rx_action
+               __napi_poll
+               veth_poll
+               |
+                --2.54%--veth_xdp_rcv
+                          veth_xdp_rcv_one
+
+     2.47%  [k] kernel_init_pages                                              -      -
+            |
+            ---ret_from_fork
+               kthread
+               cpu_map_kthread_run
+               cpu_map_bpf_prog_run
+               cpu_map_bpf_prog_run_xdp
+               xdp_do_redirect
+               dev_map_enqueue_multi
+               xdpf_clone
+               __alloc_pages_noprof
+               __alloc_frozen_pages_noprof
+               get_page_from_freelist
+               |
+                --2.40%--post_alloc_hook
+                          kernel_init_pages
+
+     2.11%  [k] __pi_memcpy                                                    -      -
+            |
+            ---ret_from_fork
+               kthread
+               cpu_map_kthread_run
+               cpu_map_bpf_prog_run
+               cpu_map_bpf_prog_run_xdp
+               |
+                --1.55%--xdp_do_redirect
+                          dev_map_enqueue_multi
+                          __pi_memcpy
+
+     1.88%  [k] _raw_spin_lock                                                 -      -
+            |
+             --1.84%--ret_from_fork_asm
+                       ret_from_fork
+                       kthread
+                       cpu_map_kthread_run
+                       |
+                        --1.56%--__local_bh_enable_ip
+                                  do_softirq.part.0
+                                  __do_softirq
+                                  handle_softirqs
+                                  net_rx_action
+                                  __napi_poll
+                                  veth_poll
+                                  veth_xdp_rcv
+                                  veth_xdp_rcv_one
+                                  xdp_return_frame
+                                  __xdp_return
+                                  _raw_spin_lock
+
+     1.67%  [k] bpf_common_lru_push_free                                       -      -
+            |
+            ---ret_from_fork
+               kthread
+               cpu_map_kthread_run
+               cpu_map_bpf_prog_run
+               cpu_map_bpf_prog_run_xdp
+               bpf_dispatcher_xdp_func
+               bpf_prog_80dbfeadbc3fcc56_vxlan_cpu_forward
+               htab_lru_percpu_map_update_elem
+               __htab_lru_percpu_map_update_elem
+               |
+                --1.63%--bpf_lru_push_free
+                          bpf_common_lru_push_free
+
+     1.65%  [k] __free_one_page                                                -      -
+            |
+            ---ret_from_fork
+               kthread
+               cpu_map_kthread_run
+               __local_bh_enable_ip
+               do_softirq.part.0
+               __do_softirq
+               handle_softirqs
+               net_rx_action
+               __napi_poll
+               veth_poll
+               veth_xdp_rcv
+               veth_xdp_rcv_one
+               xdp_return_frame
+               __xdp_return
+               __folio_put
+               free_frozen_pages
+               __free_frozen_pages
+               free_frozen_page_commit.isra.0
+               free_pcppages_bulk
+               __free_one_page
+
+     1.61%  [k] veth_xdp_rcv                                                   -      -
+            |
+            ---ret_from_fork
+               kthread
+               cpu_map_kthread_run
+               __local_bh_enable_ip
+               do_softirq.part.0
+               __do_softirq
+               handle_softirqs
+               net_rx_action
+               __napi_poll
+               |
+                --1.59%--veth_poll
+                          veth_xdp_rcv
+
+     1.59%  [k] free_pcppages_bulk                                             -      -
+            |
+            ---ret_from_fork
+               kthread
+               cpu_map_kthread_run
+               __local_bh_enable_ip
+               do_softirq.part.0
+               __do_softirq
+               handle_softirqs
+               net_rx_action
+               __napi_poll
+               veth_poll
+               veth_xdp_rcv
+               veth_xdp_rcv_one
+               xdp_return_frame
+               __xdp_return
+               __folio_put
+               free_frozen_pages
+               __free_frozen_pages
+               free_frozen_page_commit.isra.0
+               free_pcppages_bulk
+
+     1.58%  [k] htab_lru_percpu_map_lookup_elem                                -      -
+            |
+            ---ret_from_fork
+               kthread
+               cpu_map_kthread_run
+               cpu_map_bpf_prog_run
+               xdp_do_flush
+               __dev_flush
+               bq_xmit_all
+               dev_map_bpf_prog_run
+               bpf_dispatcher_xdp_func
+               |
+                --1.48%--bpf_prog_2877afe1eb03791e_vxlan_rewrite
+                          htab_lru_percpu_map_lookup_elem
+
+     1.55%  [k] dev_map_bpf_prog_run                                           -      -
+            |
+            ---ret_from_fork
+               kthread
+               cpu_map_kthread_run
+               cpu_map_bpf_prog_run
+               xdp_do_flush
+               __dev_flush
+               |
+                --1.54%--bq_xmit_all
+                          dev_map_bpf_prog_run
+
+     1.54%  [k] lookup_elem_raw                                                -      -
+            |
+            ---ret_from_fork
+               kthread
+               cpu_map_kthread_run
+               cpu_map_bpf_prog_run
+               cpu_map_bpf_prog_run_xdp
+               bpf_dispatcher_xdp_func
+               bpf_prog_80dbfeadbc3fcc56_vxlan_cpu_forward
+               htab_lru_percpu_map_update_elem
+               |
+                --1.52%--__htab_lru_percpu_map_update_elem
+                          lookup_elem_raw
+
+     1.42%  [k] cpu_map_kthread_run                                            -      -
+            |
+            ---ret_from_fork
+               kthread
+               cpu_map_kthread_run
+
+     1.40%  [k] page_pool_put_unrefed_netmem                                   -      -
+            |
+            ---ret_from_fork
+               kthread
+               cpu_map_kthread_run
+               __local_bh_enable_ip
+               do_softirq.part.0
+               __do_softirq
+               handle_softirqs
+               net_rx_action
+               __napi_poll
+               veth_poll
+               veth_xdp_rcv
+               veth_xdp_rcv_one
+               xdp_return_frame
+               |
+                --1.36%--__xdp_return
+                          page_pool_put_unrefed_netmem
+
+     1.27%  [k] resilient_queued_spin_lock_slowpath                            -      -
+            |
+            ---ret_from_fork
+               kthread
+               cpu_map_kthread_run
+               cpu_map_bpf_prog_run
+               cpu_map_bpf_prog_run_xdp
+               bpf_dispatcher_xdp_func
+               bpf_prog_80dbfeadbc3fcc56_vxlan_cpu_forward
+               htab_lru_percpu_map_update_elem
+               __htab_lru_percpu_map_update_elem
+               |
+                --1.26%--htab_lock_bucket
+                          resilient_queued_spin_lock_slowpath
+
+     1.27%  [k] __alloc_frozen_pages_noprof                                    -      -
+            |
+            ---ret_from_fork
+               kthread
+               cpu_map_kthread_run
+               cpu_map_bpf_prog_run
+               cpu_map_bpf_prog_run_xdp
+               xdp_do_redirect
+               dev_map_enqueue_multi
+               xdpf_clone
+               __alloc_pages_noprof
+               __alloc_frozen_pages_noprof
+
+     1.26%  [k] __htab_lru_percpu_map_update_elem                              -      -
+            |
+            ---ret_from_fork
+               kthread
+               cpu_map_kthread_run
+               cpu_map_bpf_prog_run
+               cpu_map_bpf_prog_run_xdp
+               bpf_dispatcher_xdp_func
+               bpf_prog_80dbfeadbc3fcc56_vxlan_cpu_forward
+               |
+                --1.25%--htab_lru_percpu_map_update_elem
+                          __htab_lru_percpu_map_update_elem
+
+     1.21%  [k] get_page_from_freelist                                         -      -
+            |
+            ---ret_from_fork
+               kthread
+               cpu_map_kthread_run
+               cpu_map_bpf_prog_run
+               cpu_map_bpf_prog_run_xdp
+               xdp_do_redirect
+               dev_map_enqueue_multi
+               xdpf_clone
+               __alloc_pages_noprof
+               __alloc_frozen_pages_noprof
+               get_page_from_freelist
+
+     1.19%  [k] __xdp_return                                                   -      -
+            |
+            ---ret_from_fork
+               kthread
+               cpu_map_kthread_run
+               __local_bh_enable_ip
+               do_softirq.part.0
+               __do_softirq
+               handle_softirqs
+               net_rx_action
+               __napi_poll
+               veth_poll
+               veth_xdp_rcv
+               veth_xdp_rcv_one
+               xdp_return_frame
+               __xdp_return
+
+     1.09%  [k] bpf_common_lru_pop_free                                        -      -
+            |
+            ---ret_from_fork
+               kthread
+               cpu_map_kthread_run
+               cpu_map_bpf_prog_run
+               cpu_map_bpf_prog_run_xdp
+               bpf_dispatcher_xdp_func
+               bpf_prog_80dbfeadbc3fcc56_vxlan_cpu_forward
+               htab_lru_percpu_map_update_elem
+               __htab_lru_percpu_map_update_elem
+               prealloc_lru_pop
+               bpf_lru_pop_free
+               bpf_common_lru_pop_free
+
+     1.08%  [k] free_frozen_page_commit.isra.0                                 -      -
+            |
+            ---ret_from_fork
+               kthread
+               cpu_map_kthread_run
+               __local_bh_enable_ip
+               do_softirq.part.0
+               __do_softirq
+               handle_softirqs
+               net_rx_action
+               __napi_poll
+               veth_poll
+               veth_xdp_rcv
+               veth_xdp_rcv_one
+               xdp_return_frame
+               __xdp_return
+
+     1.01%  [k] veth_xdp_xmit                                                  -      -
+            |
+            ---ret_from_fork
+               kthread
+               cpu_map_kthread_run
+               cpu_map_bpf_prog_run
+               xdp_do_flush
+               __dev_flush
+               bq_xmit_all
+
+
+
+#
+# (Cannot load tips.txt file, please install perf!)
+#

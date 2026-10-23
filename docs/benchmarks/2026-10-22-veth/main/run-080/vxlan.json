@@ -1,0 +1,38 @@
+{
+  "ports": [
+    {
+      "device": "p0",
+      "vni": 100
+    },
+    {
+      "device": "p1",
+      "local_ip": "192.0.2.1"
+    },
+    {
+      "device": "p2",
+      "local_ip": "192.0.3.1"
+    }
+  ],
+  "groups": [
+    {
+      "vni": 100,
+      "devices": [
+        "p0",
+        "p1",
+        "p2"
+      ],
+      "unicast_peers": [
+        {
+          "device": "p1",
+          "remote_ip": "192.0.2.2",
+          "remote_mac": "02:00:00:00:01:fe"
+        },
+        {
+          "device": "p2",
+          "remote_ip": "192.0.3.2",
+          "remote_mac": "02:00:00:00:02:fe"
+        }
+      ]
+    }
+  ]
+}

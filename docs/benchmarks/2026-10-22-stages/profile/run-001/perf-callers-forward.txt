@@ -1,0 +1,393 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 7K of event 'cycles'
+# Event count (approx.): 115927054881
+#
+# Overhead  Symbol                                                             IPC   [IPC Coverage]
+# ........  .................................................................  ....................
+#
+     7.31%  [k] __pi_memset                                                    -      -
+            |
+            ---ret_from_fork
+               kthread
+               |
+                --6.73%--cpu_map_kthread_run
+                          |
+                          |--4.97%--gro_receive_skb
+                          |          netif_receive_skb_list_internal
+                          |          __netif_receive_skb_list_core
+                          |          __netif_receive_skb_core.constprop.0
+                          |          bpf_prog_bc85655eb4f057ec_tc_vxlan
+                          |          bpf_prog_c82e467b5c2729a4_tc_tunnel
+                          |          |
+                          |           --4.46%--bpf_clone_redirect
+                          |                     |
+                          |                      --3.82%--skb_ensure_writable
+                          |                                pskb_expand_head
+                          |                                kmalloc_reserve
+                          |                                __pi_memset
+                          |
+                           --1.19%--napi_skb_cache_get_bulk
+                                     __pi_memset
+
+     6.21%  [k] __pi_memcpy                                                    -      -
+            |
+            ---ret_from_fork
+               kthread
+               |
+               |--4.75%--cpu_map_kthread_run
+               |          |
+               |          |--3.14%--gro_receive_skb
+               |          |          netif_receive_skb_list_internal
+               |          |          __netif_receive_skb_list_core
+               |          |          __netif_receive_skb_core.constprop.0
+               |          |          bpf_prog_bc85655eb4f057ec_tc_vxlan
+               |          |          |
+               |          |           --2.90%--bpf_prog_c82e467b5c2729a4_tc_tunnel
+               |          |                     |
+               |          |                      --2.21%--bpf_clone_redirect
+               |          |                                skb_ensure_writable
+               |          |                                __pi_memcpy
+               |          |
+               |           --1.57%--__local_bh_enable_ip
+               |                     do_softirq.part.0
+               |                     __do_softirq
+               |                     handle_softirqs
+               |                     net_rx_action
+               |                     __napi_poll
+               |                     veth_poll
+               |                     veth_xdp_rcv
+               |                     veth_xdp_rcv_skb
+               |                     skb_pp_cow_data
+               |                     __pi_memcpy
+               |
+                --1.46%--smpboot_thread_fn
+                          run_ksoftirqd
+                          handle_softirqs
+                          net_rx_action
+                          __napi_poll
+                          veth_poll
+                          veth_xdp_rcv
+                          veth_xdp_rcv_skb
+                          skb_pp_cow_data
+                          |
+                           --1.45%--__pi_memcpy
+
+     4.63%  [k] veth_xmit                                                      -      -
+            |
+            ---ret_from_fork
+               kthread
+               cpu_map_kthread_run
+               gro_receive_skb
+               netif_receive_skb_list_internal
+               __netif_receive_skb_list_core
+               __netif_receive_skb_core.constprop.0
+               |
+               |--2.34%--skb_do_redirect
+               |          __bpf_redirect
+               |          __dev_queue_xmit
+               |          dev_hard_start_xmit
+               |          |
+               |           --2.20%--xmit_one.constprop.0
+               |                     veth_xmit
+               |
+                --2.30%--bpf_prog_bc85655eb4f057ec_tc_vxlan
+                          bpf_prog_c82e467b5c2729a4_tc_tunnel
+                          bpf_clone_redirect
+                          __bpf_redirect
+                          __dev_queue_xmit
+                          dev_hard_start_xmit
+                          |
+                           --2.14%--xmit_one.constprop.0
+                                     veth_xmit
+
+     3.47%  [k] veth_xdp_rcv_skb                                               -      -
+            |
+            ---ret_from_fork
+               kthread
+               |
+               |--1.95%--cpu_map_kthread_run
+               |          __local_bh_enable_ip
+               |          do_softirq.part.0
+               |          __do_softirq
+               |          handle_softirqs
+               |          net_rx_action
+               |          __napi_poll
+               |          veth_poll
+               |          veth_xdp_rcv
+               |          veth_xdp_rcv_skb
+               |
+                --1.52%--smpboot_thread_fn
+                          run_ksoftirqd
+                          handle_softirqs
+                          net_rx_action
+                          __napi_poll
+                          veth_poll
+                          veth_xdp_rcv
+                          veth_xdp_rcv_skb
+
+     3.09%  [k] cpu_map_bpf_prog_run_xdp                                       -      -
+            |
+            ---ret_from_fork
+               kthread
+               cpu_map_kthread_run
+               |
+                --3.08%--cpu_map_bpf_prog_run
+                          cpu_map_bpf_prog_run_xdp
+
+     2.73%  [k] _raw_spin_lock                                                 -      -
+            |
+            ---ret_from_fork
+               kthread
+               |
+                --2.34%--cpu_map_kthread_run
+                          |
+                           --1.87%--gro_receive_skb
+                                     netif_receive_skb_list_internal
+                                     __netif_receive_skb_list_core
+                                     __netif_receive_skb_core.constprop.0
+                                     |
+                                      --1.20%--bpf_prog_bc85655eb4f057ec_tc_vxlan
+                                                bpf_prog_c82e467b5c2729a4_tc_tunnel
+                                                bpf_clone_redirect
+                                                __bpf_redirect
+                                                __dev_queue_xmit
+                                                dev_hard_start_xmit
+                                                xmit_one.constprop.0
+
+     2.64%  [k] bpf_prog_c82e467b5c2729a4_tc_tunnel                            -      -
+            |
+            ---ret_from_fork
+               kthread
+               cpu_map_kthread_run
+               gro_receive_skb
+               netif_receive_skb_list_internal
+               __netif_receive_skb_list_core
+               __netif_receive_skb_core.constprop.0
+               |
+                --2.55%--bpf_prog_bc85655eb4f057ec_tc_vxlan
+                          bpf_prog_c82e467b5c2729a4_tc_tunnel
+
+     2.56%  [k] bpf_prog_bc85655eb4f057ec_tc_vxlan                             -      -
+            |
+            ---ret_from_fork
+               kthread
+               cpu_map_kthread_run
+               gro_receive_skb
+               netif_receive_skb_list_internal
+               __netif_receive_skb_list_core
+               |
+                --2.45%--__netif_receive_skb_core.constprop.0
+                          bpf_prog_bc85655eb4f057ec_tc_vxlan
+
+     2.36%  [k] veth_xdp_rcv                                                   -      -
+            |
+            ---ret_from_fork
+               kthread
+               |
+               |--1.30%--cpu_map_kthread_run
+               |          __local_bh_enable_ip
+               |          do_softirq.part.0
+               |          __do_softirq
+               |          handle_softirqs
+               |          net_rx_action
+               |          __napi_poll
+               |          veth_poll
+               |          veth_xdp_rcv
+               |
+                --1.06%--smpboot_thread_fn
+                          run_ksoftirqd
+                          handle_softirqs
+                          net_rx_action
+                          __napi_poll
+                          veth_poll
+                          veth_xdp_rcv
+
+     2.05%  [k] __dev_queue_xmit                                               -      -
+            |
+            ---ret_from_fork
+               kthread
+               cpu_map_kthread_run
+               gro_receive_skb
+               netif_receive_skb_list_internal
+               __netif_receive_skb_list_core
+               __netif_receive_skb_core.constprop.0
+               |
+                --1.13%--bpf_prog_bc85655eb4f057ec_tc_vxlan
+                          bpf_prog_c82e467b5c2729a4_tc_tunnel
+                          bpf_clone_redirect
+                          __bpf_redirect
+                          __dev_queue_xmit
+
+     2.01%  [k] skb_pp_cow_data                                                -      -
+            |
+            ---ret_from_fork
+               kthread
+               |
+                --1.17%--cpu_map_kthread_run
+                          __local_bh_enable_ip
+                          do_softirq.part.0
+                          __do_softirq
+                          handle_softirqs
+                          net_rx_action
+                          __napi_poll
+                          veth_poll
+                          veth_xdp_rcv
+                          veth_xdp_rcv_skb
+                          skb_pp_cow_data
+
+     1.93%  [k] lookup_nulls_elem_raw                                          -      -
+            |
+            ---ret_from_fork
+               kthread
+               cpu_map_kthread_run
+               |
+                --1.69%--gro_receive_skb
+                          netif_receive_skb_list_internal
+                          __netif_receive_skb_list_core
+                          __netif_receive_skb_core.constprop.0
+                          bpf_prog_bc85655eb4f057ec_tc_vxlan
+                          |
+                           --1.04%--bpf_prog_c82e467b5c2729a4_tc_tunnel
+
+     1.84%  [k] __htab_map_lookup_elem                                         -      -
+            |
+            ---ret_from_fork
+               kthread
+               cpu_map_kthread_run
+               |
+                --1.67%--gro_receive_skb
+                          netif_receive_skb_list_internal
+                          __netif_receive_skb_list_core
+                          __netif_receive_skb_core.constprop.0
+                          |
+                           --1.66%--bpf_prog_bc85655eb4f057ec_tc_vxlan
+
+     1.77%  [k] __netif_receive_skb_core.constprop.0                           -      -
+            |
+            ---ret_from_fork
+               kthread
+               cpu_map_kthread_run
+               gro_receive_skb
+               netif_receive_skb_list_internal
+               __netif_receive_skb_list_core
+               __netif_receive_skb_core.constprop.0
+
+     1.73%  [k] __skb_flow_dissect                                             -      -
+            |
+            ---ret_from_fork
+               kthread
+               cpu_map_kthread_run
+               gro_receive_skb
+               netif_receive_skb_list_internal
+               __netif_receive_skb_list_core
+               __netif_receive_skb_core.constprop.0
+
+     1.44%  [k] __siphash_unaligned                                            -      -
+            |
+            ---ret_from_fork
+               kthread
+               cpu_map_kthread_run
+               gro_receive_skb
+               netif_receive_skb_list_internal
+               __netif_receive_skb_list_core
+               __netif_receive_skb_core.constprop.0
+
+     1.43%  [k] __skb_get_hash_net                                             -      -
+            |
+            ---ret_from_fork
+               kthread
+               cpu_map_kthread_run
+               gro_receive_skb
+               netif_receive_skb_list_internal
+               __netif_receive_skb_list_core
+               __netif_receive_skb_core.constprop.0
+
+     1.28%  [k] skb_clone                                                      -      -
+            |
+            ---ret_from_fork
+               kthread
+               cpu_map_kthread_run
+               gro_receive_skb
+               netif_receive_skb_list_internal
+               __netif_receive_skb_list_core
+               __netif_receive_skb_core.constprop.0
+               bpf_prog_bc85655eb4f057ec_tc_vxlan
+               bpf_prog_c82e467b5c2729a4_tc_tunnel
+               |
+                --1.21%--bpf_clone_redirect
+                          skb_clone
+
+     1.22%  [k] page_pool_put_unrefed_netmem                                   -      -
+            |
+            ---ret_from_fork
+               kthread
+               |
+                --1.03%--cpu_map_kthread_run
+
+     1.19%  [k] htab_map_hash                                                  -      -
+            |
+            ---ret_from_fork
+               kthread
+               cpu_map_kthread_run
+               |
+                --1.17%--gro_receive_skb
+                          netif_receive_skb_list_internal
+                          __netif_receive_skb_list_core
+                          __netif_receive_skb_core.constprop.0
+                          bpf_prog_bc85655eb4f057ec_tc_vxlan
+
+     1.19%  [k] netdev_pick_tx                                                 -      -
+            |
+            ---ret_from_fork
+               kthread
+               cpu_map_kthread_run
+               gro_receive_skb
+               netif_receive_skb_list_internal
+               __netif_receive_skb_list_core
+               __netif_receive_skb_core.constprop.0
+
+     1.05%  [k] htab_lock_bucket                                               -      -
+            |
+            ---ret_from_fork
+               kthread
+               cpu_map_kthread_run
+               gro_receive_skb
+               netif_receive_skb_list_internal
+               __netif_receive_skb_list_core
+               __netif_receive_skb_core.constprop.0
+               bpf_prog_bc85655eb4f057ec_tc_vxlan
+               htab_lru_percpu_map_update_elem
+               |
+                --1.02%--__htab_lru_percpu_map_update_elem
+                          htab_lock_bucket
+
+     1.02%  [k] __free_one_page                                                -      -
+            |
+            ---ret_from_fork
+               kthread
+
+     1.02%  [k] cpu_map_kthread_run                                            -      -
+            |
+            ---ret_from_fork
+               kthread
+               cpu_map_kthread_run
+
+     1.01%  [k] __memcg_slab_free_hook                                         -      -
+            |
+            ---ret_from_fork
+               kthread
+
+     1.01%  [k] free_pcppages_bulk                                             -      -
+            |
+            ---ret_from_fork
+               kthread
+
+
+
+#
+# (Cannot load tips.txt file, please install perf!)
+#

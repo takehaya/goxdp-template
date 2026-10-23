@@ -1,0 +1,18 @@
+{
+  "id": 297807,
+  "type": "xdp",
+  "name": "xdp_broadcast",
+  "tag": "6c5a836de1836a3e",
+  "gpl_compatible": true,
+  "loaded_at": 1792638732,
+  "uid": 0,
+  "orphaned": false,
+  "bytes_xlated": 88,
+  "jited": true,
+  "bytes_jited": 62,
+  "bytes_memlock": 4096,
+  "map_ids": [
+    360650
+  ],
+  "btf_id": 622821
+}

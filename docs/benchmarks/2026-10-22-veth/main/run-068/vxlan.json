@@ -1,0 +1,58 @@
+{
+  "ports": [
+    {
+      "device": "p0",
+      "vni": 100
+    },
+    {
+      "device": "p1",
+      "local_ip": "192.0.2.1"
+    },
+    {
+      "device": "p2",
+      "local_ip": "192.0.3.1"
+    },
+    {
+      "device": "p3",
+      "local_ip": "192.0.4.1"
+    },
+    {
+      "device": "p4",
+      "local_ip": "192.0.5.1"
+    }
+  ],
+  "groups": [
+    {
+      "vni": 100,
+      "devices": [
+        "p0",
+        "p1",
+        "p2",
+        "p3",
+        "p4"
+      ],
+      "unicast_peers": [
+        {
+          "device": "p1",
+          "remote_ip": "192.0.2.2",
+          "remote_mac": "02:00:00:00:01:fe"
+        },
+        {
+          "device": "p2",
+          "remote_ip": "192.0.3.2",
+          "remote_mac": "02:00:00:00:02:fe"
+        },
+        {
+          "device": "p3",
+          "remote_ip": "192.0.4.2",
+          "remote_mac": "02:00:00:00:03:fe"
+        },
+        {
+          "device": "p4",
+          "remote_ip": "192.0.5.2",
+          "remote_mac": "02:00:00:00:04:fe"
+        }
+      ]
+    }
+  ]
+}

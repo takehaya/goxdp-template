@@ -1,0 +1,10 @@
+{
+  "src_ip": "198.18.0.1",
+  "dst_ip": "198.18.0.2",
+  "dst_mac": "02:ff:ff:ff:ff:01",
+  "dst_port": 40001,
+  "payload_size": 22,
+  "is_arp_resolve": false,
+  "src_port_sweep_start": 10000,
+  "src_port_sweep_end": 10063
+}

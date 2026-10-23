@@ -1,0 +1,9 @@
+{
+  "python": "3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]",
+  "matplotlib": "3.11.2",
+  "numpy": "2.5.4",
+  "kernel": "7.0.0-38-generic",
+  "perf": "perf version 7.0.14",
+  "bpftrace": "bpftrace v0.25.0",
+  "settings": "kernel.bpf_stats_enabled = 0\nnet.core.bpf_jit_harden = 0\nnet.core.bpf_jit_kallsyms = 1"
+}

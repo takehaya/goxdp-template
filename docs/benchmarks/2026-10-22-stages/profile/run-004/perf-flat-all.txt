@@ -1,0 +1,159 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 7K of event 'cycles'
+# Event count (approx.): 116340108461
+#
+# Overhead;      Period;Symbol                                        ;IPC   [IPC Coverage]
+ 0.87%  ; 1009247486 ;[k] __alloc_frozen_pages_noprof               ;-      -
+ 0.28%  ; 321657973  ;[k] __alloc_pages_noprof                      ;-      -
+ 0.05%  ; 58492150   ;[k] __calc_delta.constprop.0                  ;-      -
+ 0.01%  ; 14520094   ;[k] __cgroup_account_cputime                  ;-      -
+ 0.00%  ; 17         ;[k] __check_object_size                       ;-      -
+ 1.09%  ; 1272023286 ;[k] __dev_flush                               ;-      -
+ 0.23%  ; 263458603  ;[k] __do_softirq                              ;-      -
+ 0.59%  ; 690692191  ;[k] __folio_put                               ;-      -
+ 1.81%  ; 2106002688 ;[k] __free_frozen_pages                       ;-      -
+ 0.04%  ; 43856222   ;[k] __hrtimer_run_queues                      ;-      -
+ 0.54%  ; 624211088  ;[k] __local_bh_enable_ip                      ;-      -
+ 0.19%  ; 219594872  ;[k] __mem_cgroup_uncharge                     ;-      -
+ 0.61%  ; 705314399  ;[k] __napi_poll                               ;-      -
+ 1.65%  ; 1915675531 ;[k] __napi_schedule                           ;-      -
+ 0.20%  ; 234040055  ;[k] __nr_to_section                           ;-      -
+ 2.32%  ; 2694149640 ;[k] __pi_memcpy                               ;-      -
+ 0.00%  ; 5532       ;[k] __pi_memset                               ;-      -
+ 0.01%  ; 14654763   ;[k] __raise_softirq_irqoff                    ;-      -
+ 0.45%  ; 526277041  ;[k] __raw_callee_save___pv_queued_spin_unlock ;-      -
+ 0.01%  ; 14576654   ;[k] __raw_spin_lock_irqsave                   ;-      -
+ 0.36%  ; 424038836  ;[k] __rcu_read_lock                           ;-      -
+ 0.57%  ; 658385906  ;[k] __rcu_read_unlock                         ;-      -
+ 0.01%  ; 14638923   ;[k] __remove_hrtimer                          ;-      -
+ 0.39%  ; 453138026  ;[k] __rmqueue_pcplist                         ;-      -
+ 0.00%  ; 59116      ;[k] __switch_to                               ;-      -
+ 0.03%  ; 29090795   ;[k] __timekeeping_advance                     ;-      -
+ 0.03%  ; 29217557   ;[k] __update_load_avg_cfs_rq                  ;-      -
+ 0.01%  ; 14629846   ;[k] __update_load_avg_se                      ;-      -
+ 0.13%  ; 146254400  ;[k] __usecs_to_jiffies                        ;-      -
+ 0.78%  ; 906863780  ;[k] __xdp_return                              ;-      -
+ 0.44%  ; 511790087  ;[k] _find_first_bit                           ;-      -
+ 0.93%  ; 1082031287 ;[k] _find_next_bit                            ;-      -
+ 0.80%  ; 935918992  ;[k] _raw_spin_lock                            ;-      -
+ 0.28%  ; 321908733  ;[k] _raw_spin_trylock                         ;-      -
+ 1.28%  ; 1491636790 ;[k] _raw_spin_unlock                          ;-      -
+ 0.03%  ; 29247938   ;[k] account_process_tick                      ;-      -
+ 0.01%  ; 14639920   ;[k] account_system_index_time                 ;-      -
+ 0.01%  ; 14627746   ;[k] acct_account_cputime                      ;-      -
+ 0.01%  ; 14636758   ;[k] arch_scale_cpu_capacity                   ;-      -
+ 0.73%  ; 848076056  ;[k] asm_sysvec_apic_timer_interrupt           ;-      -
+ 0.01%  ; 14647854   ;[k] avg_vruntime                              ;-      -
+ 0.10%  ; 117144764  ;[k] bpf_dispatcher_xdp                        ;-      -
+ 0.57%  ; 658155271  ;[k] bpf_dispatcher_xdp_func                   ;-      -
+ 0.18%  ; 204682102  ;[k] bpf_prog_6c5a836de1836a3e_xdp_broadcast   ;-      -
+ 2.98%  ; 3470192298 ;[k] bpf_prog_7fe0765356e49e8d_xdp_tx          ;-      -
+ 1.29%  ; 1506523038 ;[k] bpf_prog_c5b5966ad13e4623_apply_diff      ;-      -
+ 0.56%  ; 655068710  ;[k] bpf_prog_ccfd151c9beb3a28_copy_base_packet;-      -
+ 0.59%  ; 687485200  ;[k] bpf_prog_e05ca328fbeb63d0_xdp_rx          ;-      -
+ 0.72%  ; 833732715  ;[k] bpf_test_run_xdp_live                     ;-      -
+ 0.15%  ; 177012651  ;[k] bpf_test_timer_continue                   ;-      -
+ 0.10%  ; 116916677  ;[k] bpf_xdp_adjust_tail                       ;-      -
+ 0.41%  ; 482511911  ;[k] bpf_xdp_pointer                           ;-      -
+ 1.48%  ; 1722122677 ;[k] bpf_xdp_store_bytes                       ;-      -
+ 1.01%  ; 1171087771 ;[k] bq_enqueue                                ;-      -
+ 1.28%  ; 1491657696 ;[k] bq_xmit_all                               ;-      -
+ 0.00%  ; 3956       ;[k] cap_task_setscheduler                     ;-      -
+ 0.03%  ; 29203664   ;[k] check_cpu_stall                           ;-      -
+ 0.00%  ; 15         ;[k] check_heap_object                         ;-      -
+ 0.05%  ; 58441564   ;[k] cpuset_current_node_allowed               ;-      -
+ 0.14%  ; 160927545  ;[k] dev_get_by_index_rcu                      ;-      -
+ 15.31% ; 17813616608;[k] dev_map_enqueue_multi                     ;-      -
+ 0.14%  ; 160749208  ;[k] dev_map_redirect                          ;-      -
+ 0.14%  ; 160945757  ;[k] dev_xdp_enqueue                           ;-      -
+ 0.01%  ; 14608392   ;[k] dl_server_update                          ;-      -
+ 0.62%  ; 716838643  ;[k] do_softirq.part.0                         ;-      -
+ 0.00%  ; 2          ;[k] do_syscall_64                             ;-      -
+ 0.01%  ; 14588029   ;[k] enqueue_entity                            ;-      -
+ 0.00%  ; 4          ;[k] fput                                      ;-      -
+ 0.58%  ; 672943411  ;[k] free_frozen_page_commit.isra.0            ;-      -
+ 0.50%  ; 585008477  ;[k] free_frozen_pages                         ;-      -
+ 1.72%  ; 2005434497 ;[k] get_page_from_freelist                    ;-      -
+ 0.96%  ; 1111444249 ;[k] handle_softirqs                           ;-      -
+ 0.03%  ; 29279445   ;[k] hrtimer_interrupt                         ;-      -
+ 0.01%  ; 14665162   ;[k] hrtimer_run_queues                        ;-      -
+ 4.45%  ; 5177743821 ;[k] is_valid_dst                              ;-      -
+ 2.39%  ; 2778026520 ;[k] kernel_init_pages                         ;-      -
+ 0.03%  ; 29213915   ;[k] ktime_get                                 ;-      -
+ 0.03%  ; 29213297   ;[k] ktime_get_update_offsets_now              ;-      -
+ 0.01%  ; 14619759   ;[k] kvm_sched_clock_read                      ;-      -
+ 0.00%  ; 4314       ;[k] mm_update_cpus_allowed                    ;-      -
+ 1.41%  ; 1638185158 ;[k] napi_complete_done                        ;-      -
+ 2.36%  ; 2750632741 ;[k] napi_schedule_prep                        ;-      -
+ 0.10%  ; 116991834  ;[k] native_read_msr                           ;-      -
+ 0.00%  ; 81939      ;[k] native_write_cr4                          ;-      -
+ 0.09%  ; 102311435  ;[k] native_write_msr                          ;-      -
+ 4.93%  ; 5736355267 ;[k] net_rx_action                             ;-      -
+ 0.16%  ; 190053171  ;[k] netdev_upper_get_next_dev_rcu             ;-      -
+ 0.34%  ; 394783244  ;[k] page_pool_alloc_netmems                   ;-      -
+ 0.34%  ; 395012086  ;[k] page_pool_alloc_pages                     ;-      -
+ 1.16%  ; 1345638212 ;[k] page_pool_put_unrefed_netmem              ;-      -
+ 0.18%  ; 204555142  ;[k] page_pool_refill_alloc_cache              ;-      -
+ 0.08%  ; 87702940   ;[k] perf_adjust_freq_unthr_context            ;-      -
+ 0.03%  ; 29277093   ;[k] perf_adjust_freq_unthr_events             ;-      -
+ 0.03%  ; 29266379   ;[k] perf_pmu_nop_void                         ;-      -
+ 0.01%  ; 14634298   ;[k] pick_eevdf                                ;-      -
+ 0.01%  ; 14608901   ;[k] pick_next_task                            ;-      -
+ 0.01%  ; 14600288   ;[k] pktgen_thread_worker                      ;-      -
+ 0.05%  ; 58473880   ;[k] place_entity                              ;-      -
+ 0.44%  ; 512002497  ;[k] post_alloc_hook                           ;-      -
+ 0.04%  ; 43800422   ;[k] propagate_entity_load_avg                 ;-      -
+ 0.01%  ; 14617096   ;[k] psi_group_change                          ;-      -
+ 0.00%  ; 2          ;[k] put_ctx                                   ;-      -
+ 0.00%  ; 31         ;[k] put_prev_entity                           ;-      -
+ 0.04%  ; 43985756   ;[k] pvclock_clocksource_read_nowd             ;-      -
+ 0.38%  ; 439826536  ;[k] raise_softirq_irqoff                      ;-      -
+ 0.01%  ; 14644752   ;[k] raw_spin_rq_unlock                        ;-      -
+ 0.01%  ; 14618615   ;[k] rcu_sched_clock_irq                       ;-      -
+ 0.01%  ; 14629441   ;[k] rcu_stall_kick_kthreads                   ;-      -
+ 0.03%  ; 29243631   ;[k] reweight_entity                           ;-      -
+ 0.35%  ; 410788233  ;[k] rmqueue.isra.0                            ;-      -
+ 0.97%  ; 1126302269 ;[k] rmqueue_pcplist                           ;-      -
+ 0.01%  ; 14620975   ;[k] run_posix_cpu_timers                      ;-      -
+ 0.01%  ; 14632573   ;[k] sched_balance_trigger                     ;-      -
+ 0.01%  ; 14707546   ;[k] sched_clock                               ;-      -
+ 0.01%  ; 14667847   ;[k] sched_clock_cpu                           ;-      -
+ 0.03%  ; 29242647   ;[k] sched_tick                                ;-      -
+ 0.01%  ; 14674383   ;[k] schedule                                  ;-      -
+ 0.01%  ; 14664765   ;[k] scx_allow_ttwu_queue                      ;-      -
+ 0.00%  ; 4103       ;[k] set_task_max_allowed_capacity             ;-      -
+ 2.29%  ; 2660820071 ;[k] skb_defer_free_flush                      ;-      -
+ 0.56%  ; 646704694  ;[k] srso_alias_return_thunk                   ;-      -
+ 0.05%  ; 58620871   ;[k] task_tick_fair                            ;-      -
+ 0.01%  ; 14726971   ;[k] tick_nohz_handler                         ;-      -
+ 0.03%  ; 29189641   ;[k] timekeeping_update_from_shadow            ;-      -
+ 0.03%  ; 29236262   ;[k] timerqueue_add                            ;-      -
+ 0.06%  ; 73059206   ;[k] tmigr_requires_handle_remote              ;-      -
+ 0.01%  ; 14613048   ;[k] update_cfs_group                          ;-      -
+ 0.03%  ; 29260172   ;[k] update_cfs_rq_load_avg                    ;-      -
+ 0.09%  ; 102201257  ;[k] update_curr                               ;-      -
+ 0.01%  ; 14650258   ;[k] update_deadline                           ;-      -
+ 0.01%  ; 14618059   ;[k] update_fast_timekeeper                    ;-      -
+ 0.01%  ; 14597163   ;[k] update_process_times                      ;-      -
+ 0.01%  ; 14652708   ;[k] update_rq_clock                           ;-      -
+ 1.46%  ; 1696530812 ;[k] veth_ndo_xdp_xmit                         ;-      -
+ 5.38%  ; 6253638859 ;[k] veth_poll                                 ;-      -
+ 3.29%  ; 3833140029 ;[k] veth_xdp_rcv                              ;-      -
+ 4.66%  ; 5425670174 ;[k] veth_xdp_rcv_one                          ;-      -
+ 5.24%  ; 6098775382 ;[k] veth_xdp_xmit                             ;-      -
+ 0.03%  ; 29102427   ;[k] x86_pmu_disable_all                       ;-      -
+ 0.82%  ; 950830850  ;[k] xdp_do_flush                              ;-      -
+ 0.88%  ; 1023474182 ;[k] xdp_do_redirect                           ;-      -
+ 0.63%  ; 731607983  ;[k] xdp_do_redirect_frame                     ;-      -
+ 0.85%  ; 994172751  ;[k] xdp_return_frame                          ;-      -
+ 2.96%  ; 3438178263 ;[k] xdp_test_run_batch.constprop.0            ;-      -
+ 0.59%  ; 687454874  ;[k] xdpf_clone                                ;-      -
+
+
+#
+# (Cannot load tips.txt file, please install perf!)
+#

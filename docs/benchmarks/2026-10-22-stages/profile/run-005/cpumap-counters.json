@@ -1,0 +1,27 @@
+{
+  "end_ns": 642716139090148,
+  "enqueue_drops": {
+    "8": 28833604
+  },
+  "enqueue_processed": {
+    "8": 37748740
+  },
+  "start_ns": 642691139594097,
+  "thread_drops": {
+    "8": 0
+  },
+  "thread_processed": {
+    "8": 8915136
+  },
+  "xdp_drop": {
+    "8": 0
+  },
+  "xdp_pass": {
+    "8": 0
+  },
+  "xdp_redirect": {
+    "8": 8915136
+  },
+  "enqueue_drop_fraction": 0.7638295741791646,
+  "trace_seconds": 24.999496051
+}
