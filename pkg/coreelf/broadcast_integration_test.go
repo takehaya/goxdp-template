@@ -15,8 +15,8 @@ import (
 
 	"github.com/cilium/ebpf"
 	"github.com/cilium/ebpf/asm"
+	"github.com/cilium/ebpf/link"
 	"github.com/cilium/ebpf/rlimit"
-	"github.com/takehaya/goxdp-template/pkg/xdptool"
 	"golang.org/x/sys/unix"
 )
 
@@ -31,7 +31,7 @@ func TestBroadcastFanout(t *testing.T) {
 		Name:         "test_xdp_pass",
 		Type:         ebpf.XDP,
 		License:      "MIT",
-		Instructions: asm.Instructions{asm.Mov.Imm(asm.R0, int32(xdptool.XDP_PASS)), asm.Return()},
+		Instructions: asm.Instructions{asm.Mov.Imm(asm.R0, int32(xdpPass)), asm.Return()},
 	})
 	if err != nil {
 		t.Fatal(err)
@@ -56,7 +56,7 @@ func TestBroadcastFanout(t *testing.T) {
 			t.Fatal(err)
 		}
 		// veth XDP transmit requires an XDP program on the receiving peer.
-		attached, err := xdptool.Attach(pass, peer)
+		attached, err := link.AttachXDP(link.XDPOptions{Program: pass, Interface: peerDev.Index, Flags: link.XDPDriverMode})
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -73,7 +73,7 @@ func TestBroadcastFanout(t *testing.T) {
 		t.Fatal(err)
 	}
 	t.Cleanup(func() { objs.Close() })
-	attached, err := xdptool.Attach(objs.XdpBroadcast, devices[0].Name)
+	attached, err := link.AttachXDP(link.XDPOptions{Program: objs.XdpBroadcast, Interface: devices[0].Index, Flags: link.XDPDriverMode})
 	if err != nil {
 		t.Fatal(err)
 	}

@@ -8,7 +8,6 @@ import (
 	"testing"
 
 	"github.com/cilium/ebpf/rlimit"
-	"github.com/takehaya/goxdp-template/pkg/xdptool"
 )
 
 func TestLocalDelivery(t *testing.T) {
@@ -34,7 +33,7 @@ func TestLocalDelivery(t *testing.T) {
 			copy(want, mac)
 		}
 		verdict, got, err := objects.LocalReceive.Test(frame)
-		if err != nil || verdict != uint32(xdptool.XDP_PASS) || !bytes.Equal(got, want) {
+		if err != nil || verdict != uint32(xdpPass) || !bytes.Equal(got, want) {
 			t.Fatalf("destination %s: verdict=%d frame=%x error=%v", destination, verdict, got, err)
 		}
 	}

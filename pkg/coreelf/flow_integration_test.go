@@ -12,7 +12,6 @@ import (
 	"github.com/cilium/ebpf"
 	"github.com/google/gopacket"
 	"github.com/google/gopacket/layers"
-	"github.com/takehaya/goxdp-template/pkg/xdptool"
 )
 
 func flowFrame(t *testing.T, ipv6 bool, protocol layers.IPProtocol, source uint16) []byte {
@@ -50,7 +49,7 @@ func vxlanFlowHash(t *testing.T, v *VXLAN, ingress int, frame []byte) uint32 {
 	var out context
 	opts := &ebpf.RunOptions{Data: frame, DataOut: make([]byte, len(frame)+128), Context: &context{DataEnd: uint32(len(frame)), Ingress: uint32(ingress)}, ContextOut: &out}
 	ret, err := v.Program().Run(opts)
-	if err != nil || (ret != xdptool.XDP_REDIRECT && ret != xdptool.XDP_PASS) {
+	if err != nil || (ret != xdpRedirect && ret != xdpPass) {
 		t.Fatalf("flow ingress: action %d, error %v", ret, err)
 	}
 	meta := opts.DataOut[out.DataMeta:out.Data]

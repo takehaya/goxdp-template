@@ -16,9 +16,9 @@ import (
 
 	"github.com/cilium/ebpf"
 	"github.com/cilium/ebpf/asm"
+	"github.com/cilium/ebpf/link"
 	"github.com/cilium/ebpf/rlimit"
 	"github.com/takehaya/goxdp-template/pkg/coreelf"
-	"github.com/takehaya/goxdp-template/pkg/xdptool"
 	"golang.org/x/sys/unix"
 )
 
@@ -142,7 +142,11 @@ func runLocalDelivery(t *testing.T, mode, backend string) {
 	stopRemote()
 	// A failed ingress attachment must also release the local receiver link.
 	inNamespace(t, dut, func() {
-		attached, err := xdptool.Attach(pass, "p0")
+		iface, err := net.InterfaceByName("p0")
+		if err != nil {
+			t.Fatal(err)
+		}
+		attached, err := link.AttachXDP(link.XDPOptions{Program: pass, Interface: iface.Index, Flags: link.XDPDriverMode})
 		if err != nil {
 			t.Fatal(err)
 		}

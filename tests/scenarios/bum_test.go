@@ -23,7 +23,6 @@ import (
 	"github.com/cilium/ebpf/rlimit"
 	"github.com/google/gopacket"
 	"github.com/google/gopacket/layers"
-	"github.com/takehaya/goxdp-template/pkg/xdptool"
 	"golang.org/x/sys/unix"
 )
 
@@ -74,7 +73,7 @@ func runBUM(t *testing.T, backend string) {
 		Name:         "scenario_pass",
 		Type:         ebpf.XDP,
 		License:      "MIT",
-		Instructions: asm.Instructions{asm.Mov.Imm(asm.R0, int32(xdptool.XDP_PASS)), asm.Return()},
+		Instructions: asm.Instructions{asm.Mov.Imm(asm.R0, 2), asm.Return()},
 	})
 	if err != nil {
 		t.Fatal(err)
@@ -104,7 +103,7 @@ func runBUM(t *testing.T, backend string) {
 			}
 			ep.ifindex = iface.Index
 			// veth XDP transmit needs an XDP program on the receiving peer.
-			attached, err := xdptool.Attach(pass, "eth0")
+			attached, err := link.AttachXDP(link.XDPOptions{Program: pass, Interface: iface.Index, Flags: link.XDPDriverMode})
 			if err != nil {
 				t.Fatal(err)
 			}

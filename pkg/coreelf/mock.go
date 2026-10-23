@@ -7,7 +7,6 @@ import (
 	"net/netip"
 
 	"github.com/cilium/ebpf"
-	"github.com/takehaya/goxdp-template/pkg/xdptool"
 )
 
 //go:generate go tool bpf2go -target bpf -tags integration,!nocpumap -output-stem xdp_mock xdp ../../src/xdp_prog.c -- -O2 -g -Wall -Werror -DXDP_TEST -UNO_CPUMAP
@@ -31,11 +30,14 @@ func UpdateIPv4FibLookUpMockMap(objs *xdpObjects, key IPv4FibLookUpMockKey, res 
 }
 
 func updateFibLookUpMockMap(objs *xdpObjects, key *xdpBpfFibLookupMock, res *xdpFibLookupMockResult) error {
-	possibleCpus, err := xdptool.PossibleCPUs()
+	possibleCPUs, err := ebpf.PossibleCPU()
 	if err != nil {
 		return err
 	}
 
-	entry := xdptool.CreateEntry(res, possibleCpus)
+	entry := make([]xdpFibLookupMockResult, possibleCPUs)
+	for cpu := range entry {
+		entry[cpu] = *res
+	}
 	return objs.FibLookupMockTable.Update(key, entry, ebpf.UpdateAny)
 }

@@ -15,12 +15,19 @@ import (
 
 	"github.com/cilium/ebpf"
 	"github.com/cilium/ebpf/asm"
+	"github.com/cilium/ebpf/link"
 	"github.com/cilium/ebpf/rlimit"
 	"github.com/google/go-cmp/cmp"
 	"github.com/google/gopacket"
 	"github.com/google/gopacket/layers"
-	"github.com/takehaya/goxdp-template/pkg/xdptool"
 	"golang.org/x/sys/unix"
+)
+
+const (
+	xdpDrop     = 1
+	xdpPass     = 2
+	xdpTX       = 3
+	xdpRedirect = 4
 )
 
 var payload = []byte{
@@ -94,8 +101,8 @@ func TestXDPProg(t *testing.T) {
 	}
 
 	// retern code should be XDP_TX
-	if ret != xdptool.XDP_TX {
-		t.Errorf("got %d want %d", ret, xdptool.XDP_TX)
+	if ret != xdpTX {
+		t.Errorf("got %d want %d", ret, xdpTX)
 	}
 
 	// check output
@@ -174,12 +181,16 @@ func TestFIBForwarding(t *testing.T) {
 		t.Fatal(err)
 	}
 	t.Cleanup(func() { pass.Close() })
-	attached, err := xdptool.Attach(pass, peer)
+	iface, err := net.InterfaceByName(peer)
+	if err != nil {
+		t.Fatal(err)
+	}
+	attached, err := link.AttachXDP(link.XDPOptions{Program: pass, Interface: iface.Index, Flags: link.XDPDriverMode})
 	if err != nil {
 		t.Fatal(err)
 	}
 	t.Cleanup(func() { attached.Close() })
-	iface, err := net.InterfaceByName(peer)
+	device, err := net.InterfaceByName(name)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -218,11 +229,11 @@ func TestFIBForwarding(t *testing.T) {
 			if tt.prog == nil {
 				t.Skip("CPUMAP disabled at build time")
 			}
-			link, err := xdptool.Attach(tt.prog, name)
+			attached, err := link.AttachXDP(link.XDPOptions{Program: tt.prog, Interface: device.Index, Flags: link.XDPDriverMode})
 			if err != nil {
 				t.Fatal(err)
 			}
-			defer link.Close()
+			defer attached.Close()
 			frame := generateInput(t, 100)
 			if err := unix.Sendto(fd, frame, 0, &unix.SockaddrLinklayer{Ifindex: iface.Index, Protocol: protocol}); err != nil {
 				t.Fatal(err)
@@ -254,7 +265,7 @@ func setIPv4FibLookupMock(t *testing.T, objs *xdpObjects) {
 			Ifindex: 1,
 		},
 		&xdpFibLookupMockResult{
-			Status: xdptool.BPF_FIB_LKUP_RET_SUCCESS,
+			Status: unix.BPF_FIB_LKUP_RET_SUCCESS,
 			Params: xdpBpfFibLookupMock{
 				Dmac: byteArrayToUint8Array([6]byte{0x00, 0x00, 0x5e, 0x00, 0x11, 0x11}),
 				Smac: byteArrayToUint8Array([6]byte{0x00, 0x00, 0x5e, 0x00, 0x11, 0x12}),
