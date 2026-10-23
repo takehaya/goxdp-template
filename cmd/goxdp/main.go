@@ -16,7 +16,6 @@ import (
 	"github.com/cilium/ebpf/rlimit"
 	"github.com/takehaya/goxdp-template/pkg/coreelf"
 	"github.com/takehaya/goxdp-template/pkg/version"
-	"github.com/takehaya/goxdp-template/pkg/xdptool"
 	"github.com/urfave/cli"
 )
 
@@ -262,6 +261,10 @@ func interfaceIndices(names []string) ([]uint32, error) {
 }
 
 func runAttached(prog, tcProg *ebpf.Program, devices, localDevices []string) (retErr error) {
+	ifindices, err := interfaceIndices(devices)
+	if err != nil {
+		return err
+	}
 	ctx, stop := signal.NotifyContext(context.Background(), syscall.SIGHUP, syscall.SIGINT, syscall.SIGTERM, syscall.SIGQUIT)
 	defer stop()
 
@@ -287,9 +290,11 @@ func runAttached(prog, tcProg *ebpf.Program, devices, localDevices []string) (re
 				return err
 			}
 			localObjects = append(localObjects, objects)
-			tcLink, err := xdptool.AttachTC(objects.TcLocalReceive, dev)
+			tcLink, err := link.AttachTCX(link.TCXOptions{
+				Program: objects.TcLocalReceive, Interface: iface.Index, Attach: ebpf.AttachTCXIngress,
+			})
 			if err != nil {
-				return err
+				return fmt.Errorf("attach TCX ingress to %s: %w", dev, err)
 			}
 			links = append(links, tcLink)
 			receiver = objects.LocalReceive
@@ -301,28 +306,34 @@ func runAttached(prog, tcProg *ebpf.Program, devices, localDevices []string) (re
 			localObjects = append(localObjects, objects)
 			receiver = objects.LocalReceive
 		}
-		attached, err := xdptool.Attach(receiver, dev)
+		attached, err := link.AttachXDP(link.XDPOptions{
+			Program: receiver, Interface: iface.Index, Flags: link.XDPDriverMode,
+		})
 		if err != nil {
-			return err
+			return fmt.Errorf("attach XDP to %s: %w", dev, err)
 		}
 		links = append(links, attached)
 		log.Printf("local stack delivery on %s", dev)
 	}
-	for _, dev := range devices {
+	for i, dev := range devices {
 		if tcProg == nil {
 			break
 		}
-		attached, err := xdptool.AttachTC(tcProg, dev)
+		attached, err := link.AttachTCX(link.TCXOptions{
+			Program: tcProg, Interface: int(ifindices[i]), Attach: ebpf.AttachTCXIngress,
+		})
 		if err != nil {
-			return err
+			return fmt.Errorf("attach TCX ingress to %s: %w", dev, err)
 		}
 		links = append(links, attached)
 		log.Printf("attached TCX ingress to %s", dev)
 	}
-	for _, dev := range devices {
-		attached, err := xdptool.Attach(prog, dev)
+	for i, dev := range devices {
+		attached, err := link.AttachXDP(link.XDPOptions{
+			Program: prog, Interface: int(ifindices[i]), Flags: link.XDPDriverMode,
+		})
 		if err != nil {
-			return err
+			return fmt.Errorf("attach XDP to %s: %w", dev, err)
 		}
 		links = append(links, attached)
 		log.Printf("attached native XDP to %s", dev)

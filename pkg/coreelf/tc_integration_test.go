@@ -18,7 +18,6 @@ import (
 	"github.com/cilium/ebpf/rlimit"
 	"github.com/google/gopacket"
 	"github.com/google/gopacket/layers"
-	"github.com/takehaya/goxdp-template/pkg/xdptool"
 	"golang.org/x/sys/unix"
 )
 
@@ -57,7 +56,7 @@ func newTCTestNetwork(t *testing.T, count int) *tcTestNetwork {
 		if err != nil {
 			t.Fatal(err)
 		}
-		attached, err := xdptool.Attach(pass, peer)
+		attached, err := link.AttachXDP(link.XDPOptions{Program: pass, Interface: other.Index, Flags: link.XDPDriverMode})
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -88,13 +87,13 @@ func (n *tcTestNetwork) attach(t *testing.T, xdp, tc *ebpf.Program, ports ...int
 	t.Helper()
 	for _, port := range ports {
 		if tc != nil {
-			attached, err := xdptool.AttachTC(tc, n.devices[port].Name)
+			attached, err := link.AttachTCX(link.TCXOptions{Program: tc, Interface: n.devices[port].Index, Attach: ebpf.AttachTCXIngress})
 			if err != nil {
 				t.Fatal(err)
 			}
 			t.Cleanup(func() { attached.Close() })
 		}
-		ingress, err := xdptool.Attach(xdp, n.devices[port].Name)
+		ingress, err := link.AttachXDP(link.XDPOptions{Program: xdp, Interface: n.devices[port].Index, Flags: link.XDPDriverMode})
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -400,7 +399,7 @@ func TestBroadcastEgressMTU(t *testing.T) {
 						t.Fatal(err)
 					}
 					t.Cleanup(func() { v.Close() })
-					attached, err := xdptool.Attach(v.XdpBroadcast, n.devices[0].Name)
+					attached, err := link.AttachXDP(link.XDPOptions{Program: v.XdpBroadcast, Interface: n.devices[0].Index, Flags: link.XDPDriverMode})
 					if err != nil {
 						t.Fatal(err)
 					}

@@ -14,10 +14,10 @@ import (
 
 	"github.com/cilium/ebpf"
 	"github.com/cilium/ebpf/asm"
+	"github.com/cilium/ebpf/link"
 	"github.com/cilium/ebpf/rlimit"
 	"github.com/google/gopacket"
 	"github.com/google/gopacket/layers"
-	"github.com/takehaya/goxdp-template/pkg/xdptool"
 	"golang.org/x/sys/unix"
 )
 
@@ -59,7 +59,7 @@ func TestVXLANIngress(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if ret != xdptool.XDP_REDIRECT {
+	if ret != xdpRedirect {
 		t.Fatalf("access frame: got %d, want XDP_REDIRECT", ret)
 	}
 	if err := v.UpdateMembers(100, []string{names[0]}); err != nil {
@@ -82,7 +82,7 @@ func TestVXLANIngress(t *testing.T) {
 		opts := &ebpf.RunOptions{Data: inner, DataOut: make([]byte, len(inner)+128),
 			Context: &context{DataEnd: uint32(len(inner)), Ingress: uint32(iface.Index)}, ContextOut: &out}
 		ret, err := v.Program().Run(opts)
-		if err != nil || ret != xdptool.XDP_REDIRECT {
+		if err != nil || ret != xdpRedirect {
 			t.Fatalf("prepare shared header: action %d, error %v", ret, err)
 		}
 		frame := opts.DataOut[out.Data:out.DataEnd]
@@ -130,21 +130,21 @@ func TestVXLANIngress(t *testing.T) {
 		edit func([]byte) []byte
 		want uint32
 	}{
-		{"multicast decap", func(b []byte) []byte { return b }, xdptool.XDP_REDIRECT},
-		{"outer padding", func(b []byte) []byte { return append(b, make([]byte, 16)...) }, xdptool.XDP_REDIRECT},
-		{"local unicast decap", func(b []byte) []byte { copy(b[30:34], []byte{192, 0, 2, 1}); return fixIPv4Checksum(b) }, xdptool.XDP_REDIRECT},
-		{"bad IPv4 checksum", func(b []byte) []byte { b[24] ^= 1; return b }, xdptool.XDP_DROP},
-		{"IPv4 options", func(b []byte) []byte { return addIPv4Options(b, 4) }, xdptool.XDP_REDIRECT},
-		{"maximum IPv4 options", func(b []byte) []byte { return addIPv4Options(b, 40) }, xdptool.XDP_REDIRECT},
-		{"bad options checksum", func(b []byte) []byte { b = addIPv4Options(b, 40); b[73] ^= 1; return b }, xdptool.XDP_DROP},
-		{"unknown VNI", func(b []byte) []byte { b[48] = 101; return b }, xdptool.XDP_DROP},
-		{"missing I flag", func(b []byte) []byte { b[42] = 0; return b }, xdptool.XDP_DROP},
-		{"truncated VXLAN", func(b []byte) []byte { return b[:49] }, xdptool.XDP_DROP},
-		{"wrong UDP length", func(b []byte) []byte { binary.BigEndian.PutUint16(b[38:40], 8); return b }, xdptool.XDP_DROP},
-		{"wrong IP version", func(b []byte) []byte { b[14] = 0x65; return b }, xdptool.XDP_DROP},
-		{"fragmented underlay", func(b []byte) []byte { b[20] = 0x20; return b }, xdptool.XDP_PASS},
-		{"unrelated UDP", func(b []byte) []byte { binary.BigEndian.PutUint16(b[36:38], 53); return b }, xdptool.XDP_PASS},
-		{"foreign multicast group", func(b []byte) []byte { b[33] = 201; return b }, xdptool.XDP_PASS},
+		{"multicast decap", func(b []byte) []byte { return b }, xdpRedirect},
+		{"outer padding", func(b []byte) []byte { return append(b, make([]byte, 16)...) }, xdpRedirect},
+		{"local unicast decap", func(b []byte) []byte { copy(b[30:34], []byte{192, 0, 2, 1}); return fixIPv4Checksum(b) }, xdpRedirect},
+		{"bad IPv4 checksum", func(b []byte) []byte { b[24] ^= 1; return b }, xdpDrop},
+		{"IPv4 options", func(b []byte) []byte { return addIPv4Options(b, 4) }, xdpRedirect},
+		{"maximum IPv4 options", func(b []byte) []byte { return addIPv4Options(b, 40) }, xdpRedirect},
+		{"bad options checksum", func(b []byte) []byte { b = addIPv4Options(b, 40); b[73] ^= 1; return b }, xdpDrop},
+		{"unknown VNI", func(b []byte) []byte { b[48] = 101; return b }, xdpDrop},
+		{"missing I flag", func(b []byte) []byte { b[42] = 0; return b }, xdpDrop},
+		{"truncated VXLAN", func(b []byte) []byte { return b[:49] }, xdpDrop},
+		{"wrong UDP length", func(b []byte) []byte { binary.BigEndian.PutUint16(b[38:40], 8); return b }, xdpDrop},
+		{"wrong IP version", func(b []byte) []byte { b[14] = 0x65; return b }, xdpDrop},
+		{"fragmented underlay", func(b []byte) []byte { b[20] = 0x20; return b }, xdpPass},
+		{"unrelated UDP", func(b []byte) []byte { binary.BigEndian.PutUint16(b[36:38], 53); return b }, xdpPass},
+		{"foreign multicast group", func(b []byte) []byte { b[33] = 201; return b }, xdpPass},
 	} {
 		t.Run(tt.name, func(t *testing.T) {
 			frame := tt.edit(bytes.Clone(valid))
@@ -159,10 +159,10 @@ func TestVXLANIngress(t *testing.T) {
 			if ret != tt.want {
 				t.Fatalf("got %d, want %d", ret, tt.want)
 			}
-			if ret == xdptool.XDP_REDIRECT && !bytes.Equal(opts.DataOut[out.Data:out.DataEnd], inner) {
+			if ret == xdpRedirect && !bytes.Equal(opts.DataOut[out.Data:out.DataEnd], inner) {
 				t.Fatalf("decap changed inner frame: %x", opts.DataOut)
 			}
-			if ret == xdptool.XDP_PASS && !bytes.Equal(opts.DataOut[out.Data:out.DataEnd], frame) {
+			if ret == xdpPass && !bytes.Equal(opts.DataOut[out.Data:out.DataEnd], frame) {
 				t.Fatal("unrelated traffic was modified")
 			}
 		})
@@ -255,7 +255,7 @@ func testVXLANEncap(t *testing.T, unicast, redirect bool) {
 		if err != nil {
 			t.Fatal(err)
 		}
-		attached, err := xdptool.Attach(pass, peer)
+		attached, err := link.AttachXDP(link.XDPOptions{Program: pass, Interface: peerDev.Index, Flags: link.XDPDriverMode})
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -305,7 +305,7 @@ func testVXLANEncap(t *testing.T, unicast, redirect bool) {
 		t.Fatal(err)
 	}
 	t.Cleanup(func() { v.Close() })
-	attached, err := xdptool.Attach(v.Program(), names[0])
+	attached, err := link.AttachXDP(link.XDPOptions{Program: v.Program(), Interface: devices[0].Index, Flags: link.XDPDriverMode})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -455,7 +455,7 @@ func testVXLANEncap(t *testing.T, unicast, redirect bool) {
 				asm.LoadMapPtr(asm.R2, v.objects.DevmapPrograms.FD()),
 				asm.Mov.Imm(asm.R3, 1),
 				asm.FnTailCall.Call(),
-				asm.Mov.Imm(asm.R0, int32(xdptool.XDP_DROP)).WithSymbol("drop"),
+				asm.Mov.Imm(asm.R0, int32(xdpDrop)).WithSymbol("drop"),
 				asm.Return(),
 			)
 			invalidate, err := ebpf.NewProgram(&ebpf.ProgramSpec{

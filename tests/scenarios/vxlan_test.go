@@ -12,9 +12,9 @@ import (
 
 	"github.com/cilium/ebpf"
 	"github.com/cilium/ebpf/asm"
+	"github.com/cilium/ebpf/link"
 	"github.com/cilium/ebpf/rlimit"
 	"github.com/takehaya/goxdp-template/pkg/coreelf"
-	"github.com/takehaya/goxdp-template/pkg/xdptool"
 )
 
 // Three VTEPs use two direct underlay links. No Linux VXLAN device or bridge is
@@ -302,7 +302,7 @@ func connectHost(t *testing.T, node string, host *endpoint, pass *ebpf.Program) 
 			t.Fatal(err)
 		}
 		host.ifindex = iface.Index
-		attached, err := xdptool.Attach(pass, "eth0")
+		attached, err := link.AttachXDP(link.XDPOptions{Program: pass, Interface: iface.Index, Flags: link.XDPDriverMode})
 		if err != nil {
 			t.Fatal(err)
 		}

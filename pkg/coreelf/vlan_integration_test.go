@@ -11,7 +11,6 @@ import (
 
 	"github.com/cilium/ebpf"
 	"github.com/google/gopacket/layers"
-	"github.com/takehaya/goxdp-template/pkg/xdptool"
 )
 
 func TestVLANForwarding(t *testing.T) {
@@ -101,7 +100,7 @@ func runVLANForwarding(t *testing.T, backend string, redirect bool) {
 		fixIPv4Checksum(packet)
 		ctx := struct{ Data, DataEnd, DataMeta, Ingress, RxQueue, Egress uint32 }{DataEnd: uint32(len(packet)), Ingress: uint32(n.devices[6].Index)}
 		action, err := v.Program().Run(&ebpf.RunOptions{Data: packet, Context: &ctx})
-		if err != nil || action != xdptool.XDP_PASS {
+		if err != nil || action != xdpPass {
 			t.Fatalf("unrelated destination: action %d, error %v, want XDP_PASS", action, err)
 		}
 	})
